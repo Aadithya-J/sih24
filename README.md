@@ -20,3 +20,9 @@ To run the application in development mode with hot-reloading, use:
 ```bash
 npm run dev
 ```
+frontend - http://localhost:5173
+backend - http://localhost:4000
+
+
+
+
