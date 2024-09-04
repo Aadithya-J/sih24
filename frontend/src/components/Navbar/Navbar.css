@@ -1,0 +1,40 @@
+.navbar {
+    width: 100%;
+    background: #2b2b2b;
+    padding: 20px 10px;
+    box-sizing: border-box;
+  }
+  
+  .navbar ul {
+    display: flex;
+    margin: 0 auto;
+    max-width: 960px;
+    align-items: center;
+    color: white;
+  }
+  
+  .title {
+    margin-right: auto;
+    /* font-weight: bold; */
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    color: white;
+  }
+  
+  .list {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .navbar button,
+  navbar a {
+    margin-left: 16px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    color: rgb(157, 186, 255);
+  }

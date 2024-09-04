@@ -1,0 +1,11 @@
+.message {
+  display: flex;
+  justify-content: center;
+  max-width: 360px;
+  margin: 150px auto;
+  padding: 20px;
+  padding-right: 35px;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-size: 25px;
+}
