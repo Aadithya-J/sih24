@@ -1,0 +1,14 @@
+{
+  "name": "sih24",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && PORT=5001 node index.js",
+    "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start": "npm run setup && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
