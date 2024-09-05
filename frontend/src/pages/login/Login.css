@@ -4,7 +4,6 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
-  
 }
 
 /* Styling for the image container */
@@ -20,19 +19,31 @@
 .image-container img {
   max-width: 100%;
   height: auto; /* Maintain aspect ratio */
+  animation: float 3s ease-in-out infinite; /* Apply the floating animation */
+}
+
+/* Keyframes for the hover effect */
+@keyframes float {
+  0% {
+    transform: translateY(0); /* Start at original position */
+  }
+  50% {
+    transform: translateY(-20px); /* Move up by 20px */
+  }
+  100% {
+    transform: translateY(0); /* Move back to the original position */
+  }
 }
 
 /* Styling for the form container */
 .login-form {
   box-shadow: 0 4px 20px rgba(106, 13, 173, 1);
-  /*background-color: rgba(255, 255, 255, 0.5);*/
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Internal padding for form elements */
   width: 300px; /* Fixed width for the form */
   text-align: center; /* Center the text inside the form */
   margin-left: 4.5cm; /* Move the form to the right */
   margin-right: 4.5cm;
-  
 }
 
 /* Styling for form headings and labels */
