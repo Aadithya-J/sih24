@@ -20,6 +20,9 @@ function Navbar() {
               <li>
                 <Link to="/signup">Signup</Link>
               </li>
+              <li>
+                <Link to="/roadmap">roadmap</Link>
+              </li>
             </>
           )}
           {user && (

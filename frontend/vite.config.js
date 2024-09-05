@@ -5,14 +5,22 @@ export default defineConfig({
   plugins: [react()],
   esbuild: {
     loader: 'jsx',
-    include: /src\/.*\.jsx?$/,
+    include: /src\/.*\.jsx?$/, 
     exclude: [],
+    sourcemap: false, 
   },
   optimizeDeps: {
     esbuildOptions: {
       loader: {
         '.js': 'jsx',
       },
+      sourcemap: false, 
     },
+  },
+  build: {
+    sourcemap: false, 
+  },
+  server: {
+    sourcemapIgnoreList: () => true, 
   },
 })
