@@ -24,8 +24,8 @@
 
 /* Styling for the form container */
 .login-form {
-  background-color: rgba(255, 255, 255, 0.5); /* More translucent background */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  box-shadow: 0 4px 20px rgba(106, 13, 173, 1);
+  /*background-color: rgba(255, 255, 255, 0.5);*/
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Internal padding for form elements */
   width: 300px; /* Fixed width for the form */
