@@ -1,12 +1,42 @@
-/* Center the signup form on the page */
+/* Container for the signup page layout */
+.signup-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Light background color */
+}
 
+/* Styling for the image container */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Styling for the form container */
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Center the signup form on the page */
 .signup-form {
   background-color: rgba(255, 255, 255, 0.5); /* More translucent background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Internal padding for form elements */
   width: 300px; /* Fixed width for the form */
-  margin: 100px auto; /* Center the form vertically and horizontally */
   text-align: center; /* Center the text inside the form */
 }
 

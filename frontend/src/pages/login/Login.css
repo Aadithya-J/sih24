@@ -1,13 +1,37 @@
-/* Styling for the login form */
+/* Container for the login page layout */
+.login-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Dark background for night sky effect */
+}
 
+/* Styling for the image container */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-right: 3cm; /* Move the image container to the right */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Styling for the form container */
 .login-form {
   background-color: rgba(255, 255, 255, 0.5); /* More translucent background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Internal padding for form elements */
   width: 300px; /* Fixed width for the form */
-  margin: 100px auto; /* Center the form vertically and horizontally */
   text-align: center; /* Center the text inside the form */
+  margin-left: 4.5cm; /* Move the form to the right */
+  margin-right: 4.5cm;
 }
 
 /* Styling for form headings and labels */
@@ -29,7 +53,7 @@
   font-weight: bold;
 }
 
-/* Styling for form inputs without borders */
+/* Styling for form inputs */
 .login-form input {
   width: 100%;
   padding: 10px;
@@ -46,23 +70,22 @@
 .btn {
   width: 100%;
   padding: 10px;
-  background: radial-gradient(circle, #6a0dad, #4b0082); /* Lavender and deep purple for night sky effect */
+  background: radial-gradient(circle, #D8BFD8, #FFB6C1); /* Radial gradient with lavender and light pink */
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
-  transition: background 0.3s ease; /* Smooth transition for hover effect */
+  transition: background 0.3s ease; 
 }
 
-/* Add a hover effect for the button */
 .btn:hover {
-  background: radial-gradient(circle, #4b0082, #6a0dad); /* Slightly different gradient on hover */
+  background: radial-gradient(circle, #4b0082, #6a0dad);
 }
 
 .btn:disabled {
-  background: grey; /* Solid color for disabled state */
+  background: grey;
   cursor: not-allowed;
 }
 
