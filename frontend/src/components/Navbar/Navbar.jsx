@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul>
-        <li className="title">Navbar</li>
+        <li className="title">Yatharth</li>
         <div className="list">
           {!user && (
             <>
@@ -18,7 +18,7 @@ function Navbar() {
                 <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/signup">Signup</Link>
+                <Link to="/signup">Sign Up</Link>
               </li>
               <li>
                 <Link to="/roadmap">roadmap</Link>

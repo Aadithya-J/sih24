@@ -1,0 +1,18 @@
+.stars-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Ensure it's behind the content */
+  overflow: hidden;
+  background-color: black;
+}
+
+/* App content */
+.app-content {
+  position: relative;
+  z-index: 1; /* Ensure it's above the background */
+  padding: 20px;
+  color: white; /* Adjust text color to stand out on the starry background */
+}
