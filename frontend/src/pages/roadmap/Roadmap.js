@@ -30,7 +30,7 @@ function RoadmapContent() {
     const newEdges = [];
 
     const containerWidth = 800;
-    const rootNodeWidth = 440; // Increased from 180
+    const rootNodeWidth = 440;
     const centerX = (containerWidth - rootNodeWidth) / 2;
 
     // Add the root node (title)
@@ -42,16 +42,16 @@ function RoadmapContent() {
         background: '#4CAF50', 
         color: 'white', 
         border: '1px solid #45a049',
-        padding: '15px', // Increased from 10px
-        fontSize: '30px', // Added for larger text
+        padding: '15px',
+        fontSize: '30px',
         borderRadius: '5px',
         width: rootNodeWidth,
         textAlign: 'center',
       },
     });
 
-    const sectionSpacing = 350; // Increased from 300
-    const subsectionSpacing = 180; // Increased from 150
+    const sectionSpacing = 350;
+    const subsectionSpacing = 180;
 
     roadmapData.sections.forEach((section, sectionIndex) => {
       // Main section node
@@ -64,10 +64,10 @@ function RoadmapContent() {
           background: '#6ede87', 
           color: '#333', 
           border: '1px solid #222',
-          padding: '15px', // Increased from 10px
-          fontSize: '24px', // Added for larger text
+          padding: '15px',
+          fontSize: '24px',
           borderRadius: '5px',
-          width: 300, // Increased from 150
+          width: 300,
           textAlign: 'center',
         },
       });
@@ -93,7 +93,7 @@ function RoadmapContent() {
         
         // Calculate y position: same for pairs (even/odd subIndex)
         const pairIndex = Math.floor(subIndex / 2);  // Every two nodes share the same y position
-        const y = pairIndex * subsectionSpacing + (sectionIndex + 1) * sectionSpacing; // Adjust for spacing between pairs
+        const y = pairIndex * subsectionSpacing + (sectionIndex + 1) * sectionSpacing; 
 
         newNodes.push({
           id: subNodeId,
@@ -103,10 +103,10 @@ function RoadmapContent() {
             background: '#ff9a8b', 
             color: '#333', 
             border: '1px solid #222',
-            padding: '10px', // Increased from 5px
-            fontSize: '24px', // Added for larger text
+            padding: '10px',
+            fontSize: '24px', 
             borderRadius: '5px',
-            width: 200, // Increased from 120
+            width: 200, 
             textAlign: 'center',
           },
         });
@@ -202,7 +202,7 @@ function RoadmapContent() {
           zoomOnScroll={false}
         >
           <Background color="#bdc3c7" gap={16} size={1} />
-          <Controls style={{ bottom: 'auto', top: 20, right: 20 }} /> {/* Changed from bottom: 20 to top: 20 */}
+          <Controls style={{ bottom: 'auto', top: 20, right: 20 }} /> 
         </ReactFlow>
       </div>
     </div>

@@ -20,17 +20,20 @@ function Navbar() {
               <li>
                 <Link to="/signup">Sign Up</Link>
               </li>
-              <li>
-                <Link to="/roadmap">roadmap</Link>
-              </li>
             </>
           )}
           {user && (
+            <>
             <li>
               <button className="btn" onClick={logout}>
                 Log Out
               </button>
             </li>
+            <li>
+                <Link className="btn" to="/roadmap">roadmap</Link>
+            </li>
+            </>
+
           )}
         </div>
       </ul>
