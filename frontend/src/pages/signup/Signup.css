@@ -1,31 +1,103 @@
-.signup-form {
-  max-width: 360px;
-  margin: 60px auto;
-  padding: 20px;
-  padding-right: 35px;
-  border: 3px solid black;
-  border-radius: 10px;
+/* Container for the signup page layout */
+.signup-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Light background color */
 }
 
+/* Styling for the image container */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Styling for the form container */
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Center the signup form on the page */
+.signup-form {
+  background-color: rgba(255, 255, 255, 0.5); /* More translucent background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Internal padding for form elements */
+  width: 300px; /* Fixed width for the form */
+  text-align: center; /* Center the text inside the form */
+}
+
+/* Styling for form headings */
+.signup-form h2 {
+  color: #6a0dad; /* Lavender color to match the button */
+  margin-bottom: 20px;
+}
+
+/* Styling for form labels and inputs */
 .signup-form label {
   display: block;
-  margin: 30px auto;
+  margin-bottom: 15px;
+  color: #6a0dad; /* Match the button color */
 }
 
 .signup-form span {
   display: block;
-  margin-bottom: 6px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .signup-form input {
-  padding: 8px 6px;
-  font-size: 1em;
-  color: #777;
   width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none; /* Remove border */
+  background: #f4f4f4; /* Light background for input fields */
+  color: #333; /* Dark text color for readability */
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
 }
 
-.signup button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Styling the submit button with a radial gradient */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: radial-gradient(circle, #D8BFD8, #FFB6C1); /* Radial gradient with lavender and light pink */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Add a hover effect for the button */
+.btn:hover {
+  background: radial-gradient(circle, #FFB6C1, #D8BFD8); /* Slightly different gradient on hover */
+}
+
+.btn:disabled {
+  background: grey; /* Solid color for disabled state */
+  cursor: not-allowed;
+}
+
+/* Styling for error messages */
+p {
+  color: red;
+  font-size: 14px;
 }

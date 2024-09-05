@@ -1,31 +1,96 @@
-.login-form {
-  max-width: 360px;
-  margin: 60px auto;
+/* Container for the login page layout */
+.login-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #000; /* Dark background for night sky effect */
+}
+
+/* Styling for the image container */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  padding-right: 35px;
-  border: 3px solid black;
-  border-radius: 10px;
+  margin-right: 3cm; /* Move the image container to the right */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Styling for the form container */
+.login-form {
+  background-color: rgba(255, 255, 255, 0.5); /* More translucent background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Internal padding for form elements */
+  width: 300px; /* Fixed width for the form */
+  text-align: center; /* Center the text inside the form */
+  margin-left: 4.5cm; /* Move the form to the right */
+  margin-right: 4.5cm;
+}
+
+/* Styling for form headings and labels */
+.login-form h2 {
+  color: #6a0dad; /* Match the button color */
+  margin-bottom: 20px;
 }
 
 .login-form label {
   display: block;
-  margin: 30px auto;
+  margin-bottom: 15px;
+  color: #6a0dad; /* Match the button color */
 }
 
 .login-form span {
   display: block;
-  margin-bottom: 6px;
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
+/* Styling for form inputs */
 .login-form input {
-  padding: 8px 6px;
-  font-size: 1em;
-  color: #777;
   width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none; /* Remove border */
+  background: #f4f4f4; /* Light background for input fields */
+  color: #333; /* Dark text color for readability */
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
 }
 
-.login button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+/* Styling the submit button */
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: radial-gradient(circle, #D8BFD8, #FFB6C1); /* Radial gradient with lavender and light pink */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease; 
+}
+
+.btn:hover {
+  background: radial-gradient(circle, #4b0082, #6a0dad);
+}
+
+.btn:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+/* Styling for error messages */
+p {
+  color: red;
+  font-size: 14px;
 }

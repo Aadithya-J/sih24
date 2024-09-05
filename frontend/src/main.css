@@ -20,19 +20,19 @@ ul {
   list-style-type: none;
 }
 .btn {
-  background: none;
-  border: 2px solid #0000f9;
-  padding: 6px 12px;
-  border-radius: 4px;
-  color: #0000f9;
-  font-weight: bold;
+  width: 100%;
+  padding: 10px;
+  background: radial-gradient(circle, #6a0dad, #4b0082); /* Radial gradient with darker baby pink and lavender shades */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 1em;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
+  transition: background 0.3s ease; /* Smooth transition for hover effect */
 }
+
+/* Add a hover effect for the button */
 .btn:hover {
-  background: #0000f9;
-  color: #fff;
+  background: radial-gradient(circle, #4b0082, #6a0dad);/* Slightly different gradient on hover */
 }
