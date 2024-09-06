@@ -47,10 +47,7 @@
   overflow: hidden;
   border-right: 3px solid rgba(106, 13, 173, 1); /* Cursor effect */
   width: 0; /* Initially hide the text */
-  max-width: 100%; /* Allow full width for the text */
-  animation: 
-    typing 3s steps(30, end) forwards, /* Adjusted steps to match character count */
-    blink-caret 0.55s step-end infinite; /* Blinking cursor animation */
+  animation: typing 6s steps(30, end) infinite, blink-caret 0.75s step-end infinite; /* Slower typing with infinite loop */
 }
 
 /* Typing animation */
@@ -59,7 +56,7 @@
     width: 0;
   }
   to {
-    width: 100%; /* Full width of the text */
+    width: 76%; /* Full width of the text */
   }
 }
 
