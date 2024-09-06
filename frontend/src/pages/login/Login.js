@@ -16,8 +16,11 @@ function Login() {
   return (
     <div className="login-container">
       {/* Left section for rocket image */}
-      <div className="image-container">
-        <img src="/rocket.png" alt="Rocket" /> {/* Image path relative to the public folder */}
+      <div className="image-container"> 
+        <img src="/rocket.png" alt="Rocket" onError={() => {}} /> {/* Image path relative to the public folder */}
+        <div className="typing-text">
+    <span>Bridging dreams with reality</span>
+        </div>
       </div>
 
       {/* Right section for login form */}
