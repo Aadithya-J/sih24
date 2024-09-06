@@ -1,10 +1,12 @@
-/* Container for the signup page layout */
+/* General container for the signup page layout */
 .signup-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  
+  padding: 50px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 /* Styling for the image container */
@@ -14,11 +16,14 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin-right: 2cm;
 }
 
 .image-container img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto; /* Maintain aspect ratio */
+  border-radius: 15px; /* Add rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
 }
 
 /* Styling for the form container */
@@ -30,74 +35,107 @@
   padding: 20px;
 }
 
-/* Center the signup form on the page */
+/* Styling for the signup form */
 .signup-form {
-  box-shadow: 0 4px 20px rgba(106, 13, 173, 1);
-  /*background-color: rgba(255, 255, 255, 0.5);*/
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Internal padding for form elements */
-  width: 300px; /* Fixed width for the form */
+  box-shadow: 0 4px 25px rgba(106, 13, 173, 0.25); /* Softer shadow for depth */
+  border-radius: 12px; /* Rounded corners */
+  padding: 30px; /* Internal padding for form elements */
+  width: 350px; /* Fixed width for better spacing */
+  background-color: #fff; /* White background */
   text-align: center; /* Center the text inside the form */
 }
 
 /* Styling for form headings */
 .signup-form h2 {
-  color: #6a0dad; /* Lavender color to match the button */
-  margin-bottom: 20px;
+  color: #6a0dad; /* Lavender color */
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-family: 'Montserrat', sans-serif; /* Clean, modern font */
 }
 
 /* Styling for form labels and inputs */
 .signup-form label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: #6a0dad; /* Match the button color */
+  font-family: 'Open Sans', sans-serif; /* Alternate modern font */
 }
 
 .signup-form span {
   display: block;
   font-size: 14px;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #333;
 }
 
+/* Input field styling */
 .signup-form input {
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none; /* Remove border */
-  background: #f4f4f4; /* Light background for input fields */
-  color: #333; /* Dark text color for readability */
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fafafa; /* Light background for input fields */
   font-size: 16px;
+  color: #333; /* Dark text color */
   outline: none;
   box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
 }
 
-/* Styling the submit button with a radial gradient */
+.signup-form input:focus {
+  border-color: #6a0dad;
+  box-shadow: 0 0 8px rgba(106, 13, 173, 0.1); /* Focused input effect */
+}
+
+/* Styling for the submit button */
 .btn {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: radial-gradient(circle, #D8BFD8, #FFB6C1); /* Radial gradient with lavender and light pink */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
   transition: background 0.3s ease; /* Smooth transition for hover effect */
+  box-shadow: 0 4px 15px rgba(106, 13, 173, 0.25); /* Button shadow for depth */
 }
 
-/* Add a hover effect for the button */
+/* Hover effect for the button */
 .btn:hover {
   background: radial-gradient(circle, #FFB6C1, #D8BFD8); /* Slightly different gradient on hover */
 }
 
 .btn:disabled {
-  background: grey; /* Solid color for disabled state */
+  background: grey;
   cursor: not-allowed;
 }
 
-/* Styling for error messages */
+/* Error messages */
 p {
   color: red;
   font-size: 14px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .signup-form {
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

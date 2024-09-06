@@ -1,134 +1,153 @@
-/* Container for the login page layout */
+/* General container for the login page layout */
 .login-container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
+  
+  padding: 50px; /* Ensure there's spacing around the content */
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Make the login form appear higher on the page */
+.login-container::before {
+  content: '';
+  display: block;
+  height: 10vh; /* Push content slightly higher */
 }
 
 /* Styling for the image container */
 .image-container {
   flex: 1;
   display: flex;
-  flex-direction: column; /* Aligns the image and text vertically */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-right: 3cm; /* Move the image container to the right */
+  margin-right: 2cm;
 }
 
 .image-container img {
-  max-width: 40%;  /* Reduce the width to 40% */
-  max-height: 300px; /* Reduce the maximum height */
-  height: auto; /* Maintain aspect ratio */
-  animation: float 3s ease-in-out infinite; /* Apply the floating animation */
+  max-width: 50%; /* Adjusted for a better fit */
+  max-height: 300px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+  border-radius: 15px; /* Add rounded corners to the image */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for a modern look */
 }
 
 /* Keyframes for the hover effect */
 @keyframes float {
-  0% {
-    transform: translateY(0); /* Start at original position */
+  0%, 100% {
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-20px); /* Move up by 20px */
-  }
-  100% {
-    transform: translateY(0); /* Move back to the original position */
+    transform: translateY(-15px); /* Subtle floating effect */
   }
 }
 
-/* Container for the text typing animation */
+/* Typing effect for the text */
 .typing-text {
   margin-top: 20px;
-  font-size: 1.5em;
-  color: #6a0dad;
-  font-family: 'Courier New', Courier, monospace; /* Typewriter style font */
+  font-size: 1.8em;
+  color: #4b0082; /* A darker purple for more contrast */
+  font-family: 'Roboto Mono', monospace; /* Modern typewriter font */
   white-space: nowrap;
   overflow: hidden;
-  border-right: 3px solid rgba(106, 13, 173, 1); /* Cursor effect */
-  width: 0; /* Initially hide the text */
-  animation: typing 6s steps(30, end) infinite, blink-caret 0.75s step-end infinite; /* Slower typing with infinite loop */
+  border-right: 3px solid #4b0082; /* Cursor effect */
+  width: 0;
+  animation: typing 4s steps(30, end) infinite, blink-caret 0.75s step-end infinite;
 }
 
-/* Typing animation */
 @keyframes typing {
   from {
     width: 0;
   }
   to {
-    width: 76%; /* Full width of the text */
+    width: 83%; /* Use full width */
   }
 }
 
-/* Blinking cursor animation */
 @keyframes blink-caret {
   from, to {
     border-color: transparent;
   }
   50% {
-    border-color: rgba(106, 13, 173, 1); /* Match the text color */
+    border-color: #4b0082; /* Match the text color */
   }
 }
 
-/* Styling for the form container */
+/* Styling for the login form container */
 .login-form {
-  box-shadow: 0 4px 20px rgba(106, 13, 173, 1);
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Internal padding for form elements */
-  width: 300px; /* Fixed width for the form */
-  text-align: center; /* Center the text inside the form */
-  margin-left: 4.5cm; /* Move the form to the right */
-  margin-right: 4.5cm;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 30px;
+  width: 350px; /* Slightly wider for better spacing */
+  background-color: #fff;
+  text-align: center;
+  margin-left: 2cm;
+  margin-right: 2cm;
 }
 
-/* Styling for form headings and labels */
 .login-form h2 {
-  color: #6a0dad; /* Match the button color */
-  margin-bottom: 20px;
+  color: #4b0082;
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif; /* Clean, modern font */
 }
 
 .login-form label {
   display: block;
-  margin-bottom: 15px;
-  color: #6a0dad; /* Match the button color */
+  margin-bottom: 10px;
+  color: #4b0082;
 }
 
 .login-form span {
   display: block;
   font-size: 14px;
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #333;
 }
 
-/* Styling for form inputs */
 .login-form input {
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none; /* Remove border */
-  background: #f4f4f4; /* Light background for input fields */
-  color: #333; /* Dark text color for readability */
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fafafa;
   font-size: 16px;
+  color: #333;
   outline: none;
   box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
 }
 
-/* Styling the submit button */
+.login-form input:focus {
+  border-color: #4b0082;
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.1); /* Focused input effect */
+}
+
+/* Button styling */
 .btn {
   width: 100%;
-  padding: 10px;
-  background: radial-gradient(circle, #D8BFD8, #FFB6C1); /* Radial gradient with lavender and light pink */
+  padding: 12px;
+  background: linear-gradient(to right, #d8bfd8, #ffb6c1); /* Softer gradient */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
-  transition: background 0.3s ease; 
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.2); /* Button shadow for depth */
 }
 
 .btn:hover {
-  background: radial-gradient(circle, #4b0082, #6a0dad);
+  background: linear-gradient(to right, #4b0082, #8b008b); /* Richer gradient on hover */
 }
 
 .btn:disabled {
@@ -136,8 +155,27 @@
   cursor: not-allowed;
 }
 
-/* Styling for error messages */
+/* Error messages */
 p {
   color: red;
   font-size: 14px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .image-container {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .login-form {
+    width: 90%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

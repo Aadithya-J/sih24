@@ -19,9 +19,15 @@ function Signup() {
 
   return (
     <div className="signup-container">
+      {/* Left section for the rocket image */}
       <div className="image-container">
         <img src="/rocket.png" alt="Rocket" />
+        <div className="typing-text">
+          <span>Bridging dreams with reality</span>
+        </div>
       </div>
+
+      {/* Right section for signup form */}
       <div className="form-container">
         <form onSubmit={handleSubmit} className="signup-form">
           <h2>Sign Up</h2>

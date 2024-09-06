@@ -20,6 +20,7 @@ ul {
   list-style-type: none;
 }
 .btn {
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   padding: 10px;
   background: radial-gradient(circle, #6a0dad, #4b0082); /* Radial gradient with darker baby pink and lavender shades */
