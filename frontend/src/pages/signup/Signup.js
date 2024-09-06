@@ -23,7 +23,7 @@ function Signup() {
       <div className="image-container">
         <img src="/rocket.png" alt="Rocket" />
         <div className="typing-text">
-          <span>Bridging dreams with reality</span>
+          <span>Bridging dreams with reality </span>
         </div>
       </div>
 
@@ -32,7 +32,7 @@ function Signup() {
         <form onSubmit={handleSubmit} className="signup-form">
           <h2>Sign Up</h2>
           <label>
-            <span>Email:</span>
+            <span>Email</span>
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +40,7 @@ function Signup() {
             />
           </label>
           <label>
-            <span>Password:</span>
+            <span>Password</span>
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -48,7 +48,7 @@ function Signup() {
             />
           </label>
           <label>
-            <span>Confirm Password:</span>
+            <span>Confirm Password</span>
             <input
               type="password"
               onChange={(e) => setConfirm(e.target.value)}
