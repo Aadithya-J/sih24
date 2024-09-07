@@ -8,12 +8,16 @@
   background-color: #f7f9fc;
   min-height: 100vh;
   font-family: 'Balsamiq Sans', cursive;
+  background-color: rgb(240, 230, 209);
 }
 
 .roadmap-title {
   font-size: 36px;
-  color: #333;
+  color: #6a0dad; /* Purple gradient color for heading */
   margin-bottom: 20px;
+  background: radial-gradient(circle, #6a0dad, #4b0082); /* Purple gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .roadmap-header {
@@ -38,16 +42,16 @@
   padding: 12px 24px;
   font-size: 16px;
   color: #fff;
-  background-color: #007bff;
+  background: radial-gradient(circle, #6a0dad, #4b0082); /* Purple gradient for button */
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .roadmap-button:hover {
-  background-color: #0056b3;
+  background: radial-gradient(circle, #6a0dad, #4b0082); /* Same gradient for hover */
   transform: scale(1.05);
 }
 
@@ -87,7 +91,7 @@
 
 .roadmap-step-number {
   font-size: 20px;
-  color: #007bff;
+  color: #6a0dad; /* Purple color for step numbers */
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -117,6 +121,6 @@
   left: 0;
   top: 0;
   font-size: 16px;
-  color: #007bff;
+  color: #6a0dad; /* Purple color for subsection numbers */
   font-weight: bold;
 }
