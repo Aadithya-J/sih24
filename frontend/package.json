@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/balsamiq-sans": "^5.0.21",
+    "@fontsource/open-sans": "^5.0.29",
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.6",
     "@xyflow/react": "^12.2.1",
