@@ -72,7 +72,18 @@
 
 .roadmap-title-section {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f0e6d1, #e6d7b8);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.roadmap-title-section h2 {
+  font-size: 32px;
+  color: #4b0082;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .roadmap-sections {
