@@ -37,18 +37,20 @@
 /* Title Styling */
 .title {
   margin-right: auto;
-  letter-spacing: 1px; /* Slightly reduced spacing for a more refined look */
-  font-size: 1.8em; /* Slightly larger title for visibility */
-  font-weight: 700;
+  letter-spacing: 2px; /* Increased spacing for logo effect */
+  font-size: 2.2em; /* Larger font size for prominence */
+  font-weight: 900; /* Bolder font weight for emphasis */
   color: var(--text-color); /* Light color for night sky */
   text-transform: uppercase;
   transition: var(--transition);
-  text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.4); /* Subtle light shadow for night theme */
+  text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.6); /* Enhanced light shadow for visibility */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  display: inline-block; /* Ensure it behaves as a block element but remains inline */
 }
 
 .title:hover {
   color: var(--hover-color);
-  transform: scale(1.05); /* Subtle scaling on hover */
+  transform: scale(1.1); /* More noticeable scaling on hover */
 }
 
 /* List Container Styling */

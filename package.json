@@ -12,6 +12,7 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "@fontsource/balsamiq-sans": "^5.0.21",
     "@fontsource/montserrat": "^5.0.19",
     "@fontsource/open-sans": "^5.0.29",
     "@react-three/drei": "^9.112.0",
