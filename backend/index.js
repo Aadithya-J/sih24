@@ -36,3 +36,15 @@ app.listen(port, () =>
         console.log(`app listening at http://localhost:${port}`);
     }
 );
+
+
+app.post('/api/jobs', async (req, res) => {
+    try {
+        const jobData = req.body;
+        // const job = new Job(jobData);
+        // await job.save();
+        res.status(200).json({ message: 'Job data saved successfully!' });
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while saving job data.' });
+    }
+});
