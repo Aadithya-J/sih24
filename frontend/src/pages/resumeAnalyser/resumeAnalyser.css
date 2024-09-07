@@ -80,7 +80,7 @@ body {
   }
   
   .resume-analyser-container {
-    max-width: 800px;
+    max-width: 80%;
     margin: 40px auto;
     padding: 30px;
     background-color: #fff;
@@ -97,24 +97,39 @@ body {
   
   .file-input-wrapper {
     position: relative;
-    overflow: hidden;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     width: 100%;
   }
   
   .file-input-wrapper input[type=file] {
-    font-size: 16px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
     width: 100%;
-    box-sizing: border-box;
+    height: 100%;
     cursor: pointer;
   }
   
+  .file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .file-label:hover {
+    background: #555;
+  }
+  
   .file-name {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-left: 20px;
+    font-size: 16px;
     color: #666;
   }
   

@@ -152,7 +152,10 @@ const ResumeAnalyser = () => {
       <h2>Resume Analyser</h2>
       <form onSubmit={handleSubmit} className="resume-form">
         <div className="file-input-wrapper">
-          <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
+          <label className="file-label">
+            <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
+            <span className="btn2">Choose File</span>
+          </label>
           {fileName && <span className="file-name">{fileName}</span>}
         </div>
         <input
