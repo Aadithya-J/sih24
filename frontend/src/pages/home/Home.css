@@ -1,11 +1,329 @@
-.message {
+/* Basic styling for the body */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0b0c10;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  max-width: 360px;
-  margin: 150px auto;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  
+  background-attachment: fixed;
   padding: 20px;
-  padding-right: 35px;
-  border: 3px solid rgb(231, 105, 105);
-  border-radius: 10px;
-  font-size: 25px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-section h1 {
+  font-size: 54px;
+  color: #ff8c00;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: slideDown 1s ease-out;
+}
+
+.hero-section p {
+  font-size: 22px;
+  max-width: 750px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  color: #ddd;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.cta-button {
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  background-color: #e67e22;
+}
+
+/* Features Section */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 60px;
+  text-decoration: none;
+  background-image: url('https://example.com/your-celestial-background.jpg'); /* optional celestial background */
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.8s ease-in-out;
+}
+
+.feature-box {
+  background-color: rgba(41, 45, 51, 0.85);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
+}
+
+.feature-box:hover {
+  text-decoration: none;
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.feature-box h3 {
+  font-size: 24px;
+  color: #ff8c00;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.feature-box p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.5;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .features-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section h1 {
+    font-size: 40px;
+  }
+
+  .hero-section p {
+    font-size: 18px;
+  }
+}
+/* Basic styling for the body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #0b0c10;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  
+  background-attachment: fixed;
+  padding: 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-section h1 {
+  font-size: 54px;
+  color: #ff8c00;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: slideDown 1s ease-out;
+}
+
+.hero-section p {
+  font-size: 22px;
+  max-width: 750px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  color: #ddd;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.cta-button {
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  background-color: #e67e22;
+}
+
+/* Features Section */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 60px;
+  
+  background-image: url('https://example.com/your-celestial-background.jpg'); /* optional celestial background */
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.8s ease-in-out;
+}
+
+.feature-box {
+  background-color: rgba(41, 45, 51, 0.85);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.feature-box h3 {
+  font-size: 24px;
+  color: #ff8c00;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.feature-box p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.5;
+  animation: fadeInUp 1.6s ease-out;
+}
+/* Remove underline from all links and set color */
+.features-section a {
+  text-decoration: none;
+  color: #ff8c00; /* Set your desired color */
+}
+
+.features-section a:visited {
+  text-decoration: none;
+  color: #ff8c00; /* Ensure the color stays the same after visiting */
+}
+
+.features-section a:hover {
+  text-decoration: none;
+  color: #e67e22; /* Optional hover effect */
+}
+
+.features-section a:active {
+  text-decoration: none;
+  color: #ff8c00;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .features-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section h1 {
+    font-size: 40px;
+  }
+
+  .hero-section p {
+    font-size: 18px;
+  }
 }
