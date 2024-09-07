@@ -154,7 +154,7 @@ const ResumeAnalyser = () => {
         <div className="file-input-wrapper">
           <label className="file-label">
             <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
-            <span className="btn2">Choose File</span>
+            <span className="btn2">Choose File or Drag and drop</span>
           </label>
           {fileName && <span className="file-name">{fileName}</span>}
         </div>

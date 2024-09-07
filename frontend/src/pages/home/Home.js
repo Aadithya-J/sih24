@@ -9,17 +9,22 @@ function Home() {
       <div className="hero-section">
         <h1>Welcome to Yatharth</h1>
         <p>
-          Congratulations! You signed in. Start your journey to bridge dreams to reality with AI-powered tools and community support.
+          Start your journey to bridge dreams to reality with AI-powered tools and community support.
         </p>
         <button className="cta-button">Explore More</button>
       </div>
 
+      {/* About the Web App Card */}
+      <div className="about-card">
+        <h2>About Yatharth</h2>
+        <p>
+          Yatharth is designed to empower you on your career journey. Our platform offers a suite of AI-driven tools and community support to help you navigate your career development, enhance your resume, and connect with like-minded individuals. Explore our features to discover how we can assist you in achieving your professional goals.
+        </p>
+        <Link to="/about" className="learn-more-link">Learn More</Link>
+      </div>
+
       {/* Features Section */}
       <div className="features-section">
-        <div className="feature-box">
-          <h3>AI-Powered Learning</h3>
-          <p>Get personalized feedback and improvement suggestions based on AI-powered resume scoring.</p>
-        </div>
         <div className="feature-box">
           <h3>Government Schemes</h3>
           <p>Find government-backed opportunities and schemes to support your career path.</p>
@@ -28,32 +33,36 @@ function Home() {
           <h3>Community Support</h3>
           <p>Connect with peers and mentors, exchange knowledge, and grow together.</p>
         </div>
+        
         <div className="feature-box">
-          <h3>Interactive Tools</h3>
-          <p>Explore a variety of tools designed to improve your skills and job readiness.</p>
-        </div>
-      
-
-      {/* Resume Analyzer and Roadmap Section */}
-     
-        <div className="feature-box">
-        <Link to="/resume-analyser">
-          <h3>Resume Analyzer</h3>
-          <p>Analyze your resume and receive AI-based feedback for improvement.</p>
-          
-            
+          <Link to="/resume-analyser">
+            <h3>Resume Analyzer</h3>
+            <p>Analyze your resume and receive AI-based feedback for improvement.</p>
           </Link>
         </div>
-
         <div className="feature-box">
-        <Link to="/roadmap">
-          <h3>Roadmap</h3>
-          <p>Explore a roadmap designed to guide your career development path.</p>
-          
-            
+          <Link to="/roadmap">
+            <h3>Roadmap</h3>
+            <p>Explore a roadmap designed to guide your career development path.</p>
           </Link>
         </div>
+        <div className="feature-box">
+          <h3>Virtual Events</h3>
+          <p>Join virtual events, workshops, and webinars on career development, including sessions for people with special needs.</p>
         </div>
+        <div className="feature-box">
+          <h3>Resume Wizard</h3>
+          <p>Effortlessly build a standout resume with our automatic resume wizard—professional, tailored, and easy.</p>
+        </div>
+        <div className="feature-box">
+          <h3>Real-Time Job Market Insights</h3>
+          <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
+        </div>
+        <div className="feature-box">
+          <h3>Skills Verification and Certification</h3>
+          <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
+        </div>
+      </div>
     </div>
   );
 }

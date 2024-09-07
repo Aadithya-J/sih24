@@ -33,25 +33,52 @@
   list-style-type: none;
   padding: 0;
 }
-
+.btn{
+  text-decoration: none;
+  border-radius: 50px;
+ 
+}
+/* Title Styling */
 /* Title Styling */
 .title {
   margin-right: auto;
   letter-spacing: 2px; /* Increased spacing for logo effect */
-  font-size: 2.2em; /* Larger font size for prominence */
-  font-weight: 900; /* Bolder font weight for emphasis */
+  font-size: 2.0em; /* Larger font size for prominence */
+  font-weight: bold; /* Bolder font weight for emphasis */
   color: var(--text-color); /* Light color for night sky */
   text-transform: uppercase;
   transition: var(--transition);
   text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.6); /* Enhanced light shadow for visibility */
   cursor: pointer; /* Pointer cursor for interactivity */
   display: inline-block; /* Ensure it behaves as a block element but remains inline */
+  text-decoration: none; /* Remove underline */
+  background: linear-gradient(45deg, var(--primary-color), var(--hover-color)); /* Gradient background */
+  -webkit-background-clip: text; /* Clip the background to text */
+  background-clip: text; /* Clip the background to text */
+  color: transparent; /* Make text color transparent to show gradient */
 }
 
+/* Hover State */
 .title:hover {
-  color: var(--hover-color);
+  color: var(--hover-color); /* Text color on hover */
   transform: scale(1.1); /* More noticeable scaling on hover */
+  text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.8); /* Enhanced text shadow on hover */
 }
+
+/* Active State */
+.title:active {
+  color: var(--primary-color); /* Color when the link is clicked */
+  transform: scale(1.05); /* Slightly smaller scaling on active */
+}
+
+/* Ensure no button-like appearance */
+.title {
+  padding: 0; /* Remove padding if applied */
+  border: none; /* Ensure no border */
+  background: none; /* Remove background */
+  box-shadow: none; /* Remove any box-shadow */
+}
+
 
 /* List Container Styling */
 .list {
@@ -59,21 +86,7 @@
   gap: 20px; /* Consistent spacing */
 }
 
-/* Link and Button Styling */
-.navbar button,
-.navbar a {
-  padding: 10px 20px; /* Consistent padding */
-  font-size: 0.9em; /* Slightly smaller font size for elegance */
-  font-weight: 600;
-  border: none;
-  color: var(--text-color);
-  border-radius: 30px; /* Rounded corners for buttons */
-  cursor: pointer;
-  transition: var(--transition);
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  background-color: var(--secondary-color); /* Dark background for buttons */
-}
+
 
 /* Link Styling */
 .navbar a {
@@ -116,7 +129,12 @@
   background-color: var(--hover-color);
   color: var(--text-color);
 }
-
+.title {
+  padding: 0; /* Remove padding if applied */
+  border: none; /* Ensure no border */
+  background: none; /* Remove background */
+  box-shadow: none; /* Remove any box-shadow */
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar ul {
@@ -138,4 +156,10 @@
     width: 100%;
     text-align: center;
   }
+  .title {
+  padding: 0; /* Remove padding if applied */
+  border: none; /* Ensure no border */
+  background: none; /* Remove background */
+  box-shadow: none; /* Remove any box-shadow */
+}
 }

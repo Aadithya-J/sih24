@@ -203,16 +203,25 @@ body {
   padding: 15px 40px;
   font-size: 20px;
   cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: all 0.3s ease; /* Apply transition to all properties */
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Initial shadow */
 }
 
 .cta-button:hover {
   transform: scale(1.1);
-  background-color: #e67e22;
+  background: linear-gradient(135deg, #ff8c00, #e67e22); /* Gradient background */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+  color: #fff;
 }
+
+.cta-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.5); /* Add focus ring */
+}
+
 
 /* Features Section */
 .features-section {
@@ -280,6 +289,54 @@ body {
   text-decoration: none;
   color: #ff8c00;
 }
+/* About Card Styling */
+.about-card {
+  background-color: rgba(41, 45, 51, 0.85);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 20px 10px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+.about-card h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #ff8c00;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.about-card p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.5;
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.learn-more-link {
+  display: inline-block;
+  color: #ff8c00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.learn-more-link:hover {
+  text-decoration: underline;
+}
+
+
 
 /* Animations */
 @keyframes fadeIn {
