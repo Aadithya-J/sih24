@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
@@ -21,6 +22,12 @@ export default defineConfig({
     sourcemap: false, 
   },
   server: {
+    fs: {
+      allow: [
+        // Add the path to your project root
+        path.resolve(__dirname, '..'),
+      ],
+    },
     sourcemapIgnoreList: () => true, 
   },
 })
