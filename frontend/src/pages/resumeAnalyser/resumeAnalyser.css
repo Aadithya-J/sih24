@@ -26,8 +26,13 @@ body {
   }
   
   .radar-container {
-    width: 60%;
+    width: 80%;
+    height: 500px;
     margin-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .recommendations-container {
@@ -44,8 +49,49 @@ body {
     color: #666;
   }
   
+  .recommendations-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .recommendations-list li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+    color:black;
+  }
+  
+  .recommendations-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #22CAEC;
+    font-weight: bold;
+  }
+  
   @media screen and (max-width: 768px) {
+    .radar-container {
+      width: 95%;
+      height: 400px;
+    }
     .radar-container, .recommendations-container {
       width: 90%;
     }
+  }
+  
+  .recommendations-markdown {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .recommendations-markdown ul {
+    padding-left: 20px;
+  }
+
+  .recommendations-markdown li {
+    margin-bottom: 10px;
+  }
+
+  .recommendations-markdown strong {
+    color: #22CAEC;
   }

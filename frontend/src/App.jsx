@@ -3,8 +3,9 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home.js";
 import Login from "./pages/login/Login.js";
 import Signup from "./pages/signup/Signup";
-import Roadmap from "./pages/roadmap/Roadmap.js";
+import Roadmap from "./pages/roadmap/generateRoadmap.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
+import ResumeAnalyser from "./pages/resumeAnalyser/ResumeAnalyser.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import './App.css'; // Ensure you have global CSS for your app as needed
@@ -38,6 +39,10 @@ function App() {
               <Route
                 path="/roadmap"
                 element={<Roadmap />}
+              />
+              <Route 
+                path="/resume-analyser"
+                element={<ResumeAnalyser />}
               />
             </Routes>
           </>
