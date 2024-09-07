@@ -5,6 +5,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 const fetchRoadmap = require('./roadmap.js');
+const resumeAnalyser = require('./resumeAnalyser');
 
 app.get('/', (req, res) => 
     {
@@ -27,7 +28,8 @@ app.get('/roadmap/:title', (req, res) =>
     }
 );
 
-
+// Use the resumeAnalyser route
+app.use('/analyse-resume', resumeAnalyser);
 
 app.listen(port, () =>
     {
