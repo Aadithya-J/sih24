@@ -71,4 +71,6 @@ while page_number <= max_pages:
         print(f"Error on page {page_number}: {e}")
         break
 
+print(type(jobs))
+
 driver.quit()
