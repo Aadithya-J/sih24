@@ -35,6 +35,9 @@ function Navbar() {
               <li>
                 <Link className="btn" to="/roadmap">Roadmap</Link>
               </li>
+              <li>
+                <Link className="btn" to="/resume-analyser">Resume</Link>
+              </li>
             </>
           )}
         </div>
