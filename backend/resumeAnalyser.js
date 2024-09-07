@@ -87,7 +87,7 @@ async function analyzeResume(file, jobRole) {
   ]);
 
   const responseText = result.response.text();
-  console.log('Raw AI response:', responseText);
+  // console.log('Raw AI response:', responseText);
   return responseText;
 }
 
@@ -107,14 +107,14 @@ router.post('/', upload.single('resume'), async (req, res) => {
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    console.log('File received:', file);
-    console.log('Job role:', jobRole);
+    // console.log('File received:', file);
+    // console.log('Job role:', jobRole);
 
     const analysisResult = await analyzeResume(file, jobRole);
-    console.log('Analysis result:', analysisResult);
+    // console.log('Analysis result:', analysisResult);
 
     const parsedResult = parseAnalysis(analysisResult);
-    console.log('Parsed result:', parsedResult);
+    // console.log('Parsed result:', parsedResult);
 
     // Delete the uploaded file
     fs.unlink(file.path, (err) => {
