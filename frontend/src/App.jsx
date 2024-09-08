@@ -44,10 +44,10 @@ function App() {
                 path="/resume-analyser"
                 element={<ResumeAnalyser />}
               />
-              <Route
+              {/* <Route
                 path="/api/jobs"
                 element = {user ? <Job /> : <Navigate to="/login" />}
-              />
+              /> */}
             </Routes>
           </>
         )}
