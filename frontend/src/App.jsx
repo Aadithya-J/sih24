@@ -13,6 +13,7 @@ import CommunitySupport from "./pages/communitySupport/CommunitySupport";
 import PersonalizedForm from "./pages/personalizedForm/PersonalizedForm";
 import TrainingRec from "./pages/trainingRec/trainingRec.js";
 import VirtualEvents from './pages/virtualEvents/VirtualEvents';
+import SkillsVerification from "./pages/skillsVerification/skillsVerification.js";
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -60,6 +61,11 @@ function App() {
               <Route
                 path="/training"
                 element = {user ? <TrainingRec /> : <Navigate to="/login" />}
+              />
+
+              <Route
+                path="/skills"
+                element = {user ? <SkillsVerification /> : <Navigate to="/login" />}
               />
 
             </Routes>

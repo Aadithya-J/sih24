@@ -71,13 +71,14 @@ function Home() {
   <div className="feature-box">
    
     <h3>Skills Verification and Certification</h3>
-    <img src="skills-verification-logo.png" alt="Skills Verification and Certification" className="feature-logo" />
-    <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
+    <Link to="/skills">
+      <img src="skills-verification-logo.png" alt="Skills Verification and Certification" className="feature-logo" />
+      <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
+    </Link>
   </div>
   
   <div className="feature-box">
     <Link to="/jobsfinder">
-      
       <h3>Jobs Finder</h3>
       <img src="jobs-finder-logo.jpeg" alt="Jobs Finder" className="feature-logo" />
       <p>Explore and find jobs in your desired field and location.</p>

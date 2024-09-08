@@ -1,0 +1,91 @@
+/* SkillsVerification.css */
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: aliceblue;
+    min-height: 100vh;
+    font-family: 'Lora', serif;
+  }
+  
+  .skills-title {
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+    background: radial-gradient(circle, #333, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .skills-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .skills-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .skills-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .skills-card-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .skills-card-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .skills-card-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .skills-card-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  .continue-learning {
+    background: radial-gradient(circle, #4caf50, #388e3c);
+  }
+  
+  .continue-learning:hover {
+    background: radial-gradient(circle, #388e3c, #4caf50);
+    transform: scale(1.05);
+  }
+  
+  .get-certified {
+    background: radial-gradient(circle, #2196f3, #1976d2);
+  }
+  
+  .get-certified:hover {
+    background: radial-gradient(circle, #1976d2, #2196f3);
+    transform: scale(1.05);
+  }
+  
