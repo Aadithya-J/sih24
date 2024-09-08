@@ -23,6 +23,11 @@ body {
   animation: fadeIn 1.5s ease-in-out;
 }
 
+#hero-image {
+  width: 400px;
+  margin-bottom: 40px;
+}
+
 .hero-section h1 {
   font-size: 54px;
   color: #ff8c00;
