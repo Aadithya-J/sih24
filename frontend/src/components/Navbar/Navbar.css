@@ -1,12 +1,21 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: relative;
-  
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background to enhance the celestial effect */
   color: #fff; /* White text for better contrast */
   transition: background-color 0.3s;
+  
+    background: linear-gradient(
+      135deg,
+      rgba(255, 165, 0, 0.2) 0%, /* Light orange with 20% opacity */
+      rgba(255, 140, 0, 0.1) 100% /* Slightly darker orange with 10% opacity */
+    );
+  
 }
 
 .navbar__container {
