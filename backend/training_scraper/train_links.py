@@ -12,7 +12,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 
-def scrape_links(string):
+def scrape_links(skill):
     chrome_driver_path = 'chromedriver.exe'
 
     chrome_options = Options()
@@ -23,7 +23,7 @@ def scrape_links(string):
     driver = webdriver.Chrome(options=chrome_options)
     driver.get("https://www.google.com")
     search_box = driver.find_element(By.NAME, "q")
-    actual_string = f"learn {string}"
+    actual_string = f"learn {skill}"
     search_box.send_keys(actual_string)
     search_box.send_keys(Keys.RETURN)
 
