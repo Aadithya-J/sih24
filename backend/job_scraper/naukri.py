@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import ast
 from flask import Flask, jsonify
+import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor
 
 app = Flask(__name__)
 
@@ -81,36 +83,65 @@ def scrape_jobs(role, location):
 
     driver.quit()
 
-    load_dotenv()
-    final_list = []
-    API_KEY = os.getenv("GEMINI_API_KEY")
-    genai.configure(api_key = API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
-    for m in total_jobs:
-        if m[1] == None:
-            continue
-        else:
-            job = m[1][36:]
-            string = f"I am using your API in my code. I have a string '{job}', and I want you to give me a list that can be later converted into JSON data. The input format is like 'gen-ai-developer-happiest-minds-technologies-noida-pune-bengaluru-5-to-8-years-030924013278', and it should be converted to the list ['gen ai developer', 'happiest minds technologies', 'noida pune bengaluru', '5 to 8']. Please provide ONLY the list in the response, no extra text, explanations, or code."
-            time.sleep(2)
-            response = model.generate_content(string)
-            output = response.text
-            actual_list = ast.literal_eval(output)
-            if len(actual_list) == 4:
-                actual_list.append(m[1])
-                final_list.append(actual_list)
-
-    # print(final_list)
-    return final_list
+    return total_jobs
 
 
-# Flask API endpoint
+def get_job_details(job_info, model):
+    try:
+        if job_info[1] is None:
+            return None
+        
+        job_str = job_info[1][36:] 
+        prompt = (f"I am using your API in my code. I have a string '{job_str}', and I want you to give me a list "
+                  "that can be later converted into JSON data. The input format is like "
+                  "'gen-ai-developer-happiest-minds-technologies-noida-pune-bengaluru-5-to-8-years-030924013278', "
+                  "and it should be converted to the list ['gen ai developer', 'happiest minds technologies', 'noida pune bengaluru', '5 to 8']. "
+                  "Please provide ONLY the list in the response, no extra text, explanations, or code.")
+        
+        response = model.generate_content(prompt)
+        output = response.text
+        
+        actual_list = ast.literal_eval(output)
+        
+        if len(actual_list) == 4:
+            actual_list.append(job_info[1]) 
+            return actual_list
+        return None
+    
+    except Exception as e:
+        print(f"Error processing job {job_info}: {e}")
+        return None
+
+
+def process_jobs_concurrently(total_jobs, model, max_workers=10):
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [executor.submit(get_job_details, job, model) for job in total_jobs]
+        
+        results = []
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            if result:
+                results.append(result)
+    
+    return results
+
+
 @app.route('/api/jobs/<jobInput>/<location>', methods=['GET'])
 def get_jobs(jobInput, location):
-    job_data = scrape_jobs(jobInput, location)
+    total_jobs = scrape_jobs(jobInput, location)
+    
+    load_dotenv()
+    API_KEY = os.getenv("GEMINI_API_KEY")
+    genai.configure(api_key=API_KEY)
+    model = genai.GenerativeModel("gemini-1.5-flash")
+
+    job_data = process_jobs_concurrently(total_jobs, model)
+    
     if not job_data:
         print("No jobs found!")
+    
     return jsonify(job_data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
