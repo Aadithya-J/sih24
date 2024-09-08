@@ -31,14 +31,15 @@ function Home() {
       </div>
 
       {/* Features Section */}
-<div className="features-section">
-<div className="feature-box">
-  <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
-    <h3>Government Schemes</h3>
-    <img src="government-schemes-logo.png" alt="Government Schemes" className="feature-logo" />
-    <p>Find government-backed opportunities and schemes to support your career path.</p>
-  </a>
-</div>
+      <div className="features-section">
+        <div className="feature-box">
+          <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
+            <h3>Government Schemes</h3>
+            <img src="government-schemes-logo.png" alt="Government Schemes" className="feature-logo" />
+            <p>Find government-backed opportunities and schemes to support your career path.</p>
+          </a>
+        </div>
+
 
   
   <div className="feature-box">
