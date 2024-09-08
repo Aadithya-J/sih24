@@ -5,8 +5,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import flask
-import jsonify
+from flask import Flask, jsonify
 import requests
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes
 
 def scrape_links(string):
     chrome_driver_path = 'chromedriver.exe'
@@ -19,7 +23,8 @@ def scrape_links(string):
     driver = webdriver.Chrome(options=chrome_options)
     driver.get("https://www.google.com")
     search_box = driver.find_element(By.NAME, "q")
-    search_box.send_keys(string)
+    actual_string = f"learn {string}"
+    search_box.send_keys(actual_string)
     search_box.send_keys(Keys.RETURN)
 
     time.sleep(1) 
@@ -39,19 +44,19 @@ def scrape_links(string):
 
     return links
 
-@app.route('/api/search', methods=['GET'])
-def search():
-    query = request.args.get('query')
-    
-    if not query:
-        return jsonify({"error": "Missing query parameter"}), 400
-    search_param = f"learn {query}"
-    try:
-        results = scrape_links(search_param)
-        return jsonify(results)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return jsonify({"error": "An error occurred while processing your request"}), 500
-    
+@app.route('/api/resources/<skill>', methods=['GET'])
+def search(skill):
+    links = scrape_links(skill)
+    final = []
+    print('api running')
+    if not links:
+        print("No links found!")
+    for i in range(len(links)):
+        if links[0] == "":
+            continue
+        else:
+            final.append(links)
+    return jsonify(final)
+
 if __name__ == "__main__":
     app.run(debug=True)
