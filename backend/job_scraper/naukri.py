@@ -13,7 +13,7 @@ from flask import Flask, jsonify
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 
 def scrape_jobs(role, location):
@@ -27,6 +27,9 @@ def scrape_jobs(role, location):
     service = Service('chromedriver.exe')
 
     driver = webdriver.Chrome(service=service, options=chrome_options)
+
+    # role = 'ai developer'
+    # location = 'bengaluru'
 
     role = role.replace(' ', '-')
     location = location.replace(' ','-')
@@ -138,7 +141,6 @@ def get_jobs(jobInput, location):
         print("No jobs found!")
     
     return jsonify(job_data)
-
 
 if __name__ == "__main__":
     app.run(debug=True)

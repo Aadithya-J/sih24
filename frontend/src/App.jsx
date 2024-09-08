@@ -45,7 +45,14 @@ function App() {
                 path="/resume-analyser"
                 element={<ResumeAnalyser />}
               />
+<<<<<<< HEAD
               <Route path="/community-support" element={<CommunitySupport />} />
+=======
+              <Route
+                path="/api/jobs"
+                element = {user ? <Job /> : <Navigate to="/login" />}
+              />
+>>>>>>> be08ce6f4a437ef062e50d830e49c840aef950e1
             </Routes>
           </>
         )}
