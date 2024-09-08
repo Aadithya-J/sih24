@@ -29,7 +29,7 @@
 /* Hover effect for the logo */
 .navbar__logo:hover {
   color: #a24fc4; /* Purple color on hover */
-  transform: scale(1.1) rotate(360deg); /* Slightly enlarge and rotate logo on hover */
+  transform: scale(1.1); /* Slightly enlarge and rotate logo on hover */
   box-shadow: 0 0 20px rgba(162, 79, 196, 0.8), inset 0 0 10px rgba(162, 79, 196, 0.6); /* Add outer and inner glow effects */
   background: linear-gradient(45deg, rgba(162, 79, 196, 0.2), rgba(162, 79, 196, 0.1)); /* Optional: Add a subtle gradient background */
 }
@@ -195,7 +195,7 @@
 .navbar__list {
   list-style: none;
   display: flex;
-  gap: 2rem; /* Adjust spacing between the links */
+  gap: 0rem; /* Adjust spacing between the links */
 }
 
 .navbar__link {

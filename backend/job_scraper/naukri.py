@@ -126,6 +126,20 @@ def process_jobs_concurrently(total_jobs, model, max_workers=5):
     
     return results
 
+def capitalize_titles(job_listings):
+    capitalized_listings = []
+    for listing in job_listings:
+        capitalized_listing = []
+        for item in listing:
+            # Skip URLs by checking if the string starts with 'http'
+            if item.startswith('http'):
+                capitalized_listing.append(item)
+            else:
+                # Capitalize the first letter of each word
+                capitalized_listing.append(item.title())
+        capitalized_listings.append(capitalized_listing)
+    return capitalized_listings
+
 
 @app.route('/api/jobs/<jobInput>/<location>', methods=['GET'])
 def get_jobs(jobInput, location):
@@ -142,8 +156,10 @@ def get_jobs(jobInput, location):
     
     if not job_data:
         print("No jobs found!")
+
+    capitalized_job_listings = capitalize_titles(job_data)
     
-    return jsonify(job_data)
+    return jsonify(capitalized_job_listings)
 
 if __name__ == "__main__":
     app.run(debug=True)

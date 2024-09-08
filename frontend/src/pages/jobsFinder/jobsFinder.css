@@ -1,70 +1,133 @@
+/* General container styling */
 .jobs-finder-container {
-padding: 20px;
-max-width: 800px;
-margin: 0 auto;
-}
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    background-color: #cbcbcb;
+  }
+  
+  /* Title styling */
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+    font-size: 3rem;
+    font-family: 'Lora', serif;
+  }
+  
+  /* Input container styling */
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  /* Input field styling */
+  .input-field {
+    padding: 10px;
+    width: 43%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: #fafafa;
+    color: #333;
+  }
+  
+  .input-field:focus {
+    border-color: #333;
+    outline: none;
+  }
+  
+  /* Search button styling */
+  .search-button {
+    padding: 12px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #555;
+  }
+  
+  /* Error message styling */
+  .error-message {
+    color: #333;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Jobs container styling */
+  .jobs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Individual job card styling */
+  .job-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 495px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Job card heading */
+  .job-card h3 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 1.5rem;
+  }
 
-.title {
-text-align: center;
-margin-bottom: 20px;
-color: white;
-}
+  /* Job paragraph */
+  .job-card p {
+    color: #333; /* Ensure text inside paragraphs is not red */
+    line-height: 25px;
+    font-size: 16px;
+  }
+  
+  /* Job link styling */
+  .job-link {
+    text-decoration: none;
+  }
 
-.input-container {
-display: flex;
-justify-content: space-between;
-margin-bottom: 20px;
-}
-
-.input-field {
-padding: 10px;
-width: 45%;
-border: 1px solid #ccc;
-border-radius: 5px;
-}
-
-.search-button {
-padding: 10px 20px;
-background-color: #4CAF50;
-color: white;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-}
-
-.search-button:hover {
-background-color: #45a049;
-}
-
-.error-message {
-color: red;
-text-align: center;
-}
-
-.jobs-container {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-}
-
-.job-card {
-border: 1px solid #ddd;
-padding: 20px;
-width: 300px;
-border-radius: 8px;
-background-color: #f9f9f9;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.job-card h3 {
-margin-top: 0;
-}
-
-.job-link {
-color: #1e90ff;
-text-decoration: none;
-}
-
-.job-link:hover {
-text-decoration: underline;
-}
+  /* Naukri logo */
+  #naukri-logo {
+    width: 20px;
+  }
+  
+  /* Media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    .input-container {
+      flex-direction: column;
+    }
+  
+    .input-field {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .job-card {
+      width: 100%;
+    }
+  }
+  

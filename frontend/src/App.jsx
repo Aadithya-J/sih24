@@ -11,6 +11,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import CommunitySupport from "./pages/communitySupport/CommunitySupport";
 import PersonalizedForm from "./pages/personalizedForm/PersonalizedForm";
+// import TrainingRec from "./pages/trainingRec/trainingRec.js";
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -54,7 +55,6 @@ function App() {
                 path="/jobsfinder"
                 element = {user ? <JobsFinder /> : <Navigate to="/login" />}
               />
-
 
             </Routes>
           </>

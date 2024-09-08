@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './JobsFinder.css';
+import { FaSearch } from "react-icons/fa";
 
 const JobsFinder = () => {
   const [jobRole, setJobRole] = useState('');
@@ -51,7 +52,7 @@ const JobsFinder = () => {
           onChange={(e) => setLocation(e.target.value)}
           className="input-field"
         />
-        <button onClick={handleSearch} className="search-button">Search</button>
+        <button onClick={handleSearch} className="search-button"><FaSearch /></button>
       </div>
 
       {loading && <p>Loading...</p>}
@@ -60,12 +61,12 @@ const JobsFinder = () => {
       <div className="jobs-container">
         {jobs.map((job, index) => (
           <div key={index} className="job-card">
-            <h3>{job[0]}</h3>
-            <p><strong>Company:</strong> {job[1]}</p>
-            <p><strong>Location:</strong> {job[2]}</p>
-            <p><strong>Experience:</strong> {job[3]} years</p>
             <a href={job[4]} target="_blank" rel="noopener noreferrer" className="job-link">
-              View Job
+              <h3>{job[0]}</h3>
+              <p><strong>Company:</strong> {job[1]}</p>
+              <p><strong>Location:</strong> {job[2]}</p>
+              <p><strong>Experience:</strong> {job[3]} years</p>
+              <p><strong>Found on</strong> <img src="../../../public/naukri-logo.jpg" alt="naukri-com-logo" id="naukri-logo" /></p>
             </a>
           </div>
         ))}

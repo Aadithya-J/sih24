@@ -67,6 +67,11 @@ function Navbar() {
                     Jobs Finder
                   </Link>
                 </li>
+                <li>
+                  <Link to="/roadmap" className="navbar__link">
+                    Roadmap
+                  </Link>
+                </li>
               </ul>
             </div>
 
