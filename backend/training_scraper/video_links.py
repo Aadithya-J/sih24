@@ -41,7 +41,7 @@ def scrape_links(skill):
 
     return links
 
-@app.route('/api/resources/<skill>', methods=['GET'])
+@app.route('/api/video/<skill>', methods=['GET'])
 def search(skill):
     links = scrape_links(skill)
     final = []
