@@ -142,6 +142,5 @@ def get_jobs(jobInput, location):
     
     return jsonify(job_data)
 
-
 if __name__ == "__main__":
     app.run(debug=True)
