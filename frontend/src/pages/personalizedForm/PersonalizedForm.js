@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './PersonalizedForm.css'; // Import the CSS file for styling
 import { FaTimes } from 'react-icons/fa'; // Import the close icon from react-icons
-
+import Confetti from 'react-confetti'; 
 function PersonalizedForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -33,13 +33,15 @@ function PersonalizedForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmissionStatus('success');
-      console.log('Form submitted:', formData);
-      navigate('/'); // Navigate to the home page after successful submission
-    }, 500);
-  };
+   // Simulate form submission
+   setSubmissionStatus('success'); // Set status to success to trigger confetti
+   console.log('Form submitted:', formData);
+   
+   // Add a delay before navigating to the home page to show confetti
+   setTimeout(() => {
+     navigate('/'); // Navigate to the home page after a delay
+   }, 5000); // 3 seconds delay
+ };
 
   const handleClose = () => {
     setIsVisible(false); // Hide the form when the close button is clicked
@@ -184,7 +186,10 @@ function PersonalizedForm() {
         <button type="submit" className="submit-button">Submit</button>
       </form>
       {submissionStatus === 'success' && (
-        <p className="submission-message">Form submitted successfully!</p>
+        <>
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+          <p className="submission-message">Form submitted successfully!</p>
+        </>
       )}
     </div>
   );

@@ -1,0 +1,80 @@
+/* src/pages/VirtualEvents/VirtualEvents.module.css */
+.container {
+  max-width: 1000px; /* Increase container width */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 32px; /* Increase title font size */
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+.description {
+  font-size: 18px; /* Increase description font size */
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Increase min width of cards */
+  gap: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px; /* Increase padding */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  overflow: hidden; /* Ensure images do not overflow */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px; /* Add margin between image and text */
+}
+
+.cardTitle {
+  font-size: 24px; /* Increase card title font size */
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.cardDescription {
+  font-size: 16px; /* Increase card description font size */
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.info {
+  font-size: 16px; /* Increase font size for info text */
+  margin-bottom: 5px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px; /* Increase padding */
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 16px; /* Increase font size */
+}
+
+.link:hover {
+  background-color: #218838;
+}

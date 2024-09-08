@@ -12,6 +12,7 @@ import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import CommunitySupport from "./pages/communitySupport/CommunitySupport";
 import PersonalizedForm from "./pages/personalizedForm/PersonalizedForm";
 // import TrainingRec from "./pages/trainingRec/trainingRec.js";
+import VirtualEvents from './pages/virtualEvents/VirtualEvents';
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
               />
               <Route path="/community-support" element={<CommunitySupport />} />
                <Route path="/personalized-form" element={<PersonalizedForm />} />
-
+               <Route path="/virtual-events" element={<VirtualEvents />} />
               <Route
                 path="/jobsfinder"
                 element = {user ? <JobsFinder /> : <Navigate to="/login" />}
