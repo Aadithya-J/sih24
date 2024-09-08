@@ -5,10 +5,13 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import flask
-import jsonify
-import requests
+from flask import Flask, jsonify
+from flask_cors import CORS
 
-def scrape_links(string):
+app = Flask(__name__)
+CORS(app) 
+
+def scrape_links(skill):
     chrome_driver_path = 'chromedriver.exe'
 
     chrome_options = Options()
@@ -16,15 +19,18 @@ def scrape_links(string):
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     service = Service(chrome_driver_path)
-    driver = webdriver.Chrome(options=chrome_options)
+    
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get("https://www.google.com")
+    
     search_box = driver.find_element(By.NAME, "q")
-    search_box.send_keys(string)
+    actual_string = f"learn {skill}"
+    search_box.send_keys(actual_string)
     search_box.send_keys(Keys.RETURN)
 
-    time.sleep(1) 
-    results = driver.find_elements(By.CSS_SELECTOR, 'div.g')
+    time.sleep(2) 
 
+    results = driver.find_elements(By.CSS_SELECTOR, 'div.g')
     links = []
 
     for result in results:
@@ -39,19 +45,19 @@ def scrape_links(string):
 
     return links
 
-@app.route('/api/search', methods=['GET'])
-def search():
-    query = request.args.get('query')
+@app.route('/api/resources/<skill>', methods=['GET'])
+def search(skill):
+    links = scrape_links(skill)
+    final = []
     
-    if not query:
-        return jsonify({"error": "Missing query parameter"}), 400
-    search_param = f"learn {query}"
-    try:
-        results = scrape_links(search_param)
-        return jsonify(results)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return jsonify({"error": "An error occurred while processing your request"}), 500
+    if not links:
+        print("No links found!")
+        
+    for link in links:
+        if link[0]:  
+            final.append(link)
     
+    return jsonify(final)
+
 if __name__ == "__main__":
     app.run(debug=True)
