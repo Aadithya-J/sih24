@@ -30,8 +30,10 @@ function Home() {
           <p>Find government-backed opportunities and schemes to support your career path.</p>
         </div>
         <div className="feature-box">
+        <Link to="/community-support" >
           <h3>Community Support</h3>
           <p>Connect with peers and mentors, exchange knowledge, and grow together.</p>
+          </Link>
         </div>
         
         <div className="feature-box">

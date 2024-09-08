@@ -1,0 +1,22 @@
+/* PeerConnections.css */
+.peer-connections {
+  background: var(--gradient-end);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.peer-connections button {
+  background: var(--hover-color);
+  border: none;
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.peer-connections button:hover {
+  background: var(--primary-color);
+}

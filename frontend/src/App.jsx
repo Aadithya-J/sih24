@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar.jsx";
 import ResumeAnalyser from "./pages/resumeAnalyser/ResumeAnalyser.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
+import CommunitySupport from "./pages/communitySupport/CommunitySupport";
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                 path="/resume-analyser"
                 element={<ResumeAnalyser />}
               />
+              <Route path="/community-support" element={<CommunitySupport />} />
             </Routes>
           </>
         )}

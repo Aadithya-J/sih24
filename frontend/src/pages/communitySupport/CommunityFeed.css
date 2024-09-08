@@ -1,0 +1,20 @@
+/* CommunityFeed.css */
+.community-feed {
+  background: var(--gradient-end);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.feed-item {
+  margin-bottom: 20px;
+}
+
+.feed-item h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.feed-item p {
+  margin-top: 5px;
+}
