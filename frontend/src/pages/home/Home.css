@@ -121,6 +121,13 @@ body {
   text-decoration: none; /* Ensures no underline on hover */
   color: #e67e22; /* Optional: change color on hover */
 }
+.feature-logo {
+  width: 80px; /* Set the desired width */
+  height: 80px; /* Set height to match width for a perfect circle */
+  margin-bottom: 15px;
+  border-radius: 50%; /* Make the image circular */
+  object-fit: cover; /* Ensures the image fits within the circle without distortion */
+}
 
 
 /* Animations */

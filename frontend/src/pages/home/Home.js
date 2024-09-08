@@ -33,41 +33,56 @@ function Home() {
 
       {/* Features Section */}
       <div className="features-section">
-      <div className="feature-box">
-    <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
-      <h3>Government Schemes</h3>
-      <p>Find government-backed opportunities and schemes to support your career path.</p>
-    </a>
+        <div className="feature-box">
+          <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
+            <h3>Government Schemes</h3>
+            <img src="government-schemes-logo.png" alt="Government Schemes" className="feature-logo" />
+            <p>Find government-backed opportunities and schemes to support your career path.</p>
+          </a>
+        </div>
+
+
+  
+  <div className="feature-box">
+    <Link to="/roadmap">
+      
+      <h3>Roadmap</h3>
+      <img src="roadmap-logo.jpeg" alt="Roadmap" className="feature-logo" />
+      <p>Explore a roadmap designed to guide your career development path.</p>
+    </Link>
   </div>
-        
-        
-       
-        <div className="feature-box">
-          <Link to="/roadmap">
-            <h3>Roadmap</h3>
-            <p>Explore a roadmap designed to guide your career development path.</p>
-          </Link>
-        </div>
-        <div className="feature-box">
-          <h3>Virtual Events</h3>
-          <p>Join virtual events, workshops, and webinars on career development, including sessions for people with special needs.</p>
-        </div>
-        
-        <div className="feature-box">
-            <h3>Real-Time Job Market Insights</h3>
-            <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
-        </div>
-        <div className="feature-box">
-          <h3>Skills Verification and Certification</h3>
-          <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
-        </div>
-        <div className="feature-box">
-          <Link to="/jobsfinder">
-            <h3>Jobs Finder</h3>
-            <p>Explore and find jobs in your desired field and location.</p>
-          </Link>
-        </div>
-      </div>
+  
+  <div className="feature-box">
+   
+    <h3>Virtual Events</h3>
+    <img src="virtual-events-logo.jpeg" alt="Virtual Events" className="feature-logo" />
+    <p>Join virtual events, workshops, and webinars on career development, including sessions for people with special needs.</p>
+  </div>
+  
+  <div className="feature-box">
+    
+    <h3>Real-Time Job Market Insights</h3>
+    <img src="market-insights-logo.jpeg" alt="Real-Time Job Market Insights" className="feature-logo" />
+    <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
+  </div>
+  
+  <div className="feature-box">
+   
+    <h3>Skills Verification and Certification</h3>
+    <img src="skills-verification-logo.png" alt="Skills Verification and Certification" className="feature-logo" />
+    <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
+  </div>
+  
+  <div className="feature-box">
+    <Link to="/jobsfinder">
+      
+      <h3>Jobs Finder</h3>
+      <img src="jobs-finder-logo.jpeg" alt="Jobs Finder" className="feature-logo" />
+      <p>Explore and find jobs in your desired field and location.</p>
+    </Link>
+  </div>
+</div>
+
    {/* Footer Section */}
    <footer className="footer">
         <div className="footer-content">
