@@ -53,10 +53,11 @@ function Home() {
   </div>
   
   <div className="feature-box">
-   
+  <Link to="/virtual-events">
     <h3>Virtual Events</h3>
     <img src="virtual-events-logo.jpeg" alt="Virtual Events" className="feature-logo" />
     <p>Join virtual events, workshops, and webinars on career development, including sessions for people with special needs.</p>
+    </Link>
   </div>
   
   <div className="feature-box">
