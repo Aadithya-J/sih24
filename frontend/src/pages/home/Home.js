@@ -61,10 +61,11 @@ function Home() {
   </div>
   
   <div className="feature-box">
-    
-    <h3>Real-Time Job Market Insights</h3>
-    <img src="market-insights-logo.jpeg" alt="Real-Time Job Market Insights" className="feature-logo" />
-    <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
+    <Link to="/training">
+      <h3>Training Recommendation</h3>
+      <img src="market-insights-logo.jpeg" alt="Real-Time Job Market Insights" className="feature-logo" />
+      <p>Stay ahead in your career with our recommended training resources and videos.</p>
+    </Link>
   </div>
   
   <div className="feature-box">

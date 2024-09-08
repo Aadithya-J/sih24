@@ -12,7 +12,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  const profileRef = useRef(null); // Reference to the profile dropdown
+  const profileRef = useRef(null);
 
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
@@ -22,18 +22,14 @@ function Navbar() {
     setShowProfileDropdown((prev) => !prev);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setShowProfileDropdown(false);
       }
     };
-
-    // Add event listener for clicks
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Cleanup event listener
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -47,10 +43,13 @@ function Navbar() {
           Yatharth
         </Link>
 
-        {user && (
+        {user ? (
           <>
             {/* Navbar Links */}
-            <div className={`navbar__menu ${showMenu ? "show-menu" : ""}`} aria-expanded={showMenu}>
+            <div
+              className={`navbar__menu ${showMenu ? "show-menu" : ""}`}
+              aria-expanded={showMenu}
+            >
               <ul className="navbar__list">
                 <li>
                   <Link to="/resume-analyser" className="navbar__link">
@@ -75,56 +74,64 @@ function Navbar() {
               </ul>
             </div>
 
-    {/* Profile Dropdown */}
-    <div className="navbar__profile" ref={profileRef}>
-      <FaUserCircle
-        className="navbar__profile-icon"
-        onClick={toggleProfileDropdown}
-      />
-      {showProfileDropdown && (
-        <div className="navbar__dropdown">
-          <div className="navbar__dropdown-content">
-            <p className="pi">
-              <strong>
-                <FaUserCircle />
-              </strong>{" "}
-              {user.displayName || "Unknown"}
-            </p>
-            <p> {user.email || "Unknown"}</p>
-            {!user.displayName && (
-              <Link to="/personalized-form">Complete Profile</Link>
-            )}
-            <hr />
-            <button onClick={logout} className="navbar__logout-button">
-              Logout
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  </>
-) : (
-  <>
-    {/* Content when user is not logged in */}
-    <div className={`navbar__menu ${showMenu ? "show-menu" : ""}`} aria-expanded={showMenu}>
-      <ul className="lio">
-        <li>
-          <Link to="/login" className="navbar__link">
-            Login
-          </Link>
-        </li>
-        <li>
-          <Link to="/signup" className="navbar__link">
-            Sign Up
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </>
-)}
+            {/* Profile Dropdown */}
+            <div className="navbar__profile" ref={profileRef}>
+              <FaUserCircle
+                className="navbar__profile-icon"
+                onClick={toggleProfileDropdown}
+              />
+              {showProfileDropdown && (
+                <div className="navbar__dropdown">
+                  <div className="navbar__dropdown-content">
+                    <p>
+                      <strong>
+                        <FaUserCircle />
+                      </strong>{" "}
+                      {user?.displayName || "Unknown"}
+                    </p>
+                    <p> {user?.email || "Unknown"}</p>
+                    {!user?.displayName && (
+                      <Link to="/personalized-form">Complete Profile</Link>
+                    )}
+                    <hr />
+                    <button onClick={logout} className="navbar__logout-button">
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Content when user is not logged in */}
+            <div
+              className={`navbar__menu ${showMenu ? "show-menu" : ""}`}
+              aria-expanded={showMenu}
+            >
+              <ul className="navbar__list">
+                <li>
+                  <Link to="/login" className="navbar__link">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup" className="navbar__link">
+                    Sign Up
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </>
+        )}
 
         {/* Mobile Toggle Button */}
-        <div className="navbar__toggle" role="button" aria-label="Open menu" onClick={toggleMenu}>
+        <div
+          className="navbar__toggle"
+          role="button"
+          aria-label="Open menu"
+          onClick={toggleMenu}
+        >
           <IoMenu />
         </div>
       </div>

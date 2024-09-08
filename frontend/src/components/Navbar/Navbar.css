@@ -186,7 +186,7 @@
   
   display: flex;
   flex-direction: right;
-  gap: 1rem;
+  gap: 0rem;
 }
 
 .navbar__container {
