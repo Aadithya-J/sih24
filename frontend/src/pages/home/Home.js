@@ -32,10 +32,12 @@ function Home() {
 
       {/* Features Section */}
       <div className="features-section">
-        <div className="feature-box">
-          <h3>Government Schemes</h3>
-          <p>Find government-backed opportunities and schemes to support your career path.</p>
-        </div>
+      <div className="feature-box">
+    <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
+      <h3>Government Schemes</h3>
+      <p>Find government-backed opportunities and schemes to support your career path.</p>
+    </a>
+  </div>
         
         
        
