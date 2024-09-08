@@ -410,10 +410,14 @@ body {
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
+  color: #ddd;
 }
 
 .footer-content p {
   margin: 0;
+  color: #d6d9e7;
+  text-decoration: solid;
+  font-weight: bold;
 }
 
 .footer-links {
@@ -434,7 +438,7 @@ body {
 }
 
 .footer-links a:hover {
-  color: var(--hover-color); /* Hover color for footer links */
+  color: purple;
 }
 
 /* Responsive Footer */
@@ -442,6 +446,7 @@ body {
   .footer-content {
     flex-direction: column;
     text-align: center;
+    color: #ddd;
   }
 
   .footer-links {
