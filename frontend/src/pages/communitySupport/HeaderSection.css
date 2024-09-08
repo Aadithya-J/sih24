@@ -1,0 +1,16 @@
+/* HeaderSection.css */
+.header-section {
+  text-align: center;
+  padding: 20px;
+  background: var(--gradient-start);
+  color: var(--text-color);
+}
+
+.header-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.header-section p {
+  font-size: 1.2em;
+}

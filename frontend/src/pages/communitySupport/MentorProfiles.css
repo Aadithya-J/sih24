@@ -1,0 +1,45 @@
+/* MentorProfiles.css */
+.mentor-profiles {
+  background: var(--gradient-start);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.profiles-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile-card {
+  background: var(--secondary-color);
+  padding: 15px;
+  border-radius: 5px;
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+}
+
+.profile-card h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.profile-card p {
+  margin: 5px 0;
+}
+
+.profile-card button {
+  background: var(--hover-color);
+  border: none;
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.profile-card button:hover {
+  background: var(--primary-color);
+}

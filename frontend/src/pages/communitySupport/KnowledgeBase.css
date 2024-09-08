@@ -1,0 +1,20 @@
+/* KnowledgeBase.css */
+.knowledge-base {
+  background: var(--gradient-start);
+  padding: 20px;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.knowledge-item {
+  margin-bottom: 20px;
+}
+
+.knowledge-item h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.knowledge-item p {
+  margin-top: 5px;
+}
