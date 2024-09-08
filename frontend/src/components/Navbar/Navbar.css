@@ -83,42 +83,136 @@
   gap: 1rem;
 }
 
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar__menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center; /* Center the links */
+}
+
+.navbar__list {
+  list-style: none;
+  display: flex;
+  gap: 2rem; /* Adjust spacing between the links */
+}
+
 .navbar__link {
   text-decoration: none;
-  color: #fff; /* White text for contrast */
-  padding: 0.75rem 1.25rem;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.navbar__link:hover {
- 
-  color: #fff; /* Ensure text remains white */
-}
-
-/* Button styles */
-.navbar__button {
-  background: linear-gradient(45deg, #ff9800, #ff5722); /* Orange gradient background */
-  border: none;
-  border-radius: 50%; /* Fully rounded button */
-  color: #fff; /* White text */
-  padding: 0.75rem 1.25rem;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.5s; /* Smooth transitions */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #fff; /* White color to stand out on dark background */
   position: relative;
+  overflow: hidden;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+  display: inline-block;
 }
 
-/* Hover effect for button */
-.navbar__button:hover {
-  background: linear-gradient(45deg, #e64a19, #d32f2f); /* Darker gradient on hover */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-/* Animation when button is clicked */
+.navbar__link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Profile icon */
+.navbar__profile {
+  position: relative;
+  display: inline-block;
+  margin-left: auto; /* Move profile to the right */
+}
+
+.navbar__profile-icon {
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.navbar__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.navbar__dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.navbar__dropdown-content p {
+  margin: 0;
+}
+
+.navbar__dropdown-content hr {
+  margin: 1rem 0;
+}
+
+.navbar__dropdown-content a {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.navbar__dropdown-content a:hover {
+  text-decoration: underline;
+}
+
+.navbar__logout-button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.navbar__logout-button:hover {
+  background: #e64a19;
+}
+
+/* Mobile toggle styling */
+.navbar__toggle {
+  display: none; /* Only show for mobile */
+}
+
+@media (max-width: 1150px) {
+  .navbar__toggle {
+    display: block;
+  }
+
+  .navbar__menu {
+    display: none;
+  }
+
+  .show-menu {
+    display: block;
+  }
+}
+
 
 
 /* Responsive styles */
