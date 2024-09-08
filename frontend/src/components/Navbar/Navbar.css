@@ -1,7 +1,7 @@
 /* Basic styling for the navbar */
 .navbar {
   position: relative;
-  background-color: rgba(0, 0, 0, 0.5); /* Transparent dark background for celestial effect */
+  
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background to enhance the celestial effect */
@@ -98,27 +98,27 @@
 
 /* Button styles */
 .navbar__button {
-  background: #a24fc4; /* Purple background */
+  background: linear-gradient(45deg, #ff9800, #ff5722); /* Orange gradient background */
   border: none;
+  border-radius: 50%; /* Fully rounded button */
   color: #fff; /* White text */
   padding: 0.75rem 1.25rem;
-  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.5s; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
+/* Hover effect for button */
 .navbar__button:hover {
-  background-color: #871c77; /* Darker purple shade on hover */
+  background: linear-gradient(45deg, #e64a19, #d32f2f); /* Darker gradient on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
 }
 
-/* Toggle button styling */
-.navbar__toggle {
-  cursor: pointer;
-  font-size: 1.75rem; /* Larger for better visibility */
-  color: #fff; /* White color */
-  transition: color 0.3s;
-}
-
+/* Animation when button is clicked */
 
 
 /* Responsive styles */
