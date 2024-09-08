@@ -57,8 +57,10 @@ function Home() {
           <p>Effortlessly build a standout resume with our automatic resume wizard—professional, tailored, and easy.</p>
         </div>
         <div className="feature-box">
-          <h3>Real-Time Job Market Insights</h3>
-          <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
+          <Link to="/jobsfinder">
+            <h3>Real-Time Job Market Insights</h3>
+            <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
+          </Link>
         </div>
         <div className="feature-box">
           <h3>Skills Verification and Certification</h3>

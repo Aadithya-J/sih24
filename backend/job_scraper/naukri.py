@@ -12,8 +12,10 @@ import ast
 from flask import Flask, jsonify
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes
 
 
 def scrape_jobs(role, location):
@@ -113,7 +115,7 @@ def get_job_details(job_info, model):
         return None
 
 
-def process_jobs_concurrently(total_jobs, model, max_workers=10):
+def process_jobs_concurrently(total_jobs, model, max_workers=5):
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [executor.submit(get_job_details, job, model) for job in total_jobs]
         
@@ -136,6 +138,8 @@ def get_jobs(jobInput, location):
     model = genai.GenerativeModel("gemini-1.5-flash")
 
     job_data = process_jobs_concurrently(total_jobs, model)
+
+    print("Python API running...")
     
     if not job_data:
         print("No jobs found!")
