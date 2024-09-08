@@ -72,3 +72,11 @@
 .personalized-form a:hover {
   text-decoration: none; /* Ensure no underline on hover as well */
 }
+/* Close button container */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+

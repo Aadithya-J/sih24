@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import './PersonalizedForm.css'; // Import the CSS file for styling
+import { FaTimes } from 'react-icons/fa'; // Import the close icon from react-icons
 
 function PersonalizedForm() {
   const [formData, setFormData] = useState({
@@ -9,13 +11,17 @@ function PersonalizedForm() {
     city: '',
     school: '',
     college: '',
-    yearOfCollege: '', // New field for year of college
-    role: '', // New field for mentor/mentee
+    yearOfCollege: '',
+    role: '',
     hobbies: '',
     skills: '',
     workExperience: '',
     accomplishments: ''
   });
+
+  const [isVisible, setIsVisible] = useState(true);
+  const [submissionStatus, setSubmissionStatus] = useState(null); // State to manage submission status
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,13 +33,29 @@ function PersonalizedForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    // Simulate form submission
+    setTimeout(() => {
+      setSubmissionStatus('success');
+      console.log('Form submitted:', formData);
+      navigate('/'); // Navigate to the home page after successful submission
+    }, 500);
   };
+
+  const handleClose = () => {
+    setIsVisible(false); // Hide the form when the close button is clicked
+    navigate('/'); // Navigate back to the home page
+  };
+
+  if (!isVisible) return null; // Render nothing if form is not visible
 
   return (
     <div className="personalized-form">
-      <h2 className="form-title">Personalized Experience Form</h2>
+      <div className="form-header">
+        <h2 className="form-title">Personalized Experience Form</h2>
+        <button className="close-button" onClick={handleClose}>
+          <FaTimes />
+        </button>
+      </div>
       <form onSubmit={handleSubmit} className="form-content">
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -161,6 +183,9 @@ function PersonalizedForm() {
         </div>
         <button type="submit" className="submit-button">Submit</button>
       </form>
+      {submissionStatus === 'success' && (
+        <p className="submission-message">Form submitted successfully!</p>
+      )}
     </div>
   );
 }

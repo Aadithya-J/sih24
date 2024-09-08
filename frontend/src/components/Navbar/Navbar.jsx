@@ -82,7 +82,7 @@ function Navbar() {
                     <p><strong><FaUserCircle/></strong> {user.displayName || "Unknown"}</p>
                     <p> {user.email || "Unknown"}</p>
                     {!user.displayName && (
-                      <Link to="/profile">Complete Profile</Link>
+                       <Link to="/personalized-form">Complete Profile</Link>
                     )}
                     <hr />
                     <button onClick={logout} className="navbar__logout-button">
