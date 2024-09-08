@@ -6,30 +6,31 @@ from selenium.webdriver.common.by import By
 import time
 import flask
 from flask import Flask, jsonify
-import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # This will enable CORS for all routes
+CORS(app) 
 
 def scrape_links(string):
-    chrome_driver_path = 'chromedriver.exe'
+    chrome_driver_path = 'chromedriver.exe' 
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     service = Service(chrome_driver_path)
-    driver = webdriver.Chrome(options=chrome_options)
+    
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get("https://www.google.com")
+    
     search_box = driver.find_element(By.NAME, "q")
     actual_string = f"learn {string}"
     search_box.send_keys(actual_string)
     search_box.send_keys(Keys.RETURN)
 
-    time.sleep(1) 
-    results = driver.find_elements(By.CSS_SELECTOR, 'div.g')
+    time.sleep(2) 
 
+    results = driver.find_elements(By.CSS_SELECTOR, 'div.g')
     links = []
 
     for result in results:
@@ -48,14 +49,14 @@ def scrape_links(string):
 def search(skill):
     links = scrape_links(skill)
     final = []
-    print('api running')
+    
     if not links:
         print("No links found!")
-    for i in range(len(links)):
-        if links[0] == "":
-            continue
-        else:
-            final.append(links)
+        
+    for link in links:
+        if link[0]:  
+            final.append(link)
+    
     return jsonify(final)
 
 if __name__ == "__main__":
