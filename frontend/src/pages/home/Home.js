@@ -22,6 +22,13 @@ function Home() {
         </p>
         <Link to="/about" className="learn-more-link">Learn More</Link>
       </div>
+      {/* Personalized Experience Card */}
+      <div className="feature-box">
+        <Link to="/personalized-form">
+          <h3>Get a Personalized Experience</h3>
+          <p>Click here to enter your details and connect with peers and mentors.</p>
+        </Link>
+      </div>
 
       {/* Features Section */}
       <div className="features-section">
