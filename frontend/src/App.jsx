@@ -6,6 +6,7 @@ import Signup from "./pages/signup/Signup";
 import Roadmap from "./pages/roadmap/generateRoadmap.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ResumeAnalyser from "./pages/resumeAnalyser/ResumeAnalyser.js";
+import JobsFinder from "./pages/jobsFinder/jobsFinder.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import CommunitySupport from "./pages/communitySupport/CommunitySupport";
@@ -49,10 +50,10 @@ function App() {
               <Route path="/community-support" element={<CommunitySupport />} />
                <Route path="/personalized-form" element={<PersonalizedForm />} />
 
-              {/* <Route
-                path="/api/jobs"
-                element = {user ? <Job /> : <Navigate to="/login" />}
-              /> */}
+              <Route
+                path="/jobsfinder"
+                element = {user ? <JobsFinder /> : <Navigate to="/login" />}
+              />
 
 
             </Routes>
