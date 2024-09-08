@@ -36,19 +36,9 @@ function Home() {
           <h3>Government Schemes</h3>
           <p>Find government-backed opportunities and schemes to support your career path.</p>
         </div>
-        <div className="feature-box">
-        <Link to="/community-support" >
-          <h3>Community Support</h3>
-          <p>Connect with peers and mentors, exchange knowledge, and grow together.</p>
-          </Link>
-        </div>
         
-        <div className="feature-box">
-          <Link to="/resume-analyser">
-            <h3>Resume Analyzer</h3>
-            <p>Analyze your resume and receive AI-based feedback for improvement.</p>
-          </Link>
-        </div>
+        
+       
         <div className="feature-box">
           <Link to="/roadmap">
             <h3>Roadmap</h3>
@@ -59,10 +49,7 @@ function Home() {
           <h3>Virtual Events</h3>
           <p>Join virtual events, workshops, and webinars on career development, including sessions for people with special needs.</p>
         </div>
-        <div className="feature-box">
-          <h3>Resume Wizard</h3>
-          <p>Effortlessly build a standout resume with our automatic resume wizard—professional, tailored, and easy.</p>
-        </div>
+        
         <div className="feature-box">
             <h3>Real-Time Job Market Insights</h3>
             <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
