@@ -1,7 +1,46 @@
-/* CommunitySupport.css */
+:root {
+  --background-light: #ffffff; /* White background for the page */
+  --background-dark: #0b0c10; /* Dark space background for the body */
+  --box-background: #ebeeef; /* Light blue background inside the box */
+  --text-gradient-start: #38271f; /* Very light blue */
+  --text-gradient-end: #281616; /* White */
+  --border-color: #0b0c10; /* Dark border color */
+}
+
+body {
+  background: var(--background-dark);
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 .community-support {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+  border: 1px solid var(--border-color); /* Border color */
+}
+
+.community-support > * {
+  background: rgb(240, 243, 244);/* Slightly transparent background for child elements */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.community-support h2 {
+  color: var(--text-gradient-end); /* White text color for headings */
+  font-size: 2em;
+  background: linear-gradient(45deg, var(--text-gradient-start), var(--text-gradient-end)); /* Gradient background for text */
+  -webkit-background-clip: text; /* Apply gradient to text */
+  -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
+  background-clip: text; /* Apply gradient to text */
+}
+
+.community-support p {
+  color: gray; /* Light gray text for paragraphs */
 }

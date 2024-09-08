@@ -72,6 +72,17 @@ function Home() {
           <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
         </div>
       </div>
+   {/* Footer Section */}
+   <footer className="footer">
+        <div className="footer-content">
+          <p>&copy; 2024 Yatharth. All rights reserved.</p>
+          <ul className="footer-links">
+            <li><Link to="/privacy">Privacy Policy</Link></li>
+            <li><Link to="/terms">Terms of Service</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+          </ul>
+        </div>
+      </footer>
     </div>
   );
 }

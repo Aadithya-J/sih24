@@ -1,12 +1,12 @@
 :root {
   --primary-color: #e0e0e0; /* Light gray for better contrast with dark backgrounds */
-  --secondary-color: #2c2c2c; /* Dark gray for a sleek look */
+  --secondary-color: #37849b; /* Dark gray for a sleek look */
   --text-color: #ffffff; /* White text for high visibility */
-  --hover-color: #ff9800; /* Warm orange for a star-like effect */
+  --hover-color: #eab468; /* Warm orange for a star-like effect */
   --transition: all 0.3s ease; /* Smooth transitions */
-  --shadow-color: rgba(0, 0, 0, 0.3); /* Darker shadow for night theme */
-  --gradient-start: #1c1c1c; /* Very dark gray for a night-time feel */
-  --gradient-end: #333333; /* Slightly lighter dark gray */
+  --shadow-color: rgba(216, 25, 187, 0.3); /* Darker shadow for night theme */
+  --gradient-start: #c224bd; /* Very dark gray for a night-time feel */
+  --gradient-end: #8d12f1; /* Slightly lighter dark gray */
 }
 
 /* General Navbar Styling */
@@ -15,10 +15,10 @@
   padding: 15px 30px;
   box-sizing: border-box;
   box-shadow: 0 4px 10px var(--shadow-color); /* Subtle shadow */
-  position: static;
-  top: 0;
-  z-index: 100;
-  background: var(--gradient-start); /* Dark gradient background */
+  position: sticky; /* Makes the navbar sticky */
+  top: 0; /* Sticks the navbar to the top */
+  z-index: 1000; /* Ensures it stays above other content */
+  background: linear-gradient( rgb(213, 120, 43),rgb(243, 116, 20));
   border-radius: 5px;
 }
 
@@ -52,7 +52,7 @@
   cursor: pointer; /* Pointer cursor for interactivity */
   display: inline-block; /* Ensure it behaves as a block element but remains inline */
   text-decoration: none; /* Remove underline */
-  background: linear-gradient(45deg, var(--primary-color), var(--hover-color)); /* Gradient background */
+  background: none;
   -webkit-background-clip: text; /* Clip the background to text */
   background-clip: text; /* Clip the background to text */
   color: transparent; /* Make text color transparent to show gradient */
@@ -75,7 +75,7 @@
 .title {
   padding: 0; /* Remove padding if applied */
   border: none; /* Ensure no border */
-  background: none; /* Remove background */
+ 
   box-shadow: none; /* Remove any box-shadow */
 }
 
@@ -102,7 +102,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 2px; /* Thinner underline */
+  height: 3px; /* Thinner underline */
   background-color: var(--hover-color);
   transform: scaleX(0);
   transition: transform 0.3s ease;

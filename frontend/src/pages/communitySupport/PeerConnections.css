@@ -1,22 +1,35 @@
-/* PeerConnections.css */
+:root {
+  --background-light: #ffffff; /* White background for the page */
+  --background-dark: #0b0c10; /* Dark space background for the body */
+  --box-background: #d4eaf2; /* Light blue background inside the box */
+  --text-gradient-start: #38271f; /* Dark gradient start */
+  --text-gradient-end: #281616; /* Dark gradient end */
+  --border-color: #0b0c10; /* Dark border color */
+  --secondary-color: #ffffff; /* White background for profile cards */
+  --button-color: #f57c00; /* Orange background for button */
+  --button-hover-color: #ff7043; /* Lighter orange on hover */
+  --text-color: #000; /* Black text for contrast */
+  --transition: background 0.3s ease; /* Smooth background transition */
+}
+
 .peer-connections {
-  background: var(--gradient-end);
+  background: var(--background-dark); /* Dark background for peer connections section */
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: var(--text-color);
   text-align: center;
 }
 
 .peer-connections button {
-  background: var(--hover-color);
+  background: var(--button-color); /* Orange background for button */
   border: none;
-  color: var(--text-color);
+  color: var(--text-color); /* Dark text color */
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition); /* Smooth background transition */
 }
 
 .peer-connections button:hover {
-  background: var(--primary-color);
+  background: var(--button-hover-color); /* Lighter orange on hover */
 }

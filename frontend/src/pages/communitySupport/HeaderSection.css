@@ -1,16 +1,39 @@
-/* HeaderSection.css */
+:root {
+  --background-light: #ffffff; /* White background for the page */
+  --background-dark: #0b0c10; /* Dark space background for the body */
+  --box-background: #d4eaf2; /* Light blue background inside the box */
+  --text-gradient-start: #38271f; /* Dark gradient start */
+  --text-gradient-end: #281616; /* Dark gradient end */
+  --border-color: #0b0c10; /* Dark border color */
+}
+
+body {
+  background: var(--background-dark);
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 .header-section {
   text-align: center;
   padding: 20px;
-  background: var(--gradient-start);
-  color: var(--text-color);
+  background: var(--box-background); /* Light blue background */
+  color: var(--text-gradient-end); /* Dark text color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+  border: 1px solid var(--border-color); /* Border color */
 }
 
 .header-section h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
+  background: linear-gradient(45deg, var(--text-gradient-start), var(--text-gradient-end)); /* Gradient background for text */
+  -webkit-background-clip: text; /* Apply gradient to text */
+  -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
+  background-clip: text; /* Apply gradient to text */
 }
 
 .header-section p {
   font-size: 1.2em;
+  color: gray; /* Light gray text color */
 }

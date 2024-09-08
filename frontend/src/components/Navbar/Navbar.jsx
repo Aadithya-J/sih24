@@ -28,7 +28,7 @@ function Navbar() {
           {user && (
             <>
               <li>
-                <button className="btn" onClick={logout}>
+                <button className="btn purple-button" onClick={logout}>
                   Log Out
                 </button>
               </li>
