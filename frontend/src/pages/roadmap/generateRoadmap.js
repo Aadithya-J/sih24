@@ -31,7 +31,7 @@ function RoadmapContent() {
 
   return (
     <div className="roadmap-container">
-      <h1 className="roadmap-title">Your Roadmap</h1>
+      <h1 className="roadmap-title">YOUR ROADMAP</h1>
       <div className="roadmap-header">
         <input
           type="text"

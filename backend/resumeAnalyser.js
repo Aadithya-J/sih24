@@ -71,7 +71,7 @@ async function analyzeResume(file, jobRole) {
       {
         role: "user",
         parts: [
-          {text: "Analyze the uploaded resume for a " + jobRole + " position. Provide the response in the following format:\n\n[score1,score2,score3,score4,score5,score6]\n\nRecommendations:\n[Your detailed recommendations here]\n\nWhere the scores are integers from 1 to 5 for:\n1. Relevance to Job Role\n2. Clarity and Formatting\n3. Work Experience and Projects\n4. Technical and Soft Skills\n5. Education and Certifications\n6. Achievements and Impact"},
+          {text: "Analyze the uploaded resume for a " + jobRole + " position.Be critical in the relevance of the resume to the job role and give the score also based on that not just individually. Provide the response in the following format:\n\n[score1,score2,score3,score4,score5,score6]\n\nRecommendations:\n[Your detailed recommendations here]\n\nWhere the scores are integers from 1 to 5 for:\n1. Relevance to Job Role\n2. Clarity and Formatting\n3. Work Experience and Projects\n4. Technical and Soft Skills\n5. Education and Certifications\n6. Achievements and Impact"},
         ],
       },
     ],

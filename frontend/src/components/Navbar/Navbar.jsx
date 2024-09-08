@@ -18,10 +18,10 @@ function Navbar() {
           {!user && (
             <>
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login" className="btn">Login</Link>
               </li>
               <li>
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup" className="btn">Sign Up</Link>
               </li>
             </>
           )}
@@ -32,12 +32,7 @@ function Navbar() {
                   Log Out
                 </button>
               </li>
-              <li>
-                <Link className="btn" to="/roadmap">Roadmap</Link>
-              </li>
-              <li>
-                <Link className="btn" to="/resume-analyser">Resume</Link>
-              </li>
+             
             </>
           )}
         </div>

@@ -78,7 +78,6 @@ const ResumeEvaluation = ({ score, recommendations }) => {
     responsive: true,
     maintainAspectRatio: false
   };
-
   return (
     <div className="container">
       <h2>Resume Evaluation</h2>
@@ -103,11 +102,14 @@ const ResumeAnalyser = () => {
   const [resumeScore, setResumeScore] = useState(null);
   const [recommendations, setRecommendations] = useState('');
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState('');
   const [jobRole, setJobRole] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    setFileName(selectedFile ? selectedFile.name : '');
   };
 
   const handleJobRoleChange = (e) => {
@@ -149,7 +151,13 @@ const ResumeAnalyser = () => {
     <div className="resume-analyser-container">
       <h2>Resume Analyser</h2>
       <form onSubmit={handleSubmit} className="resume-form">
-        <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
+        <div className="file-input-wrapper">
+          <label className="file-label">
+            <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
+            <span className="btn2">Choose File or Drag and drop</span>
+          </label>
+          {fileName && <span className="file-name">{fileName}</span>}
+        </div>
         <input
           type="text"
           placeholder="Enter job role"
@@ -165,6 +173,6 @@ const ResumeAnalyser = () => {
       )}
     </div>
   );
-};
+}
 
 export default ResumeAnalyser;
