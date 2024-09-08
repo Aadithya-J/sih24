@@ -33,4 +33,4 @@ backend - http://localhost:4000
 To use the job search feature, download chrome webdriver from this link:
 https://googlechromelabs.github.io/chrome-for-testing/
 
-After downloading the webdriver paste the executable file in the main directory (not in the backend directory).
+After downloading the webdriver paste the executable file in the backend directory.
