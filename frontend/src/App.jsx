@@ -9,6 +9,7 @@ import ResumeAnalyser from "./pages/resumeAnalyser/ResumeAnalyser.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import CommunitySupport from "./pages/communitySupport/CommunitySupport";
+import PersonalizedForm from "./pages/personalizedForm/PersonalizedForm";
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -45,11 +46,14 @@ function App() {
                 path="/resume-analyser"
                 element={<ResumeAnalyser />}
               />
+              <Route path="/community-support" element={<CommunitySupport />} />
+               <Route path="/personalized-form" element={<PersonalizedForm />} />
 
               {/* <Route
                 path="/api/jobs"
                 element = {user ? <Job /> : <Navigate to="/login" />}
               /> */}
+
 
             </Routes>
           </>

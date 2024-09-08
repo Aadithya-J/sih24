@@ -60,13 +60,12 @@ body {
   background-color: #e67e22;
 }
 
-/* Features Section */
 .features-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   padding: 60px;
-  text-decoration: none;
+  
   background-image: url('https://example.com/your-celestial-background.jpg'); /* optional celestial background */
   background-size: cover;
   background-position: center;
@@ -85,7 +84,6 @@ body {
 }
 
 .feature-box:hover {
-  text-decoration: none;
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   opacity: 1;
@@ -107,6 +105,18 @@ body {
   line-height: 1.5;
   animation: fadeInUp 1.6s ease-out;
 }
+
+/* Remove underline from links inside feature-box */
+.feature-box a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits the color from parent element */
+}
+
+.feature-box a:hover {
+  text-decoration: none; /* Ensures no underline on hover */
+  color: #e67e22; /* Optional: change color on hover */
+}
+
 
 /* Animations */
 @keyframes fadeIn {
