@@ -26,3 +26,11 @@ npm run dev
 
 frontend - http://localhost:5173
 backend - http://localhost:4000
+
+
+## Job Search
+
+To use the job search feature, download chrome webdriver from this link:
+https://googlechromelabs.github.io/chrome-for-testing/
+
+After downloading the webdriver paste the executable file in the main directory (not in the backend directory).
