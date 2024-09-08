@@ -68,6 +68,7 @@
   position: absolute;
   top: 100%;
   right: 0;
+  
  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   width: 100%;
@@ -349,7 +350,11 @@
   position: relative;
   overflow: hidden; /* Ensure the underline effect stays within the bounds of the link */
 }
-
+.navbar__menu--auth {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto; /* Pushes the menu to the right */
+}
 /* Underline effect */
 .navbar__link::before {
   content: '';

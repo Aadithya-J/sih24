@@ -47,53 +47,76 @@ function Navbar() {
           Yatharth
         </Link>
 
-        {user && (
-          <>
-            {/* Navbar Links */}
-            <div className={`navbar__menu ${showMenu ? "show-menu" : ""}`} aria-expanded={showMenu}>
-              <ul className="navbar__list">
-                <li>
-                  <Link to="/resume-analyser" className="navbar__link">
-                    Resume Analyser
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/community-support" className="navbar__link">
-                    Community Support
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/jobsfinder" className="navbar__link">
-                    Jobs Finder
-                  </Link>
-                </li>
-              </ul>
-            </div>
+        {user ? (
+  <>
+    {/* Content when user is logged in */}
+    <div className={`navbar__menu ${showMenu ? "show-menu" : ""}`} aria-expanded={showMenu}>
+      <ul className="navbar__list">
+        <li>
+          <Link to="/resume-analyser" className="navbar__link">
+            Resume Analyser
+          </Link>
+        </li>
+        <li>
+          <Link to="/community-support" className="navbar__link">
+            Community Support
+          </Link>
+        </li>
+        <li>
+          <Link to="/jobsfinder" className="navbar__link">
+            Jobs Finder
+          </Link>
+        </li>
+      </ul>
+    </div>
 
-            {/* Profile Dropdown */}
-            <div className="navbar__profile" ref={profileRef}>
-              <FaUserCircle
-                className="navbar__profile-icon"
-                onClick={toggleProfileDropdown}
-              />
-              {showProfileDropdown && (
-                <div className="navbar__dropdown">
-                  <div className="navbar__dropdown-content">
-                    <p className="pi"><strong><FaUserCircle/></strong> {user.displayName || "Unknown"}</p>
-                    <p> {user.email || "Unknown"}</p>
-                    {!user.displayName && (
-                       <Link to="/personalized-form">Complete Profile</Link>
-                    )}
-                    <hr />
-                    <button onClick={logout} className="navbar__logout-button">
-                      Logout
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          </>
-        )}
+    {/* Profile Dropdown */}
+    <div className="navbar__profile" ref={profileRef}>
+      <FaUserCircle
+        className="navbar__profile-icon"
+        onClick={toggleProfileDropdown}
+      />
+      {showProfileDropdown && (
+        <div className="navbar__dropdown">
+          <div className="navbar__dropdown-content">
+            <p className="pi">
+              <strong>
+                <FaUserCircle />
+              </strong>{" "}
+              {user.displayName || "Unknown"}
+            </p>
+            <p> {user.email || "Unknown"}</p>
+            {!user.displayName && (
+              <Link to="/personalized-form">Complete Profile</Link>
+            )}
+            <hr />
+            <button onClick={logout} className="navbar__logout-button">
+              Logout
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  </>
+) : (
+  <>
+    {/* Content when user is not logged in */}
+    <div className={`navbar__menu ${showMenu ? "show-menu" : ""}`} aria-expanded={showMenu}>
+      <ul className="navbar__list">
+        <li>
+          <Link to="/login" className="navbar__link">
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link to="/signup" className="navbar__link">
+            Sign Up
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </>
+)}
 
         {/* Mobile Toggle Button */}
         <div className="navbar__toggle" role="button" aria-label="Open menu" onClick={toggleMenu}>
