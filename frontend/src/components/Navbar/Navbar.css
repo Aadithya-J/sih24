@@ -208,6 +208,10 @@
   transition: color 0.3s; /* Smooth transition for color change */
   display: inline-block;
 }
+.pi strong svg {
+  font-size: 2em; /* Adjust the size as needed */
+  float: left;
+}
 
 /* Hover effect for links in the menu */
 .navbar__link:hover {
