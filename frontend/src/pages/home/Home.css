@@ -84,16 +84,17 @@ body {
   padding: 30px;
   text-align: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   opacity: 0.9;
+  border: 2px solid transparent; /* Default border */
 }
 
 .feature-box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 24px rgba(128, 0, 128, 0.6); /* Purple shadow */
   opacity: 1;
+  border: 2px solid purple; /* Border color on hover */
 }
-
 .feature-box h3 {
   font-size: 24px;
   color: #ff8c00;
