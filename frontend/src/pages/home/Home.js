@@ -64,14 +64,18 @@ function Home() {
           <p>Effortlessly build a standout resume with our automatic resume wizard—professional, tailored, and easy.</p>
         </div>
         <div className="feature-box">
-          <Link to="/jobsfinder">
             <h3>Real-Time Job Market Insights</h3>
             <p>Stay ahead with our real-time job market dashboard—track trends, skills in demand, and salary benchmarks, all powered by data analytics.</p>
-          </Link>
         </div>
         <div className="feature-box">
           <h3>Skills Verification and Certification</h3>
           <p>Verify and certify your skills with our assessments. Earn badges and certifications to showcase on your profile and LinkedIn!</p>
+        </div>
+        <div className="feature-box">
+          <Link to="/jobsfinder">
+            <h3>Jobs Finder</h3>
+            <p>Explore and find jobs in your desired field and location.</p>
+          </Link>
         </div>
       </div>
     </div>
