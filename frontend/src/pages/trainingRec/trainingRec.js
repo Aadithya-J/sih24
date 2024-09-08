@@ -40,18 +40,19 @@ function TrainingRec() {
       {loading && <p>Loading...</p>}
       {error && <p className="error-message">{error}</p>}
 
-      <ul className="resource-list">
+      <div className="resource-cards">
         {resources.length > 0 &&
           resources.map((resource, index) => (
-            <li key={index} className="resource-item">
-              <a href={resource[1]} target="_blank" rel="noopener noreferrer">
-                {resource[0]}
+            <div key={index} className="resource-card">
+              <h2 className="resource-card-title">{resource[0]}</h2>
+              <a href={resource[1]} target="_blank" rel="noopener noreferrer" className="resource-card-link">
+                View Resource
               </a>
-            </li>
+            </div>
           ))}
-      </ul>
+      </div>
     </div>
   );
 }
 
-export default TrainingRec; // Export the correct component name
+export default TrainingRec;
