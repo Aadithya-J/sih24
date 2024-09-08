@@ -17,7 +17,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes
 
-
 def scrape_jobs(role, location):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
