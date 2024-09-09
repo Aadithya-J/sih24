@@ -8,7 +8,7 @@ function Home() {
       {/* Hero Section */}
       <div className="hero-section">
         <img src='..\..\..\public\yatharth-hero.png' id='hero-image'></img>
-        <h1>Welcome to Yatharth</h1>
+        <h1 className='welcome'>Welcome to Yatharth</h1>
         <p>
           Start your journey to bridge dreams to reality with AI-powered tools and community support.
         </p>

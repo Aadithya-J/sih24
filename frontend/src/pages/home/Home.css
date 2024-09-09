@@ -29,7 +29,10 @@ body {
 
 .hero-section h1 {
   font-size: 54px;
-  color: #ff8c00;
+  background: linear-gradient(45deg, rgb(221, 118, 21), rgb(230, 60, 9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Makes the text transparent to show the background gradient */
   margin-bottom: 20px;
   font-weight: 700;
   letter-spacing: 2px;
