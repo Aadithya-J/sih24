@@ -1,7 +1,7 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
+  position: -webkit-static; /* For Safari */
+  position: static;
   top: 0;
   z-index: 1000;
   padding: 1rem;
