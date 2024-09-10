@@ -11,7 +11,7 @@ function Navbar() {
   const { user } = useAuthContext();
   const [showMenu, setShowMenu] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
-
+  const [isLightMode, setIsLightMode] = useState(false); // Added state for theme
   const profileRef = useRef(null);
 
   const toggleMenu = () => {
@@ -20,6 +20,12 @@ function Navbar() {
 
   const toggleProfileDropdown = () => {
     setShowProfileDropdown((prev) => !prev);
+  };
+
+  const toggleTheme = () => {
+    setIsLightMode((prevMode) => !prevMode);
+    document.body.classList.toggle('light-mode', !isLightMode);
+    document.body.classList.toggle('dark-mode', isLightMode);
   };
 
   useEffect(() => {
@@ -36,7 +42,7 @@ function Navbar() {
   }, [profileRef]);
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isLightMode ? 'light-mode' : 'dark-mode'}`}>
       <div className="navbar__container">
         {/* Logo */}
         <Link to="/" className="navbar__logo">
@@ -73,7 +79,13 @@ function Navbar() {
                 </li>
               </ul>
             </div>
-
+            <button
+                      className="theme-toggle-button"
+                      onClick={toggleTheme}
+                      aria-label={`Switch to ${isLightMode ? 'Dark' : 'Light'} Mode`}
+                    >
+                      Switch to {isLightMode ? 'Dark' : 'Light'} Mode
+                    </button>
             {/* Profile Dropdown */}
             <div className="navbar__profile" ref={profileRef}>
               <FaUserCircle
@@ -83,17 +95,20 @@ function Navbar() {
               {showProfileDropdown && (
                 <div className="navbar__dropdown">
                   <div className="navbar__dropdown-content">
-                    <p>
-                      <strong>
-                        <FaUserCircle />
-                      </strong>{" "}
-                      {user?.displayName || "Unknown"}
-                    </p>
-                    <p> {user?.email || "Unknown"}</p>
+                    <Link to="/profile" className="navbar__link">
+                      <p>
+                        <strong>
+                          <FaUserCircle />
+                        </strong>{" "}
+                        {user?.displayName || "Unknown"}
+                      </p>
+                    </Link>
+                    <p>{user?.email || "Unknown"}</p>
                     {!user?.displayName && (
                       <Link to="/personalized-form">Complete Profile</Link>
                     )}
                     <hr />
+                    
                     <button onClick={logout} className="navbar__logout-button">
                       Logout
                     </button>
@@ -109,7 +124,7 @@ function Navbar() {
               className={`navbar__menu ${showMenu ? "show-menu" : ""}`}
               aria-expanded={showMenu}
             >
-              <ul className="lio">
+              <ul className="navbar__menu">
                 <li>
                   <Link to="/login" className="navbar__link">
                     Login

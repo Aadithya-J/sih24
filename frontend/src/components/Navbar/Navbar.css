@@ -1,128 +1,87 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: -webkit-static; /* For Safari */
   position: static;
   top: 0;
   z-index: 1000;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  backdrop-filter: blur(10px); /* Blurs the background to enhance the celestial effect */
-  color: #fff; /* White text for better contrast */
+  backdrop-filter: blur(10px); /* Blurs the background */
+  color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
-  
-    background: linear-gradient(
-      135deg,
-      rgba(255, 165, 0, 0.2) 0%, /* Light orange with 20% opacity */
-      rgba(255, 140, 0, 0.1) 100% /* Slightly darker orange with 10% opacity */
-    );
-  
 }
 
+/* Light mode styling */
+.light-mode .navbar {
+  background: orange;
+}
+
+/* Dark mode styling */
+.dark-mode .navbar {
+  background:  orange;
+}
+
+/* Container styling */
 .navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Logo styles */
+/* Logo styling */
 .navbar__logo {
-  font-size: 1.75rem; /* Increased size for a more prominent logo */
+  font-size: 1.75rem;
   font-weight: bold;
   text-decoration: none;
-  color: #fff; /* White color to stand out on dark background */
+  color: inherit; /* Inherit color from parent */
   position: relative;
-  overflow: hidden; /* Ensure the underline effect stays within the bounds of the logo */
-  transition: color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+  overflow: hidden;
+  transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Hover effect for the logo */
 .navbar__logo:hover {
-  color: #a24fc4; /* Purple color on hover */
-  transform: scale(1.1) rotate(360deg); /* Slightly enlarge and rotate logo on hover */
-  box-shadow: 0 0 20px rgba(162, 79, 196, 0.8), inset 0 0 10px rgba(162, 79, 196, 0.6); /* Add outer and inner glow effects */
-  background: linear-gradient(45deg, rgba(162, 79, 196, 0.2), rgba(162, 79, 196, 0.1)); /* Optional: Add a subtle gradient background */
+  color: wheat; /* Purple color on hover */
+  box-shadow: 0 0 20px rgba(226, 218, 207, 0.8), inset 0 0 10px rgba(51, 49, 46, 0.859);
+  background: linear-gradient(45deg, rgba(196, 179, 163, 0.873), rgba(229, 147, 32, 0.1));
 }
 
-/* Dynamic underline effect for logo */
 .navbar__logo::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 3px; /* Thickness of the underline */
-  background-color: #a24fc4; /* Purple color for the underline */
-  transform: translateX(-100%); /* Start hidden to the left */
+  height: 3px;
+  background-color: orange;
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
-
-/* Hover effect for logo underline */
 .navbar__logo:hover::after {
-  transform: translateX(0); /* Slide in from the left to cover the full width */
+  transform: translateX(0);
 }
-
 
 /* Menu styles */
 .navbar__menu {
-  display: none; /* Initially hidden for mobile */
-  position: absolute;
-  top: 100%;
-  right: 0;
-  
- 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  z-index: 1000;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-  visibility: hidden;
+  display: flex;
+  gap: 2rem;
 }
 
-.navbar__menu.show-menu {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
-
-.navbar__list {
+.navbar__menu .navbar__list {
   list-style: none;
-  padding: 1rem;
+  padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 600px;
-}
-
-.navbar__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.navbar__menu {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center; /* Center the links */
-}
-
-.navbar__list {
-  list-style: none;
-  display: flex;
-  gap: 2rem; /* Adjust spacing between the links */
+  gap: 2rem;
 }
 
 .navbar__link {
   text-decoration: none;
-  color: #fff; /* White color to stand out on dark background */
-  position: relative;
-  overflow: hidden;
+  color: inherit;
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  position: relative;
+  overflow: hidden;
   transition: color 0.3s;
-  display: inline-block;
 }
 
 .navbar__link::after {
@@ -145,106 +104,17 @@
 .navbar__profile {
   position: relative;
   display: inline-block;
-  margin-left: auto; /* Move profile to the right */
 }
 
 .navbar__profile-icon {
   font-size: 2rem;
-  color: #fff;
+  color: inherit;
   cursor: pointer;
-  transition: color 0.3s; /* Smooth transition for color change */
+  transition: color 0.3s;
 }
 
-/* Hover effect for profile icon */
 .navbar__profile-icon:hover {
-  color: #ff5722; /* Orange color */
-}
-
-/* Menu styles */
-.navbar__menu {
-  display: none; /* Initially hidden for mobile */
-  position: absolute;
-  top: 100%;
-  right: 0;
- 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
- 
-  z-index: 1000;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.navbar__menu.show-menu {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
-
-.navbar__list {
-  list-style: none;
-  padding: 1rem;
-  
-  display: flex;
-  flex-direction: right;
-  gap: 0rem;
-}
-
-.navbar__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.navbar__menu {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center; /* Center the links */
-}
-
-.lio {
-  list-style: none;
-  display: flex;
-  gap: 2rem; /* Adjust spacing between the links */
-  flex-direction: right;
-  margin-left: 1000px;
-}
-
-.navbar__link {
-  text-decoration: none;
-  color: #fff; /* White color to stand out on dark background */
-  position: relative;
-  overflow: hidden;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s; /* Smooth transition for color change */
-  display: inline-block;
-}
-.pi strong svg {
-  font-size: 2em; /* Adjust the size as needed */
-  float: left;
-}
-
-/* Hover effect for links in the menu */
-.navbar__link:hover {
-  color: #ff5722; /* Orange color */
-}
-
-.navbar__link::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #fff;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.navbar__link:hover::after {
-  transform: translateX(-50%) scaleX(1);
+  color: #ff5722;
 }
 
 /* Profile dropdown */
@@ -302,7 +172,7 @@
 
 /* Mobile toggle styling */
 .navbar__toggle {
-  display: none; /* Only show for mobile */
+  display: none;
 }
 
 @media (max-width: 1150px) {
@@ -314,7 +184,7 @@
     display: none;
   }
 
-  .show-menu {
+  .navbar__menu.show-menu {
     display: block;
   }
 }
@@ -322,7 +192,7 @@
 /* Responsive styles */
 @media (min-width: 1150px) {
   .navbar__toggle {
-    display: none; /* Hide toggle button on larger screens */
+    display: none;
   }
 
   .navbar__menu {
@@ -335,43 +205,31 @@
   }
 
   .navbar__list {
-    flex-direction: row; /* Align links horizontally */
+    flex-direction: row;
   }
 
-  .navbar__link,
-  .navbar__button {
+  .navbar__link {
     padding: 0.5rem 1rem;
   }
 }
 
-/* Link styles */
+/* Additional styles */
 .navbar__link {
-  text-decoration: none;
-  color: #fff; /* White text for contrast */
   padding: 0.75rem 1.25rem;
   border-radius: 4px;
-  position: relative;
-  overflow: hidden; /* Ensure the underline effect stays within the bounds of the link */
 }
-.navbar__menu--auth {
-  display: flex;
-  gap: 1rem;
-  margin-left: auto; /* Pushes the menu to the right */
-}
-/* Underline effect */
+
 .navbar__link::before {
   content: '';
   position: absolute;
   left: 50%;
   bottom: 0;
   width: 0;
-  height: 2px; /* Thickness of the underline */
-  background-color: #a24fc4; /* Purple color for the underline */
+  height: 2px;
+  background-color: #a24fc4;
   transition: width 0.3s ease, left 0.3s ease;
-  /* Adjust the height and background color as needed */
 }
 
-/* Hover effect */
 .navbar__link:hover::before {
   left: 0;
   width: 100%;

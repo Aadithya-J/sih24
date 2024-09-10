@@ -15,6 +15,7 @@ import TrainingRec from "./pages/trainingRec/trainingRec.js";
 import VirtualEvents from './pages/virtualEvents/VirtualEvents';
 import SkillsVerification from "./pages/skillsVerification/skillsVerification.js";
 import ResumeComparator from "./pages/resumeComparator/resumeComparator.js"
+import UserProfile from './pages/userProfile/UserProfile';
 import './App.css'; // Ensure you have global CSS for your app as needed
 
 function App() {
@@ -72,6 +73,10 @@ function App() {
                 path="/skills"
                 element = {user ? <SkillsVerification /> : <Navigate to="/login" />}
               />
+             <Route
+            path="/profile"
+            element={user ? <UserProfile /> : <Navigate to="/login" />}
+          />
 
             </Routes>
           </>
