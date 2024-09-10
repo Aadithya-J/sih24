@@ -17,6 +17,7 @@ body {
   min-height: 100vh;
 }
 
+/* Title Styling */
 .roadmap-title {
   font-size: 40px;
   color: #333;
@@ -27,6 +28,7 @@ body {
   text-align: center;
 }
 
+/* Header Styling */
 .roadmap-header {
   display: flex;
   flex-direction: column;
@@ -34,10 +36,11 @@ body {
   margin-bottom: 30px;
 }
 
+/* Input Styling */
 .roadmap-input {
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #ddd;
+  border: 2px solid black;
   border-radius: 12px;
   margin-bottom: 10px;
   width: 100%;
@@ -47,15 +50,16 @@ body {
 }
 
 .roadmap-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+  border-color: black;
+  box-shadow: 0 0 8px rgba(18, 23, 29, 0.4);
 }
 
+/* Button Styling */
 .roadmap-button {
   padding: 12px 24px;
   font-size: 16px;
-  color: #fff;
-  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: black;
+  background: linear-gradient(135deg, #FFA500, #FF8C00);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -64,17 +68,18 @@ body {
 }
 
 .roadmap-button:hover {
-  background: linear-gradient(135deg, #0056b3, #004094);
+  background: linear-gradient(135deg, #FF8C00, #FF4500);
   transform: scale(1.05);
 }
 
+/* Error Message Styling */
 .error-message {
   color: #dc3545;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-/* Roadmap Content */
+/* Roadmap Content Styling */
 .roadmap-content {
   width: 100%;
   max-width: 1200px;
@@ -84,6 +89,7 @@ body {
   padding: 30px;
 }
 
+/* Roadmap Title Section */
 .roadmap-title-section {
   text-align: center;
   margin-bottom: 30px;
@@ -100,6 +106,7 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Roadmap Sections */
 .roadmap-sections {
   display: flex;
   flex-direction: column;
@@ -126,7 +133,7 @@ body {
 
 .roadmap-step-number {
   font-size: 22px;
-  color: #007bff;
+  color: orange;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -137,6 +144,7 @@ body {
   color: #333;
 }
 
+/* Roadmap Subsections */
 .roadmap-subsections {
   list-style-type: none;
   padding: 0;
@@ -157,7 +165,7 @@ body {
   left: 0;
   top: 0;
   font-size: 18px;
-  color: #007bff;
+  color: orange;
   font-weight: bold;
 }
 
@@ -165,11 +173,12 @@ body {
 .roadmap-subsection:hover {
   background-color: #eaf2f8;
   color: #333;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid orange;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease, border-left 0.3s ease;
 }
 
+/* Roadmap Graph */
 /* Roadmap Graph */
 .roadmap-graph {
   height: 60vh;
@@ -184,20 +193,33 @@ body {
 }
 
 /* Graph Node & Edge Styling */
+/* Graph Node Styling */
 .react-flow__node {
   font-family: 'Lora', serif;
-  font-size: 14px;
-  padding: 12px;
-  border-radius: 8px;
-  border: 2px solid #333;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Glow effect */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 16px; /* Slightly larger font for better readability */
+  padding: 16px; /* More padding for a spacious look */
+  border-radius: 10px; /* More rounded corners */
+  border: 2px solid #333; /* Dark border for contrast */
+  background-color: #fff; /* White background for clarity */
+  color: #333; /* Dark text color for readability */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* Node Hover Effect */
 .react-flow__node:hover {
-  background-color: #eaf2f8;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color:black; /* Light background on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow for emphasis */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Graph Edge Styling */
+.react-flow__edge {
+  stroke-width: 3px; /* Thicker edge for better visibility */
+  stroke: #007bff; /* Blue color for edges */
+  transition: stroke 0.3s ease;
+  stroke-dasharray: 5, 5; /* Dotted line effect */
+  transition: stroke 0.3s ease, stroke-dasharray 0.3s ease;
 }
 
 /* Dynamic Edge Color Animation */
@@ -214,33 +236,32 @@ body {
 }
 
 .react-flow__edge {
-  stroke-width: 2px;
-  stroke: #007bff; /* Initial blue color */
-  animation: colorShift 3s infinite; /* Apply colorShift animation */
-  transition: stroke 0.3s ease;
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .roadmap-input, .roadmap-button {
-    width: 100%;
-  }
-
-  .roadmap-title {
-    font-size: 32px;
-  }
-
-  .roadmap-title-section h2 {
-    font-size: 30px;
-  }
-
-  .roadmap-section h3 {
-    font-size: 22px;
-  }
+  animation: colorShift 3s infinite;
 }
 
 /* Focus styles for accessibility */
-.roadmap-input:focus, .roadmap-button:focus {
-  outline: 3px solid #007bff;
+.react-flow__node:focus, .react-flow__edge:focus {
+  outline: 3px solid orange;
   outline-offset: 2px;
+}
+
+/* L-shaped Connections */
+.react-flow__edge {
+  stroke-dasharray: 10, 5; /* Adjust for L-shape effect */
+  transition: stroke-dasharray 0.3s ease; /* Smooth transition for dashed lines */
+}
+
+.react-flow__edge::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: #007bff; /* Color for L-shape lines */
+  width: 2px;
+  height: 10px; /* Height of the vertical part of the L */
+  transform: rotate(90deg);
+  transform-origin: left top;
+}
+
+.react-flow__edge[data-type="step"] {
+  stroke-dasharray: 10, 10; /* More pronounced L-shape */
 }

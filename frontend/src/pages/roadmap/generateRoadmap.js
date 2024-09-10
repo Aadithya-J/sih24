@@ -153,34 +153,35 @@ function RoadmapContent() {
           }}
         />
         <button 
-          onClick={async () => {
-            if (title.trim()) {
-              try {
-                const roadmapData = await getRoadmap(title);
-                console.log('Received roadmap data:', roadmapData);
-                createRoadmapGraph(roadmapData);
-                setError(null);
-              } catch (err) {
-                console.error('Error fetching roadmap:', err);
-                setError("Failed to fetch roadmap data. Please try again.");
-              }
-            } else {
-              setError("Please enter a title");
-            }
-          }}
-          style={{
-            padding: '10px 20px',
-            fontSize: '16px',
-            backgroundColor: '#3498db',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s',
-          }}
-        >
-          Generate Roadmap
-        </button>
+  onClick={async () => {
+    if (title.trim()) {
+      try {
+        const roadmapData = await getRoadmap(title);
+        console.log('Received roadmap data:', roadmapData);
+        createRoadmapGraph(roadmapData);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching roadmap:', err);
+        setError("Failed to fetch roadmap data. Please try again.");
+      }
+    } else {
+      setError("Please enter a title");
+    }
+  }}
+  style={{
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#000000',  // Black background
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  }}
+>
+  Generate Roadmap
+</button>
+
       </div>
       {error && <div style={{ padding: '10px', color: 'white', background: '#e74c3c' }}>{error}</div>}
       <div style={{ flex: 1, background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}>

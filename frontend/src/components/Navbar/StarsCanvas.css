@@ -6,7 +6,7 @@
   height: 100vh;
   z-index: -1; /* Ensure it's behind the content */
   overflow: hidden;
-  background-color: black;
+  background-color: rgb(8, 7, 7);
 }
 
 /* App content */

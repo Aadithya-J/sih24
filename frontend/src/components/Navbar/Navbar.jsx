@@ -124,7 +124,7 @@ function Navbar() {
               className={`navbar__menu ${showMenu ? "show-menu" : ""}`}
               aria-expanded={showMenu}
             >
-              <ul className="lio">
+              <ul className="navbar__menu">
                 <li>
                   <Link to="/login" className="navbar__link">
                     Login
