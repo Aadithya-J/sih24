@@ -9,61 +9,6 @@
   position: relative;
 }
 
-/* Styling for the image container */
-.image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  margin-right: 2cm;
-}
-
-.image-container img {
-  max-width: 80%;
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 15px; /* Add rounded corners */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for modern look */
-}
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px); /* Subtle floating effect */
-  }
-}
-
-/* Typing effect for the text */
-.typing-text {
-  margin-top: 20px;
-  font-size: 1.8em;
-  color: #4b0082; /* A darker purple for more contrast */
-  font-family: 'Roboto Mono', monospace; /* Modern typewriter font */
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #4b0082; /* Cursor effect */
-  width: 0;
-  animation: typing 4s steps(30, end) infinite, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 94%; /* Use full width */
-  }
-}
-
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #4b0082; /* Match the text color */
-  }
-}
 /* Styling for the form container */
 .form-container {
   flex: 1;
@@ -116,7 +61,7 @@
   border: 1px solid #ddd;
   background: #fafafa; /* Light background for input fields */
   font-size: 16px;
-  color: #333; /* Dark text color */
+  color: purple;
   outline: none;
   box-sizing: border-box;
   margin-bottom: 20px;
@@ -128,7 +73,7 @@
   box-shadow: 0 0 8px rgba(106, 13, 173, 0.1); /* Focused input effect */
 }
 
-/* Styling for the submit button */
+/* Styling for buttons */
 .btn {
   width: 100%;
   padding: 12px;
@@ -166,14 +111,11 @@ p {
     padding: 20px;
   }
 
-  .image-container {
-    margin-right: 0;
-    margin-bottom: 20px;
+  .form-container {
+    padding: 20px;
   }
 
   .signup-form {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
   }
 }
