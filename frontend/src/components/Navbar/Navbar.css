@@ -165,7 +165,7 @@ body.dark-mode .theme-toggle-button:hover {
 }
 
 .navbar__profile-icon {
-  font-size: 2rem;
+  font-size: 3rem;
   color: inherit;
   cursor: pointer;
   transition: color 0.3s;
