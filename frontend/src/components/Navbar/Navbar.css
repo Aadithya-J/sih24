@@ -1,4 +1,8 @@
 /* Basic styling for the navbar */
+body{
+  margin: 0;
+  padding: 0;
+}
 .navbar {
   position: static; /* Fixes the navbar at the top */
   top: 0; /* Aligns the navbar to the top of the viewport */
