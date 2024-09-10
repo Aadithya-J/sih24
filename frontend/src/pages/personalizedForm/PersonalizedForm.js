@@ -77,17 +77,7 @@ function PersonalizedForm() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+       
         <div className="form-group">
           <label htmlFor="phone">Phone:</label>
           <input
@@ -110,16 +100,7 @@ function PersonalizedForm() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="school">School:</label>
-          <input
-            type="text"
-            id="school"
-            name="school"
-            value={formData.school}
-            onChange={handleChange}
-          />
-        </div>
+        
         <div className="form-group">
           <label htmlFor="college">College:</label>
           <input
@@ -130,66 +111,9 @@ function PersonalizedForm() {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="yearOfCollege">Year of College:</label>
-          <input
-            type="text"
-            id="yearOfCollege"
-            name="yearOfCollege"
-            value={formData.yearOfCollege}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="role">Role:</label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select</option>
-            <option value="mentor">Mentor</option>
-            <option value="mentee">Mentee</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="hobbies">Hobbies:</label>
-          <textarea
-            id="hobbies"
-            name="hobbies"
-            value={formData.hobbies}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="skills">Skills:</label>
-          <textarea
-            id="skills"
-            name="skills"
-            value={formData.skills}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="workExperience">Work Experience:</label>
-          <textarea
-            id="workExperience"
-            name="workExperience"
-            value={formData.workExperience}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="accomplishments">Accomplishments:</label>
-          <textarea
-            id="accomplishments"
-            name="accomplishments"
-            value={formData.accomplishments}
-            onChange={handleChange}
-          />
-        </div>
+    
+    
+    
         <div className="form-group">
           <label htmlFor="resume">Upload Resume (PDF only):</label>
           <input
