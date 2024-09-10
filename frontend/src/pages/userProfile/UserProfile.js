@@ -24,9 +24,9 @@ const UserProfile = () => {
           name: data.name || "John Doe",
           profileLogo: data.profileLogo || "https://via.placeholder.com/100",
           about: data.about || "This is a sample user profile.",
-          activeDays: data.activeDays || [0, 0, 0, 0, 0, 0, 0],
-          ratingHistory: data.ratingHistory || [0],
-          atsScore: data.atsScore || 0,
+          activeDays: data.activeDays || [1, 1, 1, 1, 0, 1, 1],
+          ratingHistory: data.ratingHistory || [10,20,30,40,50],
+          atsScore: data.atsScore || 80,
         });
       } catch (error) {
         setError("Error fetching user data.");
