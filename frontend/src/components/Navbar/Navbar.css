@@ -17,11 +17,7 @@
 
 /* Dark mode styling */
 .dark-mode .navbar {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 165, 0, 0.2) 0%, /* Light orange with 20% opacity */
-    rgba(255, 140, 0, 0.1) 100% /* Slightly darker orange with 10% opacity */
-  );
+  background:  orange;
 }
 
 /* Container styling */
@@ -43,9 +39,9 @@
 }
 
 .navbar__logo:hover {
-  color: #a24fc4; /* Purple color on hover */
-  box-shadow: 0 0 20px rgba(162, 79, 196, 0.8), inset 0 0 10px rgba(162, 79, 196, 0.6);
-  background: linear-gradient(45deg, rgba(162, 79, 196, 0.2), rgba(162, 79, 196, 0.1));
+  color: wheat; /* Purple color on hover */
+  box-shadow: 0 0 20px rgba(226, 218, 207, 0.8), inset 0 0 10px rgba(51, 49, 46, 0.859);
+  background: linear-gradient(45deg, rgba(196, 179, 163, 0.873), rgba(229, 147, 32, 0.1));
 }
 
 .navbar__logo::after {
@@ -55,7 +51,7 @@
   bottom: 0;
   width: 100%;
   height: 3px;
-  background-color: #a24fc4;
+  background-color: orange;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }

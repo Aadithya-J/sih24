@@ -14,6 +14,7 @@ import PersonalizedForm from "./pages/personalizedForm/PersonalizedForm";
 import TrainingRec from "./pages/trainingRec/trainingRec.js";
 import VirtualEvents from './pages/virtualEvents/VirtualEvents';
 import SkillsVerification from "./pages/skillsVerification/skillsVerification.js";
+import ResumeComparator from "./pages/resumeComparator/resumeComparator.js"
 import UserProfile from './pages/userProfile/UserProfile';
 import './App.css';
 
@@ -61,6 +62,10 @@ function App() {
               <Route 
                 path="/resume-analyser"
                 element={<ResumeAnalyser />}
+              />
+              <Route
+                path="/resume-comparator"
+                element={<ResumeComparator />} 
               />
               <Route path="/community-support" element={<CommunitySupport />} />
                <Route path="/personalized-form" element={<PersonalizedForm />} />
