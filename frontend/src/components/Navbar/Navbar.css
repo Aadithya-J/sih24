@@ -1,19 +1,24 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: static; /* Fixes the navbar at the top */
-  top: 0; /* Aligns the navbar to the top of the viewport */
-  left: 0; /* Aligns the navbar to the left edge */
-  right: 0; /* Aligns the navbar to the right edge */
+  position: static;
+  top: 0;
   z-index: 1000;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
-  background: rgba(255, 165, 0, 0.5);
 }
 
+/* Light mode styling */
+.light-mode .navbar {
+  background: orange;
+}
 
+/* Dark mode styling */
+.dark-mode .navbar {
+  background: orange;
+}
 
 /* Container styling */
 .navbar__container {
@@ -34,9 +39,9 @@
 }
 
 .navbar__logo:hover {
-  color: wheat; /* Purple color on hover */
-  box-shadow: 0 0 20px rgba(226, 218, 207, 0.8), inset 0 0 10px rgba(51, 49, 46, 0.859);
-  background: linear-gradient(45deg, rgba(196, 179, 163, 0.873), rgba(229, 147, 32, 0.1));
+  color: #a24fc4; /* Purple color on hover */
+  box-shadow: 0 0 20px rgba(162, 79, 196, 0.8), inset 0 0 10px rgba(162, 79, 196, 0.6);
+  background: linear-gradient(45deg, rgba(162, 79, 196, 0.2), rgba(162, 79, 196, 0.1));
 }
 
 .navbar__logo::after {
@@ -46,7 +51,7 @@
   bottom: 0;
   width: 100%;
   height: 3px;
-  background-color: orange;
+  background-color: #a24fc4;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -164,12 +169,7 @@
 .navbar__logout-button:hover {
   background: #e64a19;
 }
-.theme-toggle-button{
-  margin-left: 500px;
-  border-radius: 100%;
-  width: 30px;
-  height: 30px;
-}
+
 /* Mobile toggle styling */
 .navbar__toggle {
   display: none;
