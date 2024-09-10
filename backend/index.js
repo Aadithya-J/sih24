@@ -88,19 +88,29 @@ app.post("/upload-resume", upload.single("resume"), async (req, res) => {
 
     blobStream.on("finish", async () => {
       // Get the public URL
-      const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(fileUpload.name)}?alt=media`;
+      const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${
+        bucket.name
+      }/o/${encodeURIComponent(fileUpload.name)}?alt=media`;
 
       // Save user data to Firestore
-      await db.collection("users").doc(uid).set({
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        city: req.body.city,
-        college: req.body.college,
-        resumeUrl: publicUrl,
-      }, { merge: true });
+      await db.collection("users").doc(uid).set(
+        {
+          name: req.body.name,
+          email: req.body.email,
+          phone: req.body.phone,
+          city: req.body.city,
+          college: req.body.college,
+          resumeUrl: publicUrl,
+        },
+        { merge: true }
+      );
 
-      res.status(200).send({ message: "File uploaded successfully", downloadUrl: publicUrl });
+      res
+        .status(200)
+        .send({
+          message: "File uploaded successfully",
+          downloadUrl: publicUrl,
+        });
     });
 
     blobStream.end(file.buffer);
@@ -128,6 +138,24 @@ app.get("/get-resume-url/:uid", (req, res) => {
         .status(500)
         .send("An error occurred while generating the download URL");
     });
+});
+
+app.post("/signup", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await admin.auth().createUser({
+      email,
+      password,
+    });
+    res
+      .status(200)
+      .json({ message: "User created successfully", uid: user.uid });
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while creating the user" });
+  }
 });
 
 app.listen(port, () => {
