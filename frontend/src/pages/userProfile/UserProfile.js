@@ -11,8 +11,8 @@ const UserProfile = () => {
     profileLogo: 'https://via.placeholder.com/100', // Placeholder logo URL
     about: 'This is a sample user profile.', // Sample about text
     activeDays: [1, 1, 0, 1, 0, 0, 1, 1, 1, 1], // 1 for active, 0 for inactive days
-    ratingHistory: [450, 470, 460, 480, 490, 510], // Sample ATS score changes over time
-    atsScore: 510,
+    ratingHistory: [40, 47, 46, 48, 49, 51], // Sample ATS score changes over time
+    atsScore: 80,
   });
 
   // Local state for form input and edit mode
@@ -28,8 +28,8 @@ const UserProfile = () => {
         profileLogo: 'https://via.placeholder.com/100', // Update with real logo URL
         about: 'Enthusiastic professional with a passion for technology and innovation.',
         activeDays: [1, 0, 1, 0, 1, 1, 1, 1, 0, 0],
-        ratingHistory: [400, 420, 430, 460, 480, 500],
-        atsScore: 500,
+        ratingHistory: [40, 51, 48, 57, 60, 68],
+        atsScore: 80,
       });
     }, 1000); // Simulate 1-second delay
   }, []);
