@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { IoMenu } from "react-icons/io5";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaSun, FaMoon } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
@@ -79,13 +79,20 @@ function Navbar() {
                 </li>
               </ul>
             </div>
+
+            {/* Theme Toggle Button */}
             <button
-                      className="theme-toggle-button"
-                      onClick={toggleTheme}
-                      aria-label={`Switch to ${isLightMode ? 'Dark' : 'Light'} Mode`}
-                    >
-                      Switch to {isLightMode ? 'Dark' : 'Light'} Mode
-                    </button>
+              className="theme-toggle-button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${isLightMode ? 'Dark' : 'Light'} Mode`}
+            >
+              {isLightMode ? (
+                <FaMoon title="Switch to Dark Mode" />
+              ) : (
+                <FaSun title="Switch to Light Mode" />
+              )}
+            </button>
+
             {/* Profile Dropdown */}
             <div className="navbar__profile" ref={profileRef}>
               <FaUserCircle
@@ -108,7 +115,6 @@ function Navbar() {
                       <Link to="/personalized-form">Complete Profile</Link>
                     )}
                     <hr />
-                    
                     <button onClick={logout} className="navbar__logout-button">
                       Logout
                     </button>

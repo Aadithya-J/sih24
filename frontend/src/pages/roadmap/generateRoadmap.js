@@ -12,7 +12,7 @@ import {
 import '@xyflow/react/dist/style.css';
 
 async function getRoadmap(title){
-    const response = await fetch('http://localhost:4000/roadmap/'+title);
+    const response = await fetch('http://localhost:4000/roadmap/' + title);
     const data = await response.json();
     console.log("received data");
     return data;
@@ -37,7 +37,7 @@ function RoadmapContent() {
     newNodes.push({ 
       id: 'root', 
       data: { label: roadmapData.title },
-      position: { x: centerX-70, y: 0 },
+      position: { x: centerX - 70, y: 0 },
       style: { 
         background: '#4CAF50', 
         color: 'white', 
@@ -137,7 +137,7 @@ function RoadmapContent() {
 
   return (
     <div style={{ height: '100vh', width: '100%', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ padding: '20px', background: '#ecf0f1', borderBottom: '1px solid #bdc3c7' }}>
+      <div style={{ padding: '20px', background: '#ecf0f1', borderBottom: '1px solid #bdc3c7', display: 'flex', alignItems: 'center' }}>
         <input
           type="text"
           value={title}
@@ -153,38 +153,37 @@ function RoadmapContent() {
           }}
         />
         <button 
-  onClick={async () => {
-    if (title.trim()) {
-      try {
-        const roadmapData = await getRoadmap(title);
-        console.log('Received roadmap data:', roadmapData);
-        createRoadmapGraph(roadmapData);
-        setError(null);
-      } catch (err) {
-        console.error('Error fetching roadmap:', err);
-        setError("Failed to fetch roadmap data. Please try again.");
-      }
-    } else {
-      setError("Please enter a title");
-    }
-  }}
-  style={{
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#000000',  // Black background
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-  }}
->
-  Generate Roadmap
-</button>
-
+          onClick={async () => {
+            if (title.trim()) {
+              try {
+                const roadmapData = await getRoadmap(title);
+                console.log('Received roadmap data:', roadmapData);
+                createRoadmapGraph(roadmapData);
+                setError(null);
+              } catch (err) {
+                console.error('Error fetching roadmap:', err);
+                setError("Failed to fetch roadmap data. Please try again.");
+              }
+            } else {
+              setError("Please enter a title");
+            }
+          }}
+          style={{
+            padding: '10px 20px',
+            fontSize: '16px',
+            backgroundColor: '#000000',  // Black background
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+          }}
+        >
+          Generate Roadmap
+        </button>
       </div>
       {error && <div style={{ padding: '10px', color: 'white', background: '#e74c3c' }}>{error}</div>}
-      <div style={{ flex: 1, background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}>
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -203,7 +202,7 @@ function RoadmapContent() {
           zoomOnScroll={false}
         >
           <Background color="#bdc3c7" gap={16} size={1} />
-          <Controls style={{ bottom: 'auto', top: 20, right: 20 }} /> 
+          <Controls style={{ position: 'absolute', top: 10, right: 10, zIndex: 5 }} /> 
         </ReactFlow>
       </div>
     </div>
