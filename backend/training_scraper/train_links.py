@@ -60,4 +60,4 @@ def search(skill):
     return jsonify(final)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=7000)
