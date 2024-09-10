@@ -101,6 +101,7 @@ app.post("/upload-resume", upload.single("resume"), async (req, res) => {
           city: req.body.city,
           college: req.body.college,
           resumeUrl: publicUrl,
+          uid: uid,
         },
         { merge: true }
       );

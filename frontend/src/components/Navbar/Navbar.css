@@ -8,17 +8,12 @@
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
-}
-
-/* Light mode styling */
-.light-mode .navbar {
   background: orange;
 }
 
-/* Dark mode styling */
-.dark-mode .navbar {
-  background:  orange;
-}
+
+ 
+
 
 /* Container styling */
 .navbar__container {
