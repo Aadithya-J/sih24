@@ -35,9 +35,7 @@ body{
 }
 
 .navbar__logo:hover {
-  color: #a24fc4; /* Purple color on hover */
-  box-shadow: 0 0 20px rgba(162, 79, 196, 0.8), inset 0 0 10px rgba(162, 79, 196, 0.6);
-  background: linear-gradient(45deg, rgba(162, 79, 196, 0.2), rgba(162, 79, 196, 0.1));
+  color: wheat; /* Purple color on hover */
 }
 
 .navbar__logo::after {
@@ -95,7 +93,19 @@ body{
 .navbar__link:hover::after {
   transform: translateX(-50%) scaleX(1);
 }
+.theme-toggle-button{
+  background-color: #ddd;
+ border-radius: 100%;
+ margin-left:500px;
+ width: 30px;
+ height:30px;
 
+  
+}
+.theme-toggle-button:hover{
+  background-color:rgb(208, 94, 46);
+  border-radius: 100%;
+}
 /* Profile icon */
 .navbar__profile {
   position: relative;
