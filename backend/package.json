@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"nodemon server.js\" \"python job_scraper/naukri.py\" \"python training_scraper/train_links.py\" \"python resume_evaluator/ats_analysis.py\" \"python \"",
+    "start": "concurrently \"nodemon server.js\" \"python job_scraper/naukri.py\" \"python training_scraper/train_links.py\" \"python resume_evaluator/ats_analysis.py\" \"python resume_evaluator/resume_comparator.py\" \"python training_scraper/video_train_links.py\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
