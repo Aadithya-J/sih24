@@ -4,14 +4,14 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# from flask import Flask, jsonify
-import concurrent.futures
+from flask import Flask, jsonify
 from flask_cors import CORS
+import time
 
-# app = Flask(_name_)
-# CORS(app)
+app = Flask(__name__)
+CORS(app)
 
-def scrape_playlist(skill):
+def scrape_yt(skill):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -22,49 +22,40 @@ def scrape_playlist(skill):
     service = Service('chromedriver.exe')
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
+    skill = skill.replace(' ', '+')
     url = f'https://www.youtube.com/results?search_query={skill}&sp=EgIQAw%253D%253D'
+
     driver.get(url)
+    
+    total_playlists = []
 
-    # Wait for playlist results to load
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "ytd-playlist-renderer")))
-
-    playlists = driver.find_elements(By.CSS_SELECTOR, "ytd-playlist-renderer")
-
-    playlist_data = []
+    playlists = WebDriverWait(driver, 20).until(
+        EC.presence_of_all_elements_located((By.XPATH, "//ytd-playlist-renderer"))
+    )
 
     for playlist in playlists:
-        # Extract the playlist link
-        playlist_link_element = playlist.find_element(By.CSS_SELECTOR, "a.yt-simple-endpoint")
-        playlist_link = playlist_link_element.get_attribute('href')
+        try:
+            playlist_link = playlist.find_element(By.XPATH, ".//a[contains(@href, '/playlist')]").get_attribute('href')
+            playlist_name = playlist.find_element(By.XPATH, ".//span[@id='video-title']").get_attribute('title')
+            channel_name = playlist.find_element(By.XPATH, ".//ytd-channel-name//a").text
+            
+            total_playlists.append([playlist_link,playlist_name,channel_name])
 
-        # Extract the playlist title
-        playlist_title_element = playlist.find_element(By.CSS_SELECTOR, "span#video-title")
-        playlist_title = playlist_title_element.get_attribute("title")
-
-        # Extract the YouTube channel name
-        channel_element = playlist.find_element(By.CSS_SELECTOR, "yt-formatted-string#text")
-        channel_name = channel_element.get_attribute("title")
-
-        playlist_data.append({
-            'playlist_title': playlist_title,
-            'playlist_link': playlist_link,
-            'channel_name': channel_name
-        })
+        except Exception as e:
+            print(f"An error has occured: {e}")
 
     driver.quit()
-
-    print(playlist_data)
     
-skill = 'data+structures+and+algorithms'
-scrape_playlist(skill)
+    return total_playlists
 
-# @app.route('/scrape/<skill>', methods=['GET'])
-# def scrape(skill):
-#     with concurrent.futures.ThreadPoolExecutor() as executor:
-#         future = executor.submit(scrape_playlist, skill)
-#         result = future.result()
+@app.route('/api/videos/<skill>', methods = ["GET"])
+def playlist_search(skill):
+    final = scrape_yt(skill)
+    
+    if not final:
+        print('no playlists found')
+    
+    return jsonify(final)
 
-#     return jsonify(result)
-
-# if _name_ == "_main_":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.rum(port = 'port daal de tash')
