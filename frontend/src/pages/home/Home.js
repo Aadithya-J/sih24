@@ -18,7 +18,7 @@ function Home() {
 
       {/* Hero Section */}
       <div className="hero-section">
-        <img src='/yatharth-hero.png' id='hero-image' alt="Hero" />
+        <img src='../../../yatharth-hero.png' id='hero-image' alt="Hero" />
         <h1 className='welcome'>Welcome to Yatharth</h1>
         <p>
           Start your journey to bridge dreams to reality with AI-powered tools and community support.
