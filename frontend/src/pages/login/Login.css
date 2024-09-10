@@ -51,7 +51,7 @@
 .typing-text {
   margin-top: 20px;
   font-size: 1.8em;
-  color: #4b0082; /* A darker purple for more contrast */
+  color: orange; /* A darker purple for more contrast */
   font-family: 'Roboto Mono', monospace; /* Modern typewriter font */
   white-space: nowrap;
   overflow: hidden;
