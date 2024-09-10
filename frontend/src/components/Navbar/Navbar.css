@@ -1,4 +1,8 @@
 /* Basic styling for the navbar */
+body{
+  margin: 0;
+  padding: 0;
+}
 .navbar {
   position: static;
   top: 0;
@@ -8,6 +12,10 @@
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
+<<<<<<< HEAD
+=======
+  background: orange;
+>>>>>>> 416ebaeb26402c95faed2861a037ab2a1ba47178
 }
 
 /* Light mode styling */
