@@ -97,6 +97,11 @@ function Navbar() {
                     Roadmap
                   </Link>
                 </li>
+                <li>
+                  <Link to="/training" className="navbar__link">
+                    Resources
+                  </Link>
+                </li>
               </ul>
             </div>
 
