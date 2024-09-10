@@ -1,78 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { Line } from 'react-chartjs-2'; // For displaying the rating chart
-import 'chart.js/auto'; // Necessary for chart.js in React
+import { Line } from 'react-chartjs-2';
+import 'chart.js/auto';
 import './UserProfile.css';
 import axios from 'axios';
 
 const UserProfile = () => {
-  // Sample data to simulate fetching from an API
-  const [userData, setUserData] = useState({
-    name: 'John Doe',
-    profileLogo: 'https://via.placeholder.com/100', // Placeholder logo URL
-    about: 'This is a sample user profile.', // Sample about text
-    activeDays: [1, 1, 0, 1, 0, 0, 1, 1, 1, 1], // 1 for active, 0 for inactive days
-    ratingHistory: [450, 470, 460, 480, 490, 510], // Sample ATS score changes over time
-    atsScore: 510,
-  });
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Local state for form input and edit mode
-  const [aboutInput, setAboutInput] = useState(userData.about);
-  const [isEditing, setIsEditing] = useState(false);
-
-  // Simulated API fetch (could be replaced with real API call)
   useEffect(() => {
-    // Example of simulating an API call
-    setTimeout(() => {
-      setUserData({
-        name: 'Jane Doe',
-        profileLogo: 'https://via.placeholder.com/100', // Update with real logo URL
-        about: 'Enthusiastic professional with a passion for technology and innovation.',
-        activeDays: [1, 0, 1, 0, 1, 1, 1, 1, 0, 0],
-        ratingHistory: [400, 420, 430, 460, 480, 500],
-        atsScore: 500,
-      });
-    }, 1000); // Simulate 1-second delay
+    const fetchUserData = async () => {
+      const uid = localStorage.getItem('uid'); // Get UID from localStorage
+      try {
+        const response = await axios.post('http://localhost:4000/get-user-data', { uid });
+        const data = response.data;
+
+        // Set default values for missing fields
+        setUserData({
+          name: data.name || 'John Doe',
+          profileLogo: data.profileLogo || 'https://via.placeholder.com/100',
+          about: data.about || 'This is a sample user profile.',
+          activeDays: data.activeDays || [0, 0, 0, 0, 0, 0, 0],
+          ratingHistory: data.ratingHistory || [0],
+          atsScore: data.atsScore || 0,
+        });
+      } catch (error) {
+        setError('Error fetching user data.');
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
   }, []);
 
-  // Handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setUserData((prevState) => ({
-      ...prevState,
-      about: aboutInput,
-    }));
-    setIsEditing(false); // Hide the edit form after updating
+    // Update user data (handled elsewhere)
   };
 
-  // Show edit form
   const handleEditClick = () => {
-    setIsEditing(true);
+    // Show edit form (handled elsewhere)
   };
 
   const handleDownloadResume = async () => {
-    let uid = localStorage.getItem('uid');
+    const uid = localStorage.getItem('uid');
     try {
-        const response = await axios.get(`http://localhost:4000/get-resume-url/${uid}`);
-        const { downloadURL } = response.data;
-        console.log(downloadURL);
-        const link = document.createElement('a');
-        link.href = downloadURL;
-        link.setAttribute('download', 'resume.pdf');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const response = await axios.get(`http://localhost:4000/get-resume-url/${uid}`);
+      const { downloadURL } = response.data;
+      const link = document.createElement('a');
+      link.href = downloadURL;
+      link.setAttribute('download', 'resume.pdf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
-        console.error('Error downloading resume:', error);
+      console.error('Error downloading resume:', error);
     }
-};
+  };
 
   // Format data for chart.js (Line chart for rating)
   const chartData = {
-    labels: userData.ratingHistory.map((_, index) => `Month ${index + 1}`), // Dynamic labels
+    labels: userData?.ratingHistory.map((_, index) => `Month ${index + 1}`) || [],
     datasets: [
       {
         label: 'ATS Score Trend',
-        data: userData.ratingHistory,
+        data: userData?.ratingHistory || [],
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         fill: true,
@@ -80,7 +75,7 @@ const UserProfile = () => {
     ],
   };
 
-  // Chart.js options (you can customize further)
+  // Chart.js options
   const chartOptions = {
     responsive: true,
     scales: {
@@ -101,7 +96,7 @@ const UserProfile = () => {
 
   // Render GitHub-like contribution streaks (active days)
   const renderActiveDays = () => {
-    return userData.activeDays.map((active, index) => (
+    return userData?.activeDays.map((active, index) => (
       <div
         key={index}
         className="active-day"
@@ -109,8 +104,16 @@ const UserProfile = () => {
           backgroundColor: active ? '#4caf50' : '#ddd',
         }}
       ></div>
-    ));
+    )) || null;
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="user-profile">
@@ -125,24 +128,7 @@ const UserProfile = () => {
       </div>
 
       <div className="edit-about-section">
-        {isEditing ? (
-          <>
-            <h3>Edit About Information</h3>
-            <form onSubmit={handleFormSubmit}>
-              <textarea
-                value={aboutInput}
-                onChange={(e) => setAboutInput(e.target.value)}
-                rows="4"
-                cols="50"
-                placeholder="Write something about yourself..."
-                required
-              />
-              <button type="submit">Update</button>
-            </form>
-          </>
-        ) : (
-          <button onClick={handleEditClick}>Edit About</button>
-        )}
+        {/* Add edit functionality here */}
       </div>
 
       <div className="ats-score">
@@ -154,7 +140,7 @@ const UserProfile = () => {
       </div>
 
       <div className="active-days-section">
-        <h3>Active Days </h3>
+        <h3>Active Days</h3>
         <div className="active-days">
           {renderActiveDays()}
         </div>
