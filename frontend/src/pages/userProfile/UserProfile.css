@@ -1,19 +1,25 @@
-/* General styling for the profile container */
+:root {
+  --bg-color: #1c1c1c;
+  --text-color: #e0e0e0;
+  --accent-color: #ffa116;
+  --secondary-color: #3e3e3e;
+  --success-color: #00b8a3;
+  --warning-color: #ffa116;
+  --danger-color: #ef4743;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
 .user-profile {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff; /* Light blue background */
-  color: #333; /* Dark text color for contrast */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  max-width: 900px; /* Max width for larger screens */
-  margin: auto; /* Centering the container */
-  overflow: hidden; /* Ensures contents don’t overflow */
 }
-h3{
-  color: #000;
-}
-/* Styling for profile header */
+
 .profile-header {
   display: flex;
   align-items: center;
@@ -23,89 +29,96 @@ h3{
 .profile-logo {
   width: 100px;
   height: 100px;
-  border-radius: 50%; /* Circular logo */
+  border-radius: 50%;
   margin-right: 20px;
+  object-fit: cover;
 }
 
-/* Styling for About section */
-.about-section {
+h2 {
+  color: var(--accent-color);
+  font-size: 24px;
+}
+
+h3 {
+  color: var(--text-color);
+  border-bottom: 1px solid var(--secondary-color);
+  padding-bottom: 10px;
+  margin-top: 30px;
+}
+
+.about-section, .ats-score, .active-days-section, .chart-section {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 20px;
   margin-bottom: 20px;
 }
 
-.about-section h3 {
-  color: black; /* Grey heading for About section */
-}
-
-.about-section p {
-  color: #333; /* Dark text color for About section */
-}
-
-/* Styling for ATS score section */
-.ats-score {
-
+.edit-about-section {
   margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ff8c00;
+}
+
+textarea {
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .ats-score h3 {
-
-  color: black; /* Grey heading for ATS score */
-}
-
-/* Styling for active days section */
-.active-days-section {
-  margin-bottom: 20px;
-}
-
-.active-days h3 {
-  color: #808080; /* Grey heading for active days */
+  color: var(--success-color);
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .active-days {
   display: flex;
   flex-wrap: wrap;
-  max-width: 200px;
-  gap: 4px; /* Space between active days */
+  gap: 4px;
+  margin-bottom: 10px;
 }
 
 .active-day {
   width: 20px;
   height: 20px;
-  border-radius: 4px; /* Rounded corners for active days */
-  display: inline-block;
+  border-radius: 2px;
 }
 
-/* Dynamic colors based on activity */
-.active-day.active {
-  background-color: #4caf50; /* Green for active days */
+.chart-section canvas {
+  max-width: 100%;
+  height: auto !important;
 }
 
-.active-day.inactive {
-  background-color: #ddd; /* Light gray for inactive days */
+.resume-section {
+  /*text-align: center;*/
+  margin-bottom: 20px;
 }
 
-/* Styling for chart section */
-.chart-section {
-  margin-top: 20px;
-}
-
-.chart-section h3 {
-  color: black; /* Grey heading for chart */
-}
-
-.chart-container {
-  max-width: 100%; /* Ensures chart container does not exceed the profile container width */
-  overflow: hidden; /* Prevents overflow */
-}
-p{
-  color: #333;
-}
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .active-days {
-    max-width: 100px; /* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .chart-container {
-    max-width: 100%; /* Ensures chart fits within smaller screens */
+  .profile-logo {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 }
