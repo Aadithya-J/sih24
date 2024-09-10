@@ -1,17 +1,16 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: static;
+  position: static; /* Fixes the navbar at the top */
   top: 0; /* Aligns the navbar to the top of the viewport */
   left: 0; /* Aligns the navbar to the left edge */
   right: 0; /* Aligns the navbar to the right edge */
   z-index: 1000;
   padding: 2rem;
-  
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
-  background:rgba(255, 165, 0, 0.5);
+  background: rgba(255, 165, 0, 0.5);
 }
 
 
