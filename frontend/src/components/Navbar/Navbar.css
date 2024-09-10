@@ -169,7 +169,10 @@
 .navbar__logout-button:hover {
   background: #e64a19;
 }
-
+.theme-toggle-button{
+  margin-left: 500px;
+  border-radius: 100%;;
+}
 /* Mobile toggle styling */
 .navbar__toggle {
   display: none;
