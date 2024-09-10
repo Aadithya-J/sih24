@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function useLogout() {
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const navigate = useNavigate();
 
   async function logout() {
+    console.log('Logging out...');
     setError(null);
     setIsPending(true);
     try {
       // Clear token and UID from localStorage on logout
       localStorage.removeItem('token');
       localStorage.removeItem('uid');
-      navigate('/');
+      window.location.replace("/");
     } catch (error) {
       console.log(error.message);
       setError(error.message);
