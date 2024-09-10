@@ -1,33 +1,54 @@
-/* Basic styling for the body */
+/* Home.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Base styles for the light and dark modes */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #d6d9e7;
+  
   color: #fff;
 }
 
-/* Hero Section */
-.hero-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+/* Light Mode Styles */
+.light-mode {
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.light-mode .hero-section {
+  background-color: #ffffff;
+}
+
+.light-mode .features-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 60px;
+  background-image: url('https://example.com/your-celestial-background.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.8s ease-in-out;
+}
+.light-mode .feature-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
   text-align: center;
-  height: 100vh;
-  background-attachment: fixed;
-  padding: 20px;
-  animation: fadeIn 1.5s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0.9;
 }
 
-#hero-image {
-  width: 400px;
-  margin-bottom: 40px;
+/* Dark Mode Styles */
+.dark-mode {
+  
+  color: #f5f5f5;
 }
 
-.hero-section h1 {
+ .hero-section h1 {
   font-size: 54px;
   background: linear-gradient(45deg, rgb(221, 118, 21), rgb(230, 60, 9));
   -webkit-background-clip: text;
@@ -39,7 +60,8 @@ body {
   animation: slideDown 1s ease-out;
 }
 
-.hero-section p {
+
+ .hero-section p {
   font-size: 22px;
   max-width: 750px;
   margin-bottom: 40px;
@@ -48,7 +70,8 @@ body {
   animation: fadeInUp 1.2s ease-out;
 }
 
-.cta-button {
+
+.dark-mode .cta-button {
   background-color: #ff8c00;
   color: #fff;
   border: none;
@@ -63,19 +86,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.cta-button:hover {
-  transform: scale(1.1);
-  background: linear-gradient(135deg, #ff8c00, #e67e22);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.cta-button:focus {
+ .cta-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.5);
 }
 
-/* Features Section */
-.features-section {
+
+ .dark-mode .features-section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
@@ -86,8 +103,7 @@ body {
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
   animation: fadeIn 1.8s ease-in-out;
 }
-
-.feature-box {
+.dark-mode .feature-box {
   background-color: rgba(41, 45, 51, 0.85);
   border-radius: 15px;
   padding: 30px;
@@ -96,14 +112,12 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0.9;
 }
-
-.feature-box:hover {
+.dark-mode .feature-box:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   opacity: 1;
 }
-
-.feature-box h3 {
+.dark-mode .feature-box h3 {
   font-size: 24px;
   color: #ff8c00;
   margin-bottom: 15px;
@@ -112,34 +126,28 @@ body {
   font-weight: bold;
   animation: fadeInUp 1.4s ease-out;
 }
-
-.feature-box p {
+.dark-mode .feature-box p {
   font-size: 18px;
   color: #ccc;
   line-height: 1.5;
   animation: fadeInUp 1.6s ease-out;
 }
-
-.feature-box a {
+.dark-mode .feature-box a {
   text-decoration: none;
   color: #ff8c00;
 }
-
-.feature-box a:hover {
+.dark-mode .feature-box a:hover {
   text-decoration: none;
   color: #e67e22;
 }
-
-.feature-logo {
+.dark-mode .feature-logo {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
   border-radius: 50%;
   object-fit: cover;
 }
-
-/* About Card Styling */
-.about-card {
+.dark-mode .about-card {
   background-color: rgba(41, 45, 51, 0.85);
   border-radius: 15px;
   padding: 30px;
@@ -150,14 +158,12 @@ body {
   opacity: 0.9;
   animation: fadeIn 1.5s ease-in-out;
 }
-
-.about-card:hover {
+.dark-mode .about-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   opacity: 1;
 }
-
-.about-card h2 {
+.dark-mode .about-card h2 {
   margin-bottom: 15px;
   font-size: 24px;
   color: #ff8c00;
@@ -166,26 +172,143 @@ body {
   font-weight: bold;
   animation: fadeInUp 1.4s ease-out;
 }
-
-.about-card p {
+.dark-mode .about-card p {
   font-size: 18px;
   color: #ccc;
   line-height: 1.5;
   animation: fadeInUp 1.6s ease-out;
 }
 
-.learn-more-link {
+.dark-mode .learn-more-link {
   display: inline-block;
   color: #ff8c00;
   text-decoration: none;
   font-weight: bold;
 }
-
-.learn-more-link:hover {
+.dark-mode .learn-more-link:hover {
   text-decoration: underline;
 }
 
-/* Footer Styling */
+
+
+/* General Styles */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+#hero-image {
+  width: 400px;
+  margin-bottom: 40px;
+}
+
+.hero-section h1 {
+  font-size: 54px;
+  background: linear-gradient(45deg, rgb(221, 118, 21), rgb(230, 60, 9));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-section p {
+  font-size: 22px;
+  max-width: 750px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ff8c00, #e67e22);
+}
+
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 60px;
+  background-image: url('https://example.com/your-celestial-background.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.feature-box {
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.feature-box img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.feature-box a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-card {
+  background-color:white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin: 30px;
+}
+.dark-mode .about-card {
+  background-color: rgba(41, 45, 51, 0.85);
+
+}
+.light-mode .about-card p {
+  color: #000; /* Black color for light mode */
+}
+.light-mode .feature-box p {
+  color: #000; /* Black color for light mode */
+}
+/* Light Mode About Card */
+.light-mode .about-card {
+  background-color: white;
+}.dark-mode .feature-box {
+  background-color: rgba(51, 51, 51, 0.85);
+}
+
+/* Light Mode Feature Box */
+.light-mode .feature-box {
+  background-color:white;
+}
+.light-mode p{
+  color: black;
+}
 .footer {
   background-color: orange;
   padding: 20px;
@@ -229,61 +352,4 @@ body {
 
 .footer-links a:hover {
   color: purple;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-  .features-section {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-section h1 {
-    font-size: 40px;
-  }
-
-  .hero-section p {
-    font-size: 18px;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    justify-content: center;
-    margin-top: 10px;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

@@ -8,14 +8,13 @@ function Home() {
   const toggleTheme = () => {
     setIsLightMode(prevMode => !prevMode);
     document.body.classList.toggle('light-mode', !isLightMode);
+    document.body.classList.toggle('dark-mode', isLightMode);
   };
 
   return (
     <div className={`home-page ${isLightMode ? 'light-mode' : 'dark-mode'}`}>
-      {/* Theme Toggle Button */}
-      <button className="theme-toggle-button" onClick={toggleTheme}>
-        Switch to {isLightMode ? 'Dark' : 'Light'} Mode
-      </button>
+      
+      
 
       {/* Hero Section */}
       <div className="hero-section">
@@ -47,7 +46,12 @@ function Home() {
       {/* Features Section */}
       <div className="features-section">
         <div className="feature-box">
-          <a href="https://www.myscheme.gov.in/find-scheme" target="_blank" rel="noopener noreferrer">
+          <a 
+            href="https://www.myscheme.gov.in/find-scheme" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Find Government Schemes"
+          >
             <h3>Government Schemes</h3>
             <img src="/government-schemes-logo.png" alt="Government Schemes" className="feature-logo" />
             <p>Find government-backed opportunities and schemes to support your career path.</p>
@@ -73,7 +77,7 @@ function Home() {
         <div className="feature-box">
           <Link to="/training">
             <h3>Training Recommendation</h3>
-            <img src="/market-insights-logo.jpeg" alt="Real-Time Job Market Insights" className="feature-logo" />
+            <img src="/market-insights-logo.jpeg" alt="Training Recommendation" className="feature-logo" />
             <p>Stay ahead in your career with our recommended training resources and videos.</p>
           </Link>
         </div>
