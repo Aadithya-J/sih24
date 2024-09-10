@@ -39,8 +39,6 @@ body{
 
 .navbar__logo:hover {
   color: wheat; /* Purple color on hover */
-  box-shadow: 0 0 20px rgba(226, 218, 207, 0.8), inset 0 0 10px rgba(51, 49, 46, 0.859);
-  background: linear-gradient(45deg, rgba(196, 179, 163, 0.873), rgba(229, 147, 32, 0.1));
 }
 
 .navbar__logo::after {

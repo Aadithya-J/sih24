@@ -37,6 +37,23 @@ function Navbar() {
     }
   }, []);
 
+  useEffect(() => {
+    // Function to handle clicks outside the profile dropdown
+    const handleClickOutside = (event) => {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setShowProfileDropdown(false);
+      }
+    };
+
+    // Attach event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleLogout = () => {
     // Clear user information and token on logout
     setUser(null);
@@ -114,11 +131,11 @@ function Navbar() {
                       </p>
                     </Link>
                     <p>{user?.email || "Unknown"}</p>
-                      <Link to="/personalized-form">
-                        Complete Profile
-                      </Link>
+                    <Link to="/personalized-form">
+                      Complete Profile
+                    </Link>
                     <hr />
-                    <button onClick={logout} className="navbar__logout-button">
+                    <button onClick={handleLogout} className="navbar__logout-button">
                       Logout
                     </button>
                   </div>
