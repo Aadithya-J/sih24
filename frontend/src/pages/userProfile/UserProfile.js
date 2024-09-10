@@ -143,14 +143,13 @@ const UserProfile = () => {
         ) : (
           <button onClick={handleEditClick}>Edit About</button>
         )}
+              <div className="resume-section">
+        <button onClick={handleDownloadResume}>Download Resume</button>
       </div>
-
+      </div>
       <div className="ats-score">
         <h3>ATS Score: {userData.atsScore}</h3>
         <p>This is the current ATS score based on recent activities and performance.</p>
-      </div>
-      <div className="resume-section">
-        <button onClick={handleDownloadResume}>Download Resume</button>
       </div>
 
       <div className="active-days-section">
