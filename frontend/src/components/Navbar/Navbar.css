@@ -1,6 +1,6 @@
 /* Basic styling for the navbar */
 .navbar {
-  position: fixed; /* Fixes the navbar at the top */
+  position: static; /* Fixes the navbar at the top */
   top: 0; /* Aligns the navbar to the top of the viewport */
   left: 0; /* Aligns the navbar to the left edge */
   right: 0; /* Aligns the navbar to the right edge */
