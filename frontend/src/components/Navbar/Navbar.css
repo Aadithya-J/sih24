@@ -69,6 +69,7 @@ body {
 .navbar__link {
   text-decoration: none;
   color: inherit;
+  padding-left: 20px;
   font-size: 1rem;
   position: relative;
   overflow: hidden;
@@ -94,11 +95,11 @@ body {
 
 /* Theme Toggle Button Styles */
 .theme-toggle-button {
-  position: static;
   top: 50px;
   right: 10px;
   width: 50px;
-  margin-left: 400px;
+  margin-left: 100px;
+  margin-right: -120px;
   height: 50px;
   border-radius: 50%;
   background-color: var(--bg-color, #1c1c1c);
