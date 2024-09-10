@@ -93,7 +93,19 @@ body{
 .navbar__link:hover::after {
   transform: translateX(-50%) scaleX(1);
 }
+.theme-toggle-button{
+  background-color: #ddd;
+ border-radius: 100%;
+ margin-left:500px;
+ width: 30px;
+ height:30px;
 
+  
+}
+.theme-toggle-button:hover{
+  background-color:rgb(208, 94, 46);
+  border-radius: 100%;
+}
 /* Profile icon */
 .navbar__profile {
   position: relative;
