@@ -1,9 +1,15 @@
 /* Basic styling for the navbar */
+body{
+  margin: 0;
+  padding: 0;
+}
 .navbar {
-  position: static;
-  top: 0;
+  position: static; /* Fixes the navbar at the top */
+  top: 0; /* Aligns the navbar to the top of the viewport */
+  left: 0; /* Aligns the navbar to the left edge */
+  right: 0; /* Aligns the navbar to the right edge */
   z-index: 1000;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
@@ -11,8 +17,6 @@
   background: orange;
 }
 
-
- 
 
 
 /* Container styling */
@@ -166,7 +170,9 @@
 }
 .theme-toggle-button{
   margin-left: 500px;
-  border-radius: 100%;;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
 }
 /* Mobile toggle styling */
 .navbar__toggle {
