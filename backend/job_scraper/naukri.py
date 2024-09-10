@@ -162,4 +162,4 @@ def get_jobs(jobInput, location):
     return jsonify(capitalized_job_listings)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5000)

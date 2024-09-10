@@ -13,7 +13,7 @@ function TrainingRec() {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.get(`http://localhost:5000/api/resources/${topic}`);
+      const response = await axios.get(`http://localhost:7000/api/resources/${topic}`);
       setResources(response.data);
     } catch (err) {
       setError("Error fetching resources. Please try again.");
