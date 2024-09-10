@@ -111,7 +111,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 9;
 }
 
 .theme-toggle-button:hover {
@@ -161,6 +161,7 @@ body.dark-mode .theme-toggle-button:hover {
 .navbar__profile {
   position: relative;
   display: inline-block;
+  z-index: 10;
 }
 
 .navbar__profile-icon {
