@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./trainingRec.css";
+import { FaGoogle } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 
 function TrainingRec() {
   const [topic, setTopic] = useState("");
   const [resources, setResources] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -12,12 +15,20 @@ function TrainingRec() {
     event.preventDefault();
     setLoading(true);
     setError("");
+    
     try {
-      const response = await axios.get(`http://localhost:7000/api/resources/${topic}`);
-      setResources(response.data);
+      // Make two API calls: one for Google resources, one for YouTube playlists
+      const [resourceResponse, playlistResponse] = await Promise.all([
+        axios.get(`http://localhost:7000/api/resources/${topic}`),
+        axios.get(`http://localhost:5003/api/videos/${topic}`)
+      ]);
+      
+      setResources(resourceResponse.data);  // Set Google resources
+      setPlaylists(playlistResponse.data);  // Set YouTube playlists
     } catch (err) {
-      setError("Error fetching resources. Please try again.");
+      setError("Error fetching data. Please try again.");
     }
+    
     setLoading(false);
   };
 
@@ -41,15 +52,44 @@ function TrainingRec() {
       {error && <p className="error-message">{error}</p>}
 
       <div className="resource-cards">
-        {resources.length > 0 &&
-          resources.map((resource, index) => (
-            <div key={index} className="resource-card">
-              <h2 className="resource-card-title">{resource[0]}</h2>
-              <a href={resource[1]} target="_blank" rel="noopener noreferrer" className="resource-card-link">
-                View Resource
-              </a>
-            </div>
-          ))}
+        {resources.length > 0 && (
+          <div>
+            <h2><FaGoogle /> Resources</h2>
+            {resources.map((resource, index) => (
+              <div key={index} className="resource-card">
+                <h3 className="resource-card-title">{resource[0]}</h3>
+                <a
+                  href={resource[1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resource-card-link"
+                >
+                  View Resource
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {playlists.length > 0 && (
+          <div>
+            <h2><FaYoutube /> Playlists</h2>
+            {playlists.map((playlist, index) => (
+              <div key={index} className="resource-card">
+                <h3 className="resource-card-title">{playlist[1]}</h3>
+                <p>Channel: {playlist[2]}</p>
+                <a
+                  href={playlist[0]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resource-card-link"
+                >
+                  View Playlist
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
