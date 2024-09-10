@@ -76,6 +76,7 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 20px;
     width: 300px;
+    margin: 20px 0;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
