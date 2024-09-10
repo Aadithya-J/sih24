@@ -124,7 +124,13 @@ const UserProfile = () => {
 
       <div className="about-section">
         <h3>About</h3>
-        <p>{userData.about}</p>
+        //if userdata.about exists then show the about section
+        {userData,about && <p>{userData.about}</p>}
+        //else show the default about section
+        {!userData.about && <p>This is a sample user profile.</p>}
+        <div className="resume-section">
+        <button onClick={handleDownloadResume}>Download Resume</button>
+      </div>
       </div>
 
       <div className="edit-about-section">
@@ -132,11 +138,9 @@ const UserProfile = () => {
       </div>
 
       <div className="ats-score">
-        <h3>ATS Score: {userData.atsScore}</h3>
+      {userData.atsScore && <h3>ATS Score: {userData.atsScore}</h3>}
+      {!userData.atsScore && <h3>ATS Score: 0</h3>}
         <p>This is the current ATS score based on recent activities and performance.</p>
-      </div>
-      <div className="resume-section">
-        <button onClick={handleDownloadResume}>Download Resume</button>
       </div>
 
       <div className="active-days-section">
