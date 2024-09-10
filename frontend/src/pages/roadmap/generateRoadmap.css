@@ -1,11 +1,6 @@
 /* General Styling */
 body {
-  font-family: 'Lora', serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  min-height: 100vh;
-  color: #333;
+  background-color: #fff; /* General background color */
 }
 
 /* Roadmap Container */
@@ -14,8 +9,31 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #fff;
   min-height: 100vh;
+}
+
+/* Roadmap Content Styling */
+.roadmap-content {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+}
+
+/* Zoom Controls */
+.react-flow__controls {
+  color: black; /* Color of zoom control icons */
+}
+
+.react-flow__zoom-in, .react-flow__zoom-out {
+  fill: black; /* SVG icon color */
+}
+
+.react-flow__zoom-in-icon, .react-flow__zoom-out-icon {
+  color: black; /* Font-based icon color */
 }
 
 /* Header Styling */
@@ -80,16 +98,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Roadmap Content Styling */
-.roadmap-content {
-  width: 100%;
-  max-width: 1200px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 30px;
-}
-
 /* Roadmap Title Section */
 .roadmap-title-section {
   text-align: center;
@@ -123,6 +131,7 @@ body {
   opacity: 0;
   transform: translateY(10px);
   animation: fadeIn 0.5s forwards;
+  will-change: opacity, transform; /* Optimization for animation */
 }
 
 @keyframes fadeIn {
@@ -193,7 +202,6 @@ body {
 }
 
 /* Graph Node & Edge Styling */
-/* Graph Node Styling */
 .react-flow__node {
   font-family: 'Lora', serif;
   font-size: 16px;
@@ -204,6 +212,7 @@ body {
   color: #333;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: background-color, box-shadow, transform; /* Optimization for animation */
 }
 
 .react-flow__node:hover {
@@ -218,6 +227,7 @@ body {
   stroke: #007bff;
   transition: stroke 0.3s ease;
   stroke-dasharray: 5, 5;
+  will-change: stroke; /* Optimization for animation */
 }
 
 .react-flow__edge:hover {
