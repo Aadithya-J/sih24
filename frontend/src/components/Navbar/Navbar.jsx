@@ -132,7 +132,7 @@ function Navbar() {
                     </Link>
                     <p>{user?.email || "Unknown"}</p>
                     <Link to="/personalized-form">
-                      Complete Profile
+                      Update Profile
                     </Link>
                     <hr />
                     <button onClick={handleLogout} className="navbar__logout-button">
