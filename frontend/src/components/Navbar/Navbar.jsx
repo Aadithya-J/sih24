@@ -107,9 +107,9 @@ function Navbar() {
                       </p>
                     </Link>
                     <p>{user?.email || "Unknown"}</p>
-                    {!user?.displayName && (
-                      <Link to="/personalized-form">Complete Profile</Link>
-                    )}
+                      <Link to="/personalized-form">
+                        Complete Profile
+                      </Link>
                     <hr />
                     
                     <button onClick={logout} className="navbar__logout-button">
@@ -127,7 +127,7 @@ function Navbar() {
               className={`navbar__menu ${showMenu ? "show-menu" : ""}`}
               aria-expanded={showMenu}
             >
-              <ul className="lio">
+              <ul className="navbar__menu">
                 <li>
                   <Link to="/login" className="navbar__link">
                     Login

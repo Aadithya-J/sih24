@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2'; // For displaying the rating chart
 import 'chart.js/auto'; // Necessary for chart.js in React
 import './UserProfile.css';
+import axios from 'axios';
 
 const UserProfile = () => {
   // Sample data to simulate fetching from an API
@@ -47,6 +48,23 @@ const UserProfile = () => {
   const handleEditClick = () => {
     setIsEditing(true);
   };
+
+  const handleDownloadResume = async () => {
+    let uid = localStorage.getItem('uid');
+    try {
+        const response = await axios.get(`http://localhost:4000/get-resume-url/${uid}`);
+        const { downloadURL } = response.data;
+        console.log(downloadURL);
+        const link = document.createElement('a');
+        link.href = downloadURL;
+        link.setAttribute('download', 'resume.pdf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } catch (error) {
+        console.error('Error downloading resume:', error);
+    }
+};
 
   // Format data for chart.js (Line chart for rating)
   const chartData = {
@@ -130,6 +148,9 @@ const UserProfile = () => {
       <div className="ats-score">
         <h3>ATS Score: {userData.atsScore}</h3>
         <p>This is the current ATS score based on recent activities and performance.</p>
+      </div>
+      <div className="resume-section">
+        <button onClick={handleDownloadResume}>Download Resume</button>
       </div>
 
       <div className="active-days-section">

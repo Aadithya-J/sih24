@@ -9,19 +9,22 @@ function useLogin() {
   async function login(email, password) {
     setError(null);
     setIsPending(true);
+
     try {
-      const resp = await firebase.myAuth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+      const userCredential = await firebase.myAuth.signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      // Get the ID token
+      const idToken = await user.getIdToken();
 
       if (!isCancelled) {
         setIsPending(false);
         setError(null);
 
-        // Store the token and UID in localStorage
-        localStorage.setItem('token', resp.token);
-        localStorage.setItem('uid', resp.user.uid);
+        // Store the ID token and UID in localStorage
+        localStorage.setItem('token', idToken);
+        localStorage.setItem('uid', user.uid);
+
         window.location.replace("/");
       }
     } catch (error) {

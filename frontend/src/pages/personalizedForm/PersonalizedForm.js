@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import './PersonalizedForm.css'; // Import the CSS file for styling
-import { FaTimes } from 'react-icons/fa'; // Import the close icon from react-icons
+import { useNavigate } from 'react-router-dom';
+import './PersonalizedForm.css';
+import { FaTimes } from 'react-icons/fa';
 import Confetti from 'react-confetti';
 
 function PersonalizedForm() {
@@ -10,19 +10,12 @@ function PersonalizedForm() {
     email: '',
     phone: '',
     city: '',
-    school: '',
     college: '',
-    yearOfCollege: '',
-    role: '',
-    hobbies: '',
-    skills: '',
-    workExperience: '',
-    accomplishments: '',
   });
 
-  const [resume, setResume] = useState(null); // State for the uploaded resume
+  const [resume, setResume] = useState(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [submissionStatus, setSubmissionStatus] = useState(null); // State to manage submission status
+  const [submissionStatus, setSubmissionStatus] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -34,28 +27,53 @@ function PersonalizedForm() {
   };
 
   const handleFileChange = (e) => {
-    setResume(e.target.files[0]); // Set the selected file
+    setResume(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmissionStatus('success'); // Set status to success to trigger confetti
-    console.log('Form submitted:', formData);
-    console.log('Resume file:', resume);
-
-    // Add a delay before navigating to the home page to show confetti
-    setTimeout(() => {
-      navigate('/'); // Navigate to the home page after a delay
-    }, 5000); // 5 seconds delay
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach(key => {
+      formDataToSend.append(key, formData[key]);
+    });
+    formDataToSend.append('resume', resume);
+  
+    // Get UID from localStorage
+    const uid = localStorage.getItem('uid');
+    if (uid) {
+      formDataToSend.append('uid', uid);
+    }
+  
+    try {
+      const response = await fetch('http://localhost:4000/upload-resume', {
+        method: 'POST',
+        body: formDataToSend,
+        // Remove the 'Content-Type' header, let the browser set it automatically for FormData
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        setSubmissionStatus('success');
+        console.log('Form submitted:', formData);
+        console.log('Resume file uploaded successfully. Download URL:', data.downloadUrl);
+        setTimeout(() => {
+          navigate('/');
+        }, 5000);
+      } else {
+        throw new Error('Failed to upload resume');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+      console.error('Error uploading resume:', error);
+    }
   };
 
   const handleClose = () => {
-    setIsVisible(false); // Hide the form when the close button is clicked
-    navigate('/'); // Navigate back to the home page
+    setIsVisible(false);
+    navigate('/');
   };
 
-  if (!isVisible) return null; // Render nothing if form is not visible
+  if (!isVisible) return null;
 
   return (
     <div className="personalized-form">
@@ -66,54 +84,19 @@ function PersonalizedForm() {
         </button>
       </div>
       <form onSubmit={handleSubmit} className="form-content">
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-       
-        <div className="form-group">
-          <label htmlFor="phone">Phone:</label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="city">City:</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        
-        <div className="form-group">
-          <label htmlFor="college">College:</label>
-          <input
-            type="text"
-            id="college"
-            name="college"
-            value={formData.college}
-            onChange={handleChange}
-          />
-        </div>
-    
-    
-    
+        {['name', 'email', 'phone', 'city', 'college'].map((field) => (
+          <div className="form-group" key={field}>
+            <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+            <input
+              type={field === 'email' ? 'email' : 'text'}
+              id={field}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              required={field !== 'college'}
+            />
+          </div>
+        ))}
         <div className="form-group">
           <label htmlFor="resume">Upload Resume (PDF only):</label>
           <input
@@ -122,6 +105,7 @@ function PersonalizedForm() {
             name="resume"
             accept=".pdf"
             onChange={handleFileChange}
+            required
           />
         </div>
         <button type="submit" className="submit-button">Submit</button>
