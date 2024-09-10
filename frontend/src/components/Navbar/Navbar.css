@@ -4,19 +4,16 @@ body{
   padding: 0;
 }
 .navbar {
-  position: static; /* Fixes the navbar at the top */
-  top: 0; /* Aligns the navbar to the top of the viewport */
-  left: 0; /* Aligns the navbar to the left edge */
-  right: 0; /* Aligns the navbar to the right edge */
+  position: static;
+  top: 0;
   z-index: 1000;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
   backdrop-filter: blur(10px); /* Blurs the background */
   color: #fff; /* White text for contrast */
   transition: background-color 0.3s;
   background: orange;
 }
-
 
 
 /* Container styling */
@@ -48,7 +45,7 @@ body{
   bottom: 0;
   width: 100%;
   height: 3px;
-  background-color: orange;
+  background-color: #a24fc4;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -166,12 +163,7 @@ body{
 .navbar__logout-button:hover {
   background: #e64a19;
 }
-.theme-toggle-button{
-  margin-left: 500px;
-  border-radius: 100%;
-  width: 30px;
-  height: 30px;
-}
+
 /* Mobile toggle styling */
 .navbar__toggle {
   display: none;
