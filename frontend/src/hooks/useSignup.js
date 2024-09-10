@@ -1,28 +1,29 @@
 import { useState, useEffect } from "react";
-import firebase from "../firebase/config";
-import { useAuthContext } from "./useAuthContext";
+import axios from "axios"; // Assuming axios is used for making requests;
 
 function useSignup() {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const { dispatch } = useAuthContext();
 
   const signup = async (email, password) => {
     setError(null);
     setIsPending(true);
 
     try {
-      const resp = await firebase.myAuth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      const response = await axios.post('http://localhost:4000/signup', { email, password });
 
-      if (!resp) {
+      if (!response.data) {
         throw new Error("Could not complete process");
       }
 
-      dispatch({ type: "LOGIN", payload: resp.user });
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      // Redirect to home page
+      window.location.replace("/");
+      
+      // Store the UID in localStorage after signup
+      localStorage.setItem('uid', response.data.uid);
 
       if (!isCancelled) {
         setIsPending(false);

@@ -6,29 +6,30 @@ import './resumeAnalyser.css';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
-const parseRecommendations = (recommendationsText) => {
-  return recommendationsText.split('\n')
-    .filter(item => item.trim())
-    .map(item => {
-      const match = item.match(/^(.*?)\*\*(.*?)\*\*(.*)$/);
-      if (match) {
-        return {
-          title: match[2].trim(),
-          content: match[3].replace(/^:\s*/, '').trim()
-        };
-      }
-      return { title: '', content: item.trim() };
-    });
+// Function to parse recommendations
+const parseRecommendations = (recommendationsList) => {
+  return recommendationsList.map((item, index) => ({
+    title: `Recommendation ${index + 1}`,
+    content: item,
+  }));
 };
 
-const ResumeEvaluation = ({ score, recommendations }) => {
+// Resume Evaluation component to display all the data
+const ResumeEvaluation = ({
+  score,
+  recommendations,
+  profileSummary,
+  jdMatch,
+  detailedExplanation,
+  missingKeywords,
+}) => {
   const labels = [
-    'Relevance to Job Role',
-    'Clarity and Formatting',
-    'Work Experience and Projects',
-    'Technical and Soft Skills',
-    'Education and Certifications',
-    'Achievements and Impact',
+    'Technical skills',
+    'Experience',
+    'Achievements',
+    'Education',
+    'Soft skills',
+    'Projects',
   ];
 
   const data = {
@@ -43,7 +44,7 @@ const ResumeEvaluation = ({ score, recommendations }) => {
         pointBackgroundColor: 'rgba(34, 202, 236, 1)',
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(34, 202, 236, 1)'
+        pointHoverBorderColor: 'rgba(34, 202, 236, 1)',
       },
     ],
   };
@@ -57,39 +58,71 @@ const ResumeEvaluation = ({ score, recommendations }) => {
           stepSize: 1,
         },
         angleLines: {
-          color: 'rgba(0, 0, 0, 0.1)'
+          color: 'rgba(0, 0, 0, 0.1)',
         },
         grid: {
-          color: 'rgba(0, 0, 0, 0.1)'
+          color: 'rgba(0, 0, 0, 0.1)',
         },
         pointLabels: {
           font: {
             size: 12,
-            weight: 'bold'
-          }
-        }
+            weight: 'bold',
+          },
+        },
       },
     },
     plugins: {
       legend: {
-        display: false
-      }
+        display: false,
+      },
     },
     responsive: true,
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
   };
+
   return (
     <div className="container">
       <h2>Resume Evaluation</h2>
+      <div className="jd-match">
+        <h3>Job Description Match: {jdMatch}</h3>
+      </div>
+      <div className="profile-summary">
+        <h3>Profile Summary:</h3>
+        <ul>
+          {profileSummary.map((summary, index) => (
+            <li key={index}>{summary}</li>
+          ))}
+        </ul>
+      </div>
       <div className="radar-container">
         <Radar data={data} options={options} />
       </div>
+      <div className="detailed-explanation">
+        <h3>Detailed Explanation:</h3>
+        <ul>
+          {Object.entries(detailedExplanation).map(([key, value], index) => (
+            <li key={index}>
+              <strong>{key}:</strong> {value}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {missingKeywords && missingKeywords.length > 0 && (
+        <div className="missing-keywords">
+          <h3>Missing Keywords:</h3>
+          <ul>
+            {missingKeywords.map((keyword, index) => (
+              <li key={index}>{keyword}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       <div className="recommendations-container">
         <h3>Recommendations:</h3>
         <ul className="recommendations-list">
-          {parseRecommendations(recommendations).map((recommendation, index) => (
+          {recommendations.map((recommendation, index) => (
             <li key={index}>
-              <strong>{recommendation.title}</strong> {recommendation.content}
+              <strong>{recommendation.title}:</strong> {recommendation.content}
             </li>
           ))}
         </ul>
@@ -98,9 +131,14 @@ const ResumeEvaluation = ({ score, recommendations }) => {
   );
 };
 
+// Main ResumeAnalyser component
 const ResumeAnalyser = () => {
   const [resumeScore, setResumeScore] = useState(null);
-  const [recommendations, setRecommendations] = useState('');
+  const [recommendations, setRecommendations] = useState([]);
+  const [profileSummary, setProfileSummary] = useState([]);
+  const [jdMatch, setJdMatch] = useState('');
+  const [detailedExplanation, setDetailedExplanation] = useState({});
+  const [missingKeywords, setMissingKeywords] = useState([]);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
   const [jobRole, setJobRole] = useState('');
@@ -126,22 +164,43 @@ const ResumeAnalyser = () => {
     setLoading(true);
 
     const formData = new FormData();
-    formData.append('resume', file);
-    formData.append('jobRole', jobRole);
+    formData.append('resume', file); // Flask expects 'resume' as a file input
+    formData.append('job_description', jobRole); // Flask expects 'job_description'
 
     try {
-      const response = await axios.post('http://localhost:4000/analyse-resume', formData, {
+      const response = await axios.post('http://localhost:5001/evaluate_resume', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(response.data);
 
-      setResumeScore(response.data.score);
-      setRecommendations(response.data.recommendations);
+      const data = response.data;
+      console.log(data);
+
+      // Extract score values from the JSON response
+      const scores = data.Scores || {};
+      const scoreArray = [
+        scores['Technical skills'] || 0,
+        scores['Experience'] || 0,
+        scores['Achievements'] || 0,
+        scores['Education'] || 0,
+        scores['Soft skills'] || 0,
+        scores['Projects'] || 0,
+      ];
+
+      setResumeScore(scoreArray);
+      setRecommendations(parseRecommendations(data.Recommendations || []));
+      setProfileSummary(data['Profile Summary'] || []);
+      setJdMatch(data['JD Match'] || '');
+      setDetailedExplanation(data['Detailed Explanation'] || {});
+      setMissingKeywords(data['Missing Keywords'] || []);
+
     } catch (error) {
       console.error('Error analyzing resume:', error.response ? error.response.data : error.message);
-      alert('An error occurred while analyzing the resume: ' + (error.response ? error.response.data.error : error.message));
+      alert(
+        'An error occurred while analyzing the resume: ' +
+          (error.response ? error.response.data.error : error.message)
+      );
     } finally {
       setLoading(false);
     }
@@ -169,10 +228,17 @@ const ResumeAnalyser = () => {
         </button>
       </form>
       {resumeScore && (
-        <ResumeEvaluation score={resumeScore} recommendations={recommendations} />
+        <ResumeEvaluation
+          score={resumeScore}
+          recommendations={recommendations}
+          profileSummary={profileSummary}
+          jdMatch={jdMatch}
+          detailedExplanation={detailedExplanation}
+          missingKeywords={missingKeywords}
+        />
       )}
     </div>
   );
-}
+};
 
 export default ResumeAnalyser;
