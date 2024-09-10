@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
-import { useAuthContext } from "../../hooks/useAuthContext";
 import { IoMenu } from "react-icons/io5";
 import { FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
   const { logout } = useLogout();
-  const { user } = useAuthContext();
+  const [user, setUser] = useState(null); // State to store user information
   const [showMenu, setShowMenu] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -23,17 +22,21 @@ function Navbar() {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (profileRef.current && !profileRef.current.contains(event.target)) {
-        setShowProfileDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
+    // Simulating user authentication with tokens
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Fetch user information using the token (example)
+      // Replace this with your actual token verification logic
+      setUser({ displayName: "John Doe", email: "johndoe@example.com" });
+    }
+  }, []);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [profileRef]);
+  const handleLogout = () => {
+    // Clear user information and token on logout
+    setUser(null);
+    localStorage.removeItem("token");
+    window.location.href = "/"; // Redirect to the home page after logout
+  };
 
   return (
     <nav className="navbar">
@@ -83,20 +86,20 @@ function Navbar() {
               {showProfileDropdown && (
                 <div className="navbar__dropdown">
                   <div className="navbar__dropdown-content">
-                  <Link to="/profile" className="navbar__link">
-                    <p>
-                      <strong>
-                        <FaUserCircle />
-                      </strong>{" "}
-                      {user?.displayName || "Unknown"}
-                    </p>
+                    <Link to="/profile" className="navbar__link">
+                      <p>
+                        <strong>
+                          <FaUserCircle />
+                        </strong>{" "}
+                        {user.displayName || "Unknown"}
+                      </p>
                     </Link>
-                    <p> {user?.email || "Unknown"}</p>
-                    {!user?.displayName && (
+                    <p> {user.email || "Unknown"}</p>
+                    {!user.displayName && (
                       <Link to="/personalized-form">Complete Profile</Link>
                     )}
                     <hr />
-                    <button onClick={logout} className="navbar__logout-button">
+                    <button onClick={handleLogout} className="navbar__logout-button">
                       Logout
                     </button>
                   </div>
