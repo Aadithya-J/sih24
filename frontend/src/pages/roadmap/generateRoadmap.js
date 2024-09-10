@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { 
   ReactFlow, 
   Background, 
-  Controls, 
   useNodesState, 
   useEdgesState,
   MarkerType,
@@ -202,7 +201,6 @@ function RoadmapContent() {
           zoomOnScroll={false}
         >
           <Background color="#bdc3c7" gap={16} size={1} />
-          <Controls style={{ position: 'absolute', top: 10, right: 10, zIndex: 5 }} /> 
         </ReactFlow>
       </div>
     </div>
