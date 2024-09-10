@@ -58,4 +58,5 @@ def playlist_search(skill):
     return jsonify(final)
 
 if __name__ == "__main__":
-    app.rum(port = 'port daal de tash')
+    app.run(port = 'port daal de tash')
+    
