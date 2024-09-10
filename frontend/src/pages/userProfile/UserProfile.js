@@ -18,13 +18,15 @@ const UserProfile = () => {
           { uid }
         );
         const data = response.data;
-
+        console.log("User data:", data);
         // Set default values for missing fields
         setUserData({
           name: data.name || "John Doe",
           profileLogo: data.profileLogo || "https://via.placeholder.com/100",
-          about: data.about || "This is a sample user profile.",
-          activeDays: data.activeDays || [1, 1, 1, 1, 0, 1, 1],
+          email : data.email || "",
+          city: data.city || "City",
+          college: data.college || "College",
+          activeDays: data.activeDays || [1, 1, 0, 1, 0, 1, 1],
           ratingHistory: data.ratingHistory || [10,20,30,40,50],
           atsScore: data.atsScore || 80,
         });
@@ -136,7 +138,9 @@ const UserProfile = () => {
 
       <div className="about-section">
         <h3>About</h3>
-        <p>{userData.about}</p>
+        <p>Email: {userData.email}</p>
+        <p>City: {userData.city}</p>
+        <p>College: {userData.college}</p>
       </div>
       <div className="resume-section">
         <button onClick={handleDownloadResume}>Download Resume</button>
