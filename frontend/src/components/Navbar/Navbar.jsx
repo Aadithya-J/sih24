@@ -83,12 +83,14 @@ function Navbar() {
               {showProfileDropdown && (
                 <div className="navbar__dropdown">
                   <div className="navbar__dropdown-content">
+                  <Link to="/profile" className="navbar__link">
                     <p>
                       <strong>
                         <FaUserCircle />
                       </strong>{" "}
                       {user?.displayName || "Unknown"}
                     </p>
+                    </Link>
                     <p> {user?.email || "Unknown"}</p>
                     {!user?.displayName && (
                       <Link to="/personalized-form">Complete Profile</Link>

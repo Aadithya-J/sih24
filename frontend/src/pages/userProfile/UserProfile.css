@@ -1,0 +1,111 @@
+/* General styling for the profile container */
+.user-profile {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333; /* Dark text color for contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 900px; /* Max width for larger screens */
+  margin: auto; /* Centering the container */
+  overflow: hidden; /* Ensures contents don’t overflow */
+}
+h3{
+  color: #000;
+}
+/* Styling for profile header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Circular logo */
+  margin-right: 20px;
+}
+
+/* Styling for About section */
+.about-section {
+  margin-bottom: 20px;
+}
+
+.about-section h3 {
+  color: black; /* Grey heading for About section */
+}
+
+.about-section p {
+  color: #333; /* Dark text color for About section */
+}
+
+/* Styling for ATS score section */
+.ats-score {
+
+  margin-bottom: 20px;
+}
+
+.ats-score h3 {
+
+  color: black; /* Grey heading for ATS score */
+}
+
+/* Styling for active days section */
+.active-days-section {
+  margin-bottom: 20px;
+}
+
+.active-days h3 {
+  color: #808080; /* Grey heading for active days */
+}
+
+.active-days {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 200px;
+  gap: 4px; /* Space between active days */
+}
+
+.active-day {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px; /* Rounded corners for active days */
+  display: inline-block;
+}
+
+/* Dynamic colors based on activity */
+.active-day.active {
+  background-color: #4caf50; /* Green for active days */
+}
+
+.active-day.inactive {
+  background-color: #ddd; /* Light gray for inactive days */
+}
+
+/* Styling for chart section */
+.chart-section {
+  margin-top: 20px;
+}
+
+.chart-section h3 {
+  color: black; /* Grey heading for chart */
+}
+
+.chart-container {
+  max-width: 100%; /* Ensures chart container does not exceed the profile container width */
+  overflow: hidden; /* Prevents overflow */
+}
+p{
+  color: #333;
+}
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .active-days {
+    max-width: 100px; /* Adjust for smaller screens */
+  }
+
+  .chart-container {
+    max-width: 100%; /* Ensures chart fits within smaller screens */
+  }
+}
