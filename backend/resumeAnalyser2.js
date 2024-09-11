@@ -105,6 +105,7 @@ Ensure that the response is in the exact JSON format without any additional text
 }
 
 router.post('/', upload.single('resume'), async (req, res) => {
+    console.log("Uploading resume...");
     try {
         const file = req.file;
         const jobDescription = req.body.jobDescription;
@@ -139,47 +140,47 @@ router.post('/', upload.single('resume'), async (req, res) => {
     }
 });
 
-// Add a route for comparing two resumes
-router.post('/compare', upload.fields([{ name: 'resume1', maxCount: 1 }, { name: 'resume2', maxCount: 1 }]), async (req, res) => {
-    try {
-        const files = req.files;
-        const jobDescription = req.body.jobDescription;
+// // Add a route for comparing two resumes
+// router.post('/compare', upload.fields([{ name: 'resume1', maxCount: 1 }, { name: 'resume2', maxCount: 1 }]), async (req, res) => {
+//     try {
+//         const files = req.files;
+//         const jobDescription = req.body.jobDescription;
 
-        if (!files.resume1 || !files.resume2) {
-            return res.status(400).json({ error: 'Two resume files are required' });
-        }
+//         if (!files.resume1 || !files.resume2) {
+//             return res.status(400).json({ error: 'Two resume files are required' });
+//         }
 
-        if (!jobDescription) {
-            return res.status(400).json({ error: 'Job description is required' });
-        }
+//         if (!jobDescription) {
+//             return res.status(400).json({ error: 'Job description is required' });
+//         }
 
-        console.log('Files received:', files);
-        console.log('Job description:', jobDescription);
+//         console.log('Files received:', files);
+//         console.log('Job description:', jobDescription);
 
-        const analysisResult1 = await analyzeResume(files.resume1[0], jobDescription);
-        const analysisResult2 = await analyzeResume(files.resume2[0], jobDescription);
+//         const analysisResult1 = await analyzeResume(files.resume1[0], jobDescription);
+//         const analysisResult2 = await analyzeResume(files.resume2[0], jobDescription);
 
-        const comparisonResult = {
-            resume1: analysisResult1,
-            resume2: analysisResult2
-        };
+//         const comparisonResult = {
+//             resume1: analysisResult1,
+//             resume2: analysisResult2
+//         };
 
-        // Delete the uploaded files
-        [files.resume1[0], files.resume2[0]].forEach(file => {
-            fs.unlink(file.path, (err) => {
-                if (err) {
-                    console.error('Error deleting file:', err);
-                } else {
-                    console.log('File deleted successfully');
-                }
-            });
-        });
+//         // Delete the uploaded files
+//         [files.resume1[0], files.resume2[0]].forEach(file => {
+//             fs.unlink(file.path, (err) => {
+//                 if (err) {
+//                     console.error('Error deleting file:', err);
+//                 } else {
+//                     console.log('File deleted successfully');
+//                 }
+//             });
+//         });
 
-        res.json(comparisonResult);
-    } catch (error) {
-        console.error('Error comparing resumes:', error);
-        res.status(500).json({ error: 'An error occurred while comparing the resumes: ' + error.message });
-    }
-});
+//         res.json(comparisonResult);
+//     } catch (error) {
+//         console.error('Error comparing resumes:', error);
+//         res.status(500).json({ error: 'An error occurred while comparing the resumes: ' + error.message });
+//     }
+// });
 
 module.exports = router;
