@@ -4,15 +4,19 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import time
-
+import platform
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Define the path to the ChromeDriver
-chrome_driver_path = "chromedriver.exe"  # Update this with the actual path
+chrome_driver_path = ""  # Update this with the actual path
+if(platform.system() == 'Windows'):
+    chrome_driver_path = Service('chromedriver.exe')
+else:
+    chrome_driver_path = Service('chromedriver')
 
 def scrape_yt(skill):
     chrome_options = Options()
@@ -26,7 +30,7 @@ def scrape_yt(skill):
     service = Service(chrome_driver_path)
 
     # Initialize WebDriver
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
 
     skill = skill.replace(' ', '+')
     url = f'https://www.youtube.com/results?search_query={skill}&sp=EgIQAw%253D%253D'
@@ -58,8 +62,10 @@ def scrape_yt(skill):
     
     return total_playlists
 
-@app.route('/api/videos/<skill>', methods=["GET"])
+@app.route('/api/videos/<skill>', methods=["GET",'OPTIONS'])
 def playlist_search(skill):
+    if request.method == 'OPTIONS':
+        return '',200
     final = scrape_yt(skill)
     
     if not final:

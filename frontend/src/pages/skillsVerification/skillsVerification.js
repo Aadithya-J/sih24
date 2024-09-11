@@ -46,7 +46,6 @@ function SkillsVerification() {
         {courses.length > 0 && courses.map((course, index) => (
           <div key={index} className="skills-card">
             <h2 className="skills-card-title">{course[0]}</h2>
-            <p>Powere</p>
             <a href={course[1]} className="skills-card-button continue-learning" target="_blank" rel="noopener noreferrer">
               Continue Learning
             </a>
