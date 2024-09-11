@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -17,6 +17,7 @@ import VirtualEvents from "./pages/virtualEvents/VirtualEvents";
 import SkillsVerification from "./pages/skillsVerification/skillsVerification.js";
 import ResumeComparator from "./pages/resumeComparator/resumeComparator.js";
 import UserProfile from "./pages/userProfile/UserProfile";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen.js";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   );
   const [userHasData, setUserHasData] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -55,7 +57,6 @@ function App() {
         const data = response.data;
         console.log("User data:", data);
         
-        // Check if essential data is present
         setUserHasData(data.name && data.email && data.city && data.college);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -71,8 +72,12 @@ function App() {
     }
   }, [userIsSignedIn, location.pathname]);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const handleLoadingComplete = () => {
+    setShowLoadingScreen(false);
+  };
+
+  if (showLoadingScreen) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
   }
 
   const renderRoutes = () => {

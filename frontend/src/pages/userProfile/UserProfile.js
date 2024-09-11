@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import "./UserProfile.css";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import axios from "axios";
 
 const UserProfile = () => {
@@ -118,7 +119,7 @@ const UserProfile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingScreen/>
   }
 
   if (error) {
