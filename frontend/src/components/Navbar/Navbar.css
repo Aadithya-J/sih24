@@ -1,41 +1,40 @@
-/* Basic styling for the navbar */
-body{
+/* Reset and base styles */
+body {
   margin: 0;
   padding: 0;
 }
+
+/* Navbar styles */
 .navbar {
   position: static;
   top: 0;
   z-index: 1000;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  backdrop-filter: blur(10px); /* Blurs the background */
-  color: #fff; /* White text for contrast */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  color: #fff;
   transition: background-color 0.3s;
   background: orange;
 }
 
-
-/* Container styling */
 .navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Logo styling */
 .navbar__logo {
   font-size: 1.75rem;
   font-weight: bold;
   text-decoration: none;
-  color: inherit; /* Inherit color from parent */
+  color: inherit;
   position: relative;
   overflow: hidden;
   transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .navbar__logo:hover {
-  color: wheat; /* Purple color on hover */
+  color: wheat;
 }
 
 .navbar__logo::after {
@@ -54,7 +53,6 @@ body{
   transform: translateX(0);
 }
 
-/* Menu styles */
 .navbar__menu {
   display: flex;
   gap: 2rem;
@@ -71,49 +69,103 @@ body{
 .navbar__link {
   text-decoration: none;
   color: inherit;
+  padding-left: 20px;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
   position: relative;
   overflow: hidden;
   transition: color 0.3s;
+  border-radius: 4px;
 }
 
-.navbar__link::after {
+.navbar__link::before {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #fff;
-  bottom: 0;
   left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  transition: transform 0.3s ease;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #a24fc4;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
-.navbar__link:hover::after {
-  transform: translateX(-50%) scaleX(1);
+.navbar__link:hover::before {
+  left: 0;
+  width: 100%;
 }
-.theme-toggle-button{
-  background-color: #ddd;
- border-radius: 100%;
- margin-left:500px;
- width: 30px;
- height:30px;
 
-  
+/* Theme Toggle Button Styles */
+.theme-toggle-button {
+  top: 50px;
+  right: 10px;
+  width: 50px;
+  margin-left: 100px;
+  margin-right: -120px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--bg-color, #1c1c1c);
+  color: var(--text-color, #e0e0e0);
+  border: 2px solid var(--accent-color, #ffa116);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9;
 }
-.theme-toggle-button:hover{
-  background-color:rgb(208, 94, 46);
-  border-radius: 100%;
+
+.theme-toggle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-/* Profile icon */
+
+.theme-toggle-button svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+/* Light mode specific styles */
+body.light-mode .theme-toggle-button {
+  background-color: #ffffff;
+  color: #1c1c1c;
+  border-color: #ffa116;
+}
+
+body.light-mode .theme-toggle-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dark mode specific styles */
+body.dark-mode .theme-toggle-button {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  border-color: #ffa116;
+}
+
+body.dark-mode .theme-toggle-button:hover {
+  background-color: #2c2c2c;
+}
+
+/* Animation for icon switch */
+@keyframes iconRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.theme-toggle-button svg {
+  animation: iconRotate 0.5s ease;
+}
+
+/* Profile icon and dropdown */
 .navbar__profile {
   position: relative;
   display: inline-block;
+  z-index: 10;
 }
 
 .navbar__profile-icon {
-  font-size: 2rem;
+  font-size: 3rem;
   color: inherit;
   cursor: pointer;
   transition: color 0.3s;
@@ -123,7 +175,6 @@ body{
   color: #ff5722;
 }
 
-/* Profile dropdown */
 .navbar__dropdown {
   position: absolute;
   top: 100%;
@@ -181,6 +232,7 @@ body{
   display: none;
 }
 
+/* Responsive styles */
 @media (max-width: 1150px) {
   .navbar__toggle {
     display: block;
@@ -195,8 +247,7 @@ body{
   }
 }
 
-/* Responsive styles */
-@media (min-width: 1150px) {
+@media (min-width: 1151px) {
   .navbar__toggle {
     display: none;
   }
@@ -213,30 +264,18 @@ body{
   .navbar__list {
     flex-direction: row;
   }
+}
 
-  .navbar__link {
-    padding: 0.5rem 1rem;
+@media (max-width: 768px) {
+  .theme-toggle-button {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
   }
-}
 
-/* Additional styles */
-.navbar__link {
-  padding: 0.75rem 1.25rem;
-  border-radius: 4px;
-}
-
-.navbar__link::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: #a24fc4;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.navbar__link:hover::before {
-  left: 0;
-  width: 100%;
+  .theme-toggle-button svg {
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -6,15 +6,13 @@ const admin = require("firebase-admin");
 const multer = require("multer");
 const path = require("path");
 
-
-
 app.use(cors());
 app.use(express.json());
 
 var serviceAccount = require("./firebase-config.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://yatharth-24.appspot.com"
+  storageBucket: "gs://yatharth-24.appspot.com",
 });
 
 const db = admin.firestore();
@@ -106,12 +104,10 @@ app.post("/upload-resume", upload.single("resume"), async (req, res) => {
         { merge: true }
       );
 
-      res
-        .status(200)
-        .send({
-          message: "File uploaded successfully",
-          downloadUrl: publicUrl,
-        });
+      res.status(200).send({
+        message: "File uploaded successfully",
+        downloadUrl: publicUrl,
+      });
     });
 
     blobStream.end(file.buffer);
@@ -157,6 +153,15 @@ app.post("/signup", async (req, res) => {
       .status(500)
       .json({ error: "An error occurred while creating the user" });
   }
+});
+
+app.post("/get-user-data", async (req, res) => {
+  const uid = req.body.uid;
+  const user = await db.collection("users").doc(uid).get();
+  if (!user.exists) {
+    return res.status(404).json({ error: "User not found" });
+  }
+  res.status(200).json(user.data());
 });
 
 app.listen(port, () => {
