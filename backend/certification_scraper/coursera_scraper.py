@@ -11,7 +11,7 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-def scrape_coursera(query)
+def scrape_coursera(query):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -45,10 +45,11 @@ def scrape_coursera(query)
             print(f"Error extracting course details: {e}")
 
     driver.quit()
+
     
     return total_courses
 
-@app.route('/api/videos/<course>', methods = ["GET"])
+@app.route('/api/courses/<course>', methods = ["GET"])
 def course_search(course):
     final = scrape_coursera(course)
     
@@ -58,4 +59,4 @@ def course_search(course):
     return jsonify(final)
 
 if __name__ == "__main__":
-    app.run(port = 'port daal dena tash')
+    app.run(port=5006)
