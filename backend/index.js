@@ -62,6 +62,7 @@ app.post("/api/jobs", async (req, res) => {
 });
 
 app.post("/upload-resume", upload.single("resume"), async (req, res) => {
+  console.log("Uploading resume...");
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }

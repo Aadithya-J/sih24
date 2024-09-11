@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 import Home from "./pages/home/Home.js";
 import Login from "./pages/login/Login.js";
@@ -24,6 +25,9 @@ function App() {
   );
   const [userData, setUserData] = useState({});
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+
   useEffect(() => {
     const handleTokenChange = () => {
       setUserIsSignedIn(!!localStorage.getItem("token"));
@@ -38,7 +42,13 @@ function App() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const uid = localStorage.getItem("uid"); // Get UID from localStorage
+      const uid = localStorage.getItem("uid");
+      if (!uid) {
+        setError("No user ID found");
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.post(
           "http://localhost:4000/get-user-data",
@@ -46,7 +56,15 @@ function App() {
         );
         const data = response.data;
         console.log("User data:", data);
-        // Set default values for missing fields
+        
+        // Check if essential data is present
+        if (!data.name || !data.email || !data.city || !data.college) {
+          setError("Incomplete user data");
+        } else {
+          setError(null);
+        }
+
+        // Set user data with default values for missing fields
         setUserData({
           name: data.name || "John Doe",
           profileLogo: data.profileLogo || "https://via.placeholder.com/100",
@@ -58,21 +76,27 @@ function App() {
           atsScore: data.atsScore || 80,
         });
       } catch (error) {
-        setError("Error fetching user data.");
+        setError("Error fetching user data");
         console.error("Error fetching user data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUserData();
-  }, []);
+    if (userIsSignedIn) {
+      fetchUserData();
+    } else {
+      setLoading(false);
+    }
+  }, [userIsSignedIn, location.pathname]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
-      {/* Starry Background */}
       <StarsCanvas />
-
       <div className="app-content">
         <>
           <Navbar />
@@ -156,8 +180,20 @@ function App() {
                 )
               }
             />
-            <Route path="/personalized-form" element={<PersonalizedForm />} />
-            <Route path="/virtual-events" element={
+            <Route path="/personalized-form" element={
+                userIsSignedIn ? (
+                  error != null ? (
+                    <PersonalizedForm />
+                  ) : (
+                    <Navigate to="/" />
+                  )
+                ) : (
+                  <Navigate to="/login" />
+                )
+              } />
+            <Route
+              path="/virtual-events"
+              element={
                 userIsSignedIn ? (
                   error == null ? (
                     <VirtualEvents />
@@ -167,7 +203,8 @@ function App() {
                 ) : (
                   <Navigate to="/login" />
                 )
-              } />
+              }
+            />
             <Route
               path="/jobsfinder"
               element={
@@ -182,7 +219,6 @@ function App() {
                 )
               }
             />
-
             <Route
               path="/training"
               element={
@@ -197,7 +233,6 @@ function App() {
                 )
               }
             />
-
             <Route
               path="/skills"
               element={
