@@ -3,7 +3,7 @@
   background: var(--gradient-start);
   padding: 20px;
   border-radius: 5px;
-  color: var(--text-color);
+  color: black;
 }
 
 .knowledge-item {
@@ -13,8 +13,10 @@
 .knowledge-item h3 {
   margin: 0;
   font-size: 1.5em;
+  color: black;
 }
 
 .knowledge-item p {
   margin-top: 5px;
 }
+

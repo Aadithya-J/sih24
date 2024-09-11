@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 import Home from "./pages/home/Home.js";
 import Login from "./pages/login/Login.js";
@@ -23,6 +24,10 @@ function App() {
   const [userIsSignedIn, setUserIsSignedIn] = useState(
     !!localStorage.getItem("token")
   );
+  const [userData, setUserData] = useState({});
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const handleTokenChange = () => {
@@ -36,11 +41,63 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const uid = localStorage.getItem("uid");
+      if (!uid) {
+        setError("No user ID found");
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await axios.post(
+          "http://localhost:4000/get-user-data",
+          { uid }
+        );
+        const data = response.data;
+        console.log("User data:", data);
+        
+        // Check if essential data is present
+        if (!data.name || !data.email || !data.city || !data.college) {
+          setError("Incomplete user data");
+        } else {
+          setError(null);
+        }
+
+        // Set user data with default values for missing fields
+        setUserData({
+          name: data.name || "John Doe",
+          profileLogo: data.profileLogo || "https://via.placeholder.com/100",
+          email: data.email || "",
+          city: data.city || "City",
+          college: data.college || "College",
+          activeDays: data.activeDays || [1, 1, 0, 1, 0, 1, 1],
+          ratingHistory: data.ratingHistory || [10, 20, 30, 40, 50],
+          atsScore: data.atsScore || 80,
+        });
+      } catch (error) {
+        setError("Error fetching user data");
+        console.error("Error fetching user data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (userIsSignedIn) {
+      fetchUserData();
+    } else {
+      setLoading(false);
+    }
+  }, [userIsSignedIn, location.pathname]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
-      {/* Starry Background */}
       <StarsCanvas />
-
       <div className="app-content">
         <>
           <Navbar />

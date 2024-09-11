@@ -43,4 +43,5 @@ body {
 
 .community-support p {
   color: gray; /* Light gray text for paragraphs */
+  font-size: 20px;
 }
