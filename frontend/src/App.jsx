@@ -18,6 +18,7 @@ import VirtualEvents from "./pages/virtualEvents/VirtualEvents";
 import SkillsVerification from "./pages/skillsVerification/skillsVerification.js";
 import ResumeComparator from "./pages/resumeComparator/resumeComparator.js";
 import UserProfile from "./pages/userProfile/UserProfile";
+import JobMarketInsights from "./pages/jobMarketInsights/jobMarketInsights.js";
 import LoadingScreen from "./components/LoadingScreen/LoadingScreen.js";
 import "./App.css";
 
@@ -122,6 +123,64 @@ function App() {
       <div className="app-content">
         <>
           <Navbar />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={userIsSignedIn ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/login"
+              element={!userIsSignedIn ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/signup"
+              element={!userIsSignedIn ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/resume-analyser" element={<ResumeAnalyser />} />
+            <Route path="/resume-comparator" element={<ResumeComparator />} />
+            <Route path="/community-support" element={<CommunitySupport />} />
+            <Route path="/personalized-form" element={<PersonalizedForm />} />
+            <Route path="/virtual-events" element={<VirtualEvents />} />
+            <Route
+              path="/jobsfinder"
+              element={
+                userIsSignedIn ? <JobsFinder /> : <Navigate to="/login" />
+              }
+            />
+
+            <Route
+              path="/training"
+              element={
+                userIsSignedIn ? <TrainingRec /> : <Navigate to="/login" />
+              }
+            />
+
+            <Route
+              path="/skills"
+              element={
+                userIsSignedIn ? (
+                  <SkillsVerification />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                userIsSignedIn ? <UserProfile /> : <Navigate to="/login" />
+              }
+            />
+
+            <Route 
+              path="/insights"
+              element={
+                userIsSignedIn ? <JobMarketInsights /> : <Navigate to="/login" />
+              }
+            />
+          </Routes>
           {renderRoutes()}
         </>
       </div>
