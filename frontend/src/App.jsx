@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -18,15 +18,16 @@ import SkillsVerification from "./pages/skillsVerification/skillsVerification.js
 import ResumeComparator from "./pages/resumeComparator/resumeComparator.js";
 import UserProfile from "./pages/userProfile/UserProfile";
 import JobMarketInsights from "./pages/jobMarketInsights/jobMarketInsights.js";
+import LoadingScreen from "./components/LoadingScreen/LoadingScreen.js";
 import "./App.css";
 
 function App() {
   const [userIsSignedIn, setUserIsSignedIn] = useState(
     !!localStorage.getItem("token")
   );
-  const [userData, setUserData] = useState({});
-  const [error, setError] = useState(null);
+  const [userHasData, setUserHasData] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -45,7 +46,6 @@ function App() {
     const fetchUserData = async () => {
       const uid = localStorage.getItem("uid");
       if (!uid) {
-        setError("No user ID found");
         setLoading(false);
         return;
       }
@@ -58,26 +58,8 @@ function App() {
         const data = response.data;
         console.log("User data:", data);
         
-        // Check if essential data is present
-        if (!data.name || !data.email || !data.city || !data.college) {
-          setError("Incomplete user data");
-        } else {
-          setError(null);
-        }
-
-        // Set user data with default values for missing fields
-        setUserData({
-          name: data.name || "John Doe",
-          profileLogo: data.profileLogo || "https://via.placeholder.com/100",
-          email: data.email || "",
-          city: data.city || "City",
-          college: data.college || "College",
-          activeDays: data.activeDays || [1, 1, 0, 1, 0, 1, 1],
-          ratingHistory: data.ratingHistory || [10, 20, 30, 40, 50],
-          atsScore: data.atsScore || 80,
-        });
+        setUserHasData(data.name && data.email && data.city && data.college);
       } catch (error) {
-        setError("Error fetching user data");
         console.error("Error fetching user data:", error);
       } finally {
         setLoading(false);
@@ -91,9 +73,48 @@ function App() {
     }
   }, [userIsSignedIn, location.pathname]);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const handleLoadingComplete = () => {
+    setShowLoadingScreen(false);
+  };
+
+  if (showLoadingScreen) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
   }
+
+  const renderRoutes = () => {
+    if (!userIsSignedIn) {
+      return (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      );
+    } else if (!userHasData) {
+      return (
+        <Routes>
+          <Route path="/personalized-form" element={<PersonalizedForm />} />
+          <Route path="*" element={<Navigate to="/personalized-form" />} />
+        </Routes>
+      );
+    } else {
+      return (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/resume-analyser" element={<ResumeAnalyser />} />
+          <Route path="/resume-comparator" element={<ResumeComparator />} />
+          <Route path="/community-support" element={<CommunitySupport />} />
+          <Route path="/virtual-events" element={<VirtualEvents />} />
+          <Route path="/jobsfinder" element={<JobsFinder />} />
+          <Route path="/training" element={<TrainingRec />} />
+          <Route path="/skills" element={<SkillsVerification />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      );
+    }
+  };
 
   return (
     <>
@@ -159,6 +180,7 @@ function App() {
               }
             />
           </Routes>
+          {renderRoutes()}
         </>
       </div>
     </>
