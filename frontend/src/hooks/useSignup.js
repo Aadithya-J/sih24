@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios"; // Assuming axios is used for making requests;
-
+import firebase from "../firebase/config";
 function useSignup() {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
@@ -16,19 +16,25 @@ function useSignup() {
       if (!response.data) {
         throw new Error("Could not complete process");
       }
+      console.log("Created user");
+      const userCredential = await firebase.myAuth.signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
 
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      // Redirect to home page
-      window.location.replace("/");
-      
-      // Store the UID in localStorage after signup
-      localStorage.setItem('uid', response.data.uid);
+      // Get the ID token
+      const idToken = await user.getIdToken();
+
+      console.log("ID token:",idToken);
+
 
       if (!isCancelled) {
         setIsPending(false);
         setError(null);
+        localStorage.setItem('uid', user.uid);
+        localStorage.setItem('token', idToken);
+        console.log("User created");
       }
+      // Redirect to home page
+      window.location.replace("/");
     } catch (error) {
       if (!isCancelled) {
         console.log(error.message);
