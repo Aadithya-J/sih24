@@ -5,9 +5,11 @@ const cors = require("cors");
 const admin = require("firebase-admin");
 const multer = require("multer");
 const path = require("path");
+// const resumeRouter = require('./resumeAnalyser2.js');
 
 app.use(cors());
 app.use(express.json());
+// app.use('/analyse', resumeRouter);
 
 var serviceAccount = require("./firebase-config.json");
 admin.initializeApp({
