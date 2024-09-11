@@ -1,4 +1,3 @@
-/* CommunityFeed.css */
 :root {
   --background-light: #ffffff; /* White background for the page */
   --background-dark: #0b0c10; /* Dark space background for the body */
@@ -27,7 +26,7 @@ body {
 .feed-item {
   margin-bottom: 20px;
   padding: 15px;
-  background: rgb(218, 241, 249);/* Slightly transparent background for cosmic feel */
+  background: rgb(218, 241, 249); /* Slightly transparent background for cosmic feel */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -38,20 +37,20 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-..feed-item h3 {
+.feed-item h3 {
   margin: 0;
   font-size: 1.5em;
   background: linear-gradient(45deg, var(--text-gradient-start), var(--text-gradient-end)); /* Gradient background for text */
   -webkit-background-clip: text; /* Apply gradient to text */
   -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
-  background-clip: text; /* Apply gradient to text */
-  color: #000; /* Black text color to ensure text is visible */
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: Black glow effect */
+  background-clip: text;
+  
 }
-
 
 .feed-item p {
   margin-top: 5px;
   line-height: 1.6;
-  color:gray
+  color: gray;
+  font-size: 20px;
 }
+
