@@ -31,7 +31,7 @@ const upload = multer({
 });
 
 
-app.use("/analyse", resumeAnalyser2);
+app.use(resumeAnalyser2);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

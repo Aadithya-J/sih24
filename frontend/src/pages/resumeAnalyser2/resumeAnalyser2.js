@@ -24,7 +24,8 @@ const SmartATS = () => {
       let response;
       if (category === 'ATS Analysis') {
         formData.append('resume', file1);
-        response = await axios.post('http://localhost:4000/analyse/', formData);
+        console.log("sending file...");
+        response = await axios.post('http://localhost:4000/analyse', formData);
       } else if (category === 'Compare') {
         formData.append('resume1', file1);
         formData.append('resume2', file2);
