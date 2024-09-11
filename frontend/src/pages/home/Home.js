@@ -99,6 +99,14 @@ function Home() {
         </div>
       </div>
 
+    {/* Real time job market insights */}
+      <div className="feature-box">
+        <Link to="/insights">
+          <h3>Real-time Job Market Insights</h3>
+          <p>Stay up-to-date with our Real-time job market insights obtained from various sources to help you land the perfect job.</p>
+        </Link>
+      </div>
+
       {/* Footer Section */}
       <footer className="footer">
         <div className="footer-content">

@@ -75,28 +75,44 @@ const JobMarketInsights = () => {
   };
 
   return (
-    <div className="app">
-      <h1>Industry Growth Overview</h1>
-      <div className="chart-section">
-        <h2>Industry YoY vs MoM</h2>
-        <Bar data={industryData} />
-      </div>
+    <>
+        <div className="app">
+        <h1>Industry Growth Overview</h1>
 
-      <div className="chart-section">
-        <h2>Industry Salary Data (Highest Range)</h2>
-        <Pie data={salaryData} />
-      </div>
+        <p>Our data according to the latest info (August 2024) indicates an 11% year-on-year growth, with a 1% increase over the past three months. However, it shows a 1% decline month-on-month, and an 11% increase over six months.</p>
+        <div className="chart-section">
+            <h2>Industry YoY vs MoM</h2>
+            <Bar data={industryData} />
+        </div>
+            <p>The Consumer Electronics sector is on a robust growth trajectory fuelled by advancements in white goods and the Semiconductor industry, and driven by the adoption of Al, IoT and 5G. Strong hiring demand was registered in Bengaluru (11%), Hyderabad (11%) and Chennai (10%) over the past month across various roles, including Engineering, Research & Development and Product Design
+            The Real Estate sector experienced strong hiring demand annually as well as over the last month. The surge can be attributed to the increasing need for flexible spaces, data centers and rising investor confidence. Global investors are showing renewed confidence in the Indian market, leading to more projects and job creation. Notably. Chennai and Jaipur have witnessed the double-digit growth in hiring demand over the past month</p>
+        </div>
 
-      <div className="chart-section">
-        <h2>Function YoY vs MoM</h2>
-        <Bar data={functionData} />
-      </div>
+        <div className="app">
+            <div className="chart-section">
+                <h2>Industry Salary Data (Highest Range)</h2>
+                <Pie data={salaryData} />
+            </div>
+            <p>The salary data highlights that industries like Banking, Financial Services, IT, and Automotive offer the highest salary ranges across experience levels, with significant growth for senior professionals. Sectors like BPO and Education offer lower salaries, especially for entry-level roles. Overall, salaries rise steadily with experience across all industries.</p>
+        </div>
 
-      <div className="chart-section">
-        <h2>City YoY vs MoM</h2>
-        <Line data={cityData} />
-      </div>
-    </div>
+        <div className="app">
+            <div className="chart-section">
+                <h2>Functional hiring trends (YoY and MoM)</h2>
+                <Bar data={functionData} />
+            </div>
+            <p>Medical roles (+22%) are seeing a surge, mainly due to the growing awareness about health and wellness, boosting the need for healthcare professionals across industries. Additionally, innovations in medical technology and telemedicine are expanding the scope of healthcare services, requiring skilled professionals to manage and operate new technologies.
+            Engineering & Production (-7%) roles saw a decline. Advancements in technology are changing the nature of engineering and production roles. The rise of digital twins, advanced simulations, and smart manufacturing require different skill sets leading to the consolidation of roles. Additionally, there is a growing focus on sustainability and green technologies, leading to shifts in engineering and production roles towards more specialized fields.</p>
+        </div>
+
+        <div className="app">
+            <div className="chart-section">
+                <h2>City hiring (YoY vs MoM)</h2>
+                <Line data={cityData} />
+            </div>
+            <p>E-recruitment soared in 8 of 13 cities annually, led by Bengaluru (+24%) & Coimbatore (+24%). Jaipur, Delhi-NCR, and Hyderabad also showed strong gains, highlighting expandong opportunities in tier-2 cities.</p>
+        </div>
+    </>
   );
 };
 
