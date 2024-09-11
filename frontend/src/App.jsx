@@ -23,8 +23,7 @@ function App() {
   const [userIsSignedIn, setUserIsSignedIn] = useState(
     !!localStorage.getItem("token")
   );
-  const [userData, setUserData] = useState({});
-  const [error, setError] = useState(null);
+  const [userHasData, setUserHasData] = useState(false);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
@@ -44,7 +43,6 @@ function App() {
     const fetchUserData = async () => {
       const uid = localStorage.getItem("uid");
       if (!uid) {
-        setError("No user ID found");
         setLoading(false);
         return;
       }
@@ -58,25 +56,8 @@ function App() {
         console.log("User data:", data);
         
         // Check if essential data is present
-        if (!data.name || !data.email || !data.city || !data.college) {
-          setError("Incomplete user data");
-        } else {
-          setError(null);
-        }
-
-        // Set user data with default values for missing fields
-        setUserData({
-          name: data.name || "John Doe",
-          profileLogo: data.profileLogo || "https://via.placeholder.com/100",
-          email: data.email || "",
-          city: data.city || "City",
-          college: data.college || "College",
-          activeDays: data.activeDays || [1, 1, 0, 1, 0, 1, 1],
-          ratingHistory: data.ratingHistory || [10, 20, 30, 40, 50],
-          atsScore: data.atsScore || 80,
-        });
+        setUserHasData(data.name && data.email && data.city && data.college);
       } catch (error) {
-        setError("Error fetching user data");
         console.error("Error fetching user data:", error);
       } finally {
         setLoading(false);
@@ -94,174 +75,48 @@ function App() {
     return <div>Loading...</div>;
   }
 
+  const renderRoutes = () => {
+    if (!userIsSignedIn) {
+      return (
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+      );
+    } else if (!userHasData) {
+      return (
+        <Routes>
+          <Route path="/personalized-form" element={<PersonalizedForm />} />
+          <Route path="*" element={<Navigate to="/personalized-form" />} />
+        </Routes>
+      );
+    } else {
+      return (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/resume-analyser" element={<ResumeAnalyser />} />
+          <Route path="/resume-comparator" element={<ResumeComparator />} />
+          <Route path="/community-support" element={<CommunitySupport />} />
+          <Route path="/virtual-events" element={<VirtualEvents />} />
+          <Route path="/jobsfinder" element={<JobsFinder />} />
+          <Route path="/training" element={<TrainingRec />} />
+          <Route path="/skills" element={<SkillsVerification />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      );
+    }
+  };
+
   return (
     <>
       <StarsCanvas />
       <div className="app-content">
         <>
           <Navbar />
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <Home />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/login"
-              element={!userIsSignedIn ? <Login /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/signup"
-              element={!userIsSignedIn ? <Signup /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/roadmap"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <Roadmap />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/resume-analyser"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <ResumeAnalyser />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/resume-comparator"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <ResumeComparator />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/community-support"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <CommunitySupport />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route path="/personalized-form" element={
-                userIsSignedIn ? (
-                  error != null ? (
-                    <PersonalizedForm />
-                  ) : (
-                    <Navigate to="/" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              } />
-            <Route
-              path="/virtual-events"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <VirtualEvents />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/jobsfinder"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <JobsFinder />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/training"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <TrainingRec />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/skills"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <SkillsVerification />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                userIsSignedIn ? (
-                  error == null ? (
-                    <UserProfile />
-                  ) : (
-                    <Navigate to="/personalized-form" />
-                  )
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-          </Routes>
+          {renderRoutes()}
         </>
       </div>
     </>
