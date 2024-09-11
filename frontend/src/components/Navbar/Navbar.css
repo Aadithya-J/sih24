@@ -1,5 +1,7 @@
 /* Reset and base styles */
 body {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 400;
   margin: 0;
   padding: 0;
 }
@@ -15,6 +17,7 @@ body {
   color: #fff;
   transition: background-color 0.3s;
   background: orange;
+  border-radius: 10px;
 }
 
 .navbar__container {
@@ -69,7 +72,6 @@ body {
 .navbar__link {
   text-decoration: none;
   color: inherit;
-  padding-left: 20px;
   font-size: 1rem;
   position: relative;
   overflow: hidden;

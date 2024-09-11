@@ -20,6 +20,7 @@ const bucket = admin.storage().bucket();
 
 const fetchRoadmap = require("./roadmap.js");
 const resumeAnalyser = require("./resumeAnalyser");
+const resumeAnalyser2 = require("./resumeAnalyser2");
 
 // Configure multer for file upload
 const upload = multer({
@@ -28,6 +29,9 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024, // limit file size to 5MB
   },
 });
+
+
+app.use("/analyse", resumeAnalyser2);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

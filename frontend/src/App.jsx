@@ -8,6 +8,7 @@ import Signup from "./pages/signup/Signup";
 import Roadmap from "./pages/roadmap/generateRoadmap.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import ResumeAnalyser from "./pages/resumeAnalyser/ResumeAnalyser.js";
+import SmartATS from "./pages/resumeAnalyser2/resumeAnalyser2.js";
 import JobsFinder from "./pages/jobsFinder/jobsFinder.js";
 import { StarsCanvas } from "./components/Navbar/StarsCanvas";
 import CommunitySupport from "./pages/communitySupport/CommunitySupport";
@@ -101,7 +102,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/resume-analyser" element={<ResumeAnalyser />} />
+          <Route path="/resume-analyser" element={<SmartATS />} />
           <Route path="/resume-comparator" element={<ResumeComparator />} />
           <Route path="/community-support" element={<CommunitySupport />} />
           <Route path="/virtual-events" element={<VirtualEvents />} />

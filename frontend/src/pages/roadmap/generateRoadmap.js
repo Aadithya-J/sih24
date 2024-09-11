@@ -78,8 +78,8 @@ function RoadmapContent() {
         target: mainNodeId,
         type: 'smoothstep',
         animated: true,
-        style: { stroke: '#333' },
-        markerEnd: { type: MarkerType.ArrowClosed, color: '#333' },
+        style: { stroke: '#000' },
+        markerEnd: { type: MarkerType.ArrowClosed, color: '#000' },
       });
 
       // Subsection nodes

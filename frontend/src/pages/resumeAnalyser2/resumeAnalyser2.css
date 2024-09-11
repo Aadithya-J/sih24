@@ -1,0 +1,56 @@
+/* SmartATS.css */
+.smart-ats {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+select, textarea, input[type="file"], button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 100px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cccccc;
+}
+
+.results {
+  margin-top: 30px;
+}
+
+.comparison {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resume1, .resume2 {
+  width: 48%;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.comparison-conclusion {
+  margin-top: 30px;
+  text-align: center;
+}
