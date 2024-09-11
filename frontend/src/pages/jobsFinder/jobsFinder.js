@@ -21,7 +21,7 @@ const JobsFinder = () => {
     setJobs([]); // Clear previous results
 
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${encodeURIComponent(jobRole)}/${encodeURIComponent(location)}`);
+      const response = await axios.get(`http://localhost:3001/api/jobs/${jobRole}/${location}`);
       if (response.data.length > 0) {
         setJobs(response.data);
       } else {

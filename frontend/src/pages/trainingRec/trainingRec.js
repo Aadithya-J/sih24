@@ -19,7 +19,7 @@ function TrainingRec() {
     try {
       // Make two API calls: one for Google resources, one for YouTube playlists
       const [resourceResponse, playlistResponse] = await Promise.all([
-        axios.get(`http://localhost:7000/api/resources/${topic}`),
+        axios.get(`http://localhost:5004/api/resources/${topic}`),
         axios.get(`http://localhost:5003/api/videos/${topic}`)
       ]);
       

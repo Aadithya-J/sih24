@@ -111,6 +111,7 @@ function App() {
           <Route path="/training" element={<TrainingRec />} />
           <Route path="/skills" element={<SkillsVerification />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/market" element = {<JobMarketInsights/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       );

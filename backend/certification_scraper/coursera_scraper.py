@@ -4,14 +4,20 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request
 from flask_cors import CORS
 import time
+import platform
 
 app = Flask(__name__)
 CORS(app)
 
 def scrape_coursera(query):
+    chrome_driver_path = ''
+    if(platform.system() == 'Windows'):
+        chrome_driver_path = Service('chromedriver.exe')
+    else:
+        chrome_driver_path = Service('chromedriver')
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -19,9 +25,9 @@ def scrape_coursera(query):
     chrome_options.add_argument("window-size=1920,1080")
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
-    service = Service('chromedriver.exe')
+    service = Service(chrome_driver_path)
 
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
 
     query = query.replace(' ', '%20')
     url = f'https://www.coursera.org/search?query={query}'
@@ -49,8 +55,10 @@ def scrape_coursera(query):
     
     return total_courses
 
-@app.route('/api/courses/<course>', methods = ["GET"])
+@app.route('/api/courses/<course>', methods = ["GET",'OPTIONS'])
 def course_search(course):
+    if request.method == 'OPTIONS':
+        return '',200
     final = scrape_coursera(course)
     
     if not final:

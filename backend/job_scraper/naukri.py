@@ -9,13 +9,14 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 import ast
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 from flask_cors import CORS
+import platform
 
 app = Flask(__name__)
-CORS(app)  # This will enable CORS for all routes
+CORS(app) # This will enable CORS for all routes
 
 def scrape_jobs(role, location):
     chrome_options = Options()
@@ -24,10 +25,12 @@ def scrape_jobs(role, location):
     chrome_options.add_argument("start-maximized")
     chrome_options.add_argument("window-size=1920,1080")
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+    if(platform.system() == 'Windows'):
+        service = Service('chromedriver.exe')
+    else:
+        service = Service('chromedriver')
 
-    service = Service('chromedriver.exe')
-
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
 
     # role = 'ai developer'
     # location = 'bengaluru'
@@ -114,7 +117,7 @@ def get_job_details(job_info, model):
         return None
 
 
-def process_jobs_concurrently(total_jobs, model, max_workers=5):
+def process_jobs_concurrently(total_jobs, model, max_workers=10):
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [executor.submit(get_job_details, job, model) for job in total_jobs]
         
@@ -141,10 +144,12 @@ def capitalize_titles(job_listings):
     return capitalized_listings
 
 
-@app.route('/api/jobs/<jobInput>/<location>', methods=['GET'])
+@app.route('/api/jobs/<jobInput>/<location>', methods=['GET', 'OPTIONS'])
 def get_jobs(jobInput, location):
+    if request.method == 'OPTIONS':
+        return '',200
     total_jobs = scrape_jobs(jobInput, location)
-    
+
     load_dotenv()
     API_KEY = os.getenv("GEMINI_API_KEY")
     genai.configure(api_key=API_KEY)
@@ -162,4 +167,4 @@ def get_jobs(jobInput, location):
     return jsonify(capitalized_job_listings)
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=3001)

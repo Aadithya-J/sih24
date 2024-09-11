@@ -5,14 +5,19 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import time
 import flask
-from flask import Flask, jsonify
+from flask import Flask, jsonify,request
 from flask_cors import CORS
+import platform
 
 app = Flask(__name__)
 CORS(app) 
 
 def scrape_links(skill):
-    chrome_driver_path = 'chromedriver.exe'
+    chrome_driver_path = ''
+    if(platform.system() == 'Windows'):
+        chrome_driver_path = Service('chromedriver.exe')
+    else:
+        chrome_driver_path = Service('chromedriver')
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -20,7 +25,7 @@ def scrape_links(skill):
     chrome_options.add_argument("--disable-dev-shm-usage")
     service = Service(chrome_driver_path)
     
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get("https://www.google.com")
     
     search_box = driver.find_element(By.NAME, "q")
@@ -45,10 +50,13 @@ def scrape_links(skill):
 
     return links
 
-@app.route('/api/resources/<skill>', methods=['GET'])
+@app.route('/api/resources/<skill>', methods=['GET','OPTIONS'])
 def search(skill):
+    if request.method == 'OPTIONS':
+        return '',200
     links = scrape_links(skill)
     final = []
+    
     
     if not links:
         print("No links found!")
@@ -60,4 +68,4 @@ def search(skill):
     return jsonify(final)
 
 if __name__ == "__main__":
-    app.run(port=7000)
+    app.run(port=5004)
