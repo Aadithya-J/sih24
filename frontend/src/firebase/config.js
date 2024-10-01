@@ -2,15 +2,15 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Initialize Firebase using environment variables from .env file
 const firebaseConfig = {
-  apiKey: "AIzaSyCIFT3gkD1qIDlK3X2wUS2dRLZnzatQlMM",
-  authDomain: "yatharth-24.firebaseapp.com",
-  projectId: "yatharth-24",
-  storageBucket: "yatharth-24.appspot.com",
-  messagingSenderId: "658651371540",
-  appId: "1:658651371540:web:ee19d8a89bd758412baf01",
-  measurementId: "G-T9D9ZTJKS8"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -18,4 +18,4 @@ firebase.initializeApp(firebaseConfig);
 const myFireStore = firebase.firestore();
 const myAuth = firebase.auth();
 
-export default { myFireStore, myAuth };
+export { myFireStore, myAuth };
