@@ -10,11 +10,17 @@ const path = require("path");
 app.use(cors());
 app.use(express.json());
 // app.use('/analyse', resumeRouter);
+require('dotenv').config();
 
-var serviceAccount = require("./firebase-config.json");
+// Initialize Firebase using environment variables
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: "gs://yatharth-24.appspot.com",
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    privateKeyId: process.env.FIREBASE_PRIVATE_KEY_ID,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Properly format private key
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  }),
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 });
 
 const db = admin.firestore();
